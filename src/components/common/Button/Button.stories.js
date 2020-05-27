@@ -1,50 +1,55 @@
-import React from "react"
+import React from 'react'
 
 import { action } from '@storybook/addon-actions'
 import { withKnobs, text } from '@storybook/addon-knobs'
-import { RiLoader4Line } from "react-icons/ri"
+import { RiLoader4Line } from 'react-icons/ri'
 
-import Button from "./"
+import Button from './'
 
-import { Colors } from "../../../themes/Colors"
+import { Colors } from '../../../themes/Colors'
 
 export default {
-    component : Button,
-    title : "common/components/Button"
+   component: Button,
+   title: 'common/components/Button'
 }
-
-
 
 export const defaultView = () => {
-    
-  const styles = {
-            background:Colors.brightBlue,
-            width: "320px",
-            height: "40px",
-            borderRadius: "4px",
-        }
-    const buttonCSS = text("styles",styles)
-    
-    
-    return <Button buttonCSS={buttonCSS} onClickButton={action('button-clicked')} buttonValue={"Login"} apiStatus={0} />
+   const styles = {
+      background: Colors.brightBlue,
+      width: '320px',
+      height: '40px',
+      borderRadius: '4px'
+   }
+   const buttonCSS = text('styles', styles)
+
+   return (
+      <Button
+         buttonCSS={buttonCSS}
+         onClickButton={action('button-clicked')}
+         buttonValue={'Login'}
+         apiStatus={0}
+      />
+   )
 }
-
-
 
 export const buttonWhileLoading = () => {
-        
-    const styles = {
-            background:Colors.brightBlue,
-            width: "320px",
-            height: "40px",
-            borderRadius: "4px",
-        }
-    const buttonCSS = text("styles",styles)
-    
-    return <Button buttonCSS={buttonCSS} onClickButton={action('button-clicked')} buttonValue={<RiLoader4Line />} apiStatus={100}/>
+   const styles = {
+      background: Colors.brightBlue,
+      width: '320px',
+      height: '40px',
+      borderRadius: '4px'
+   }
+   const buttonCSS = text('styles', styles)
+
+   return (
+      <Button
+         buttonCSS={buttonCSS}
+         onClickButton={action('button-clicked')}
+         buttonValue={<RiLoader4Line />}
+         apiStatus={100}
+      />
+   )
 }
-
-
 
 defaultView.story = {
    decorators: [withKnobs]

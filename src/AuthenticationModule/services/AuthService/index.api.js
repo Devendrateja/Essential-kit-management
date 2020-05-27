@@ -1,24 +1,24 @@
-import { create } from "apisauce";
-import { apiMethods } from "../../../constants/APIConstants";
-import { networkCallWithApisauce } from "../../../utils/APIUtils";
+import { create } from 'apisauce'
+import { apiMethods } from '../../../constants/APIConstants'
+import { networkCallWithApisauce } from '../../../utils/APIUtils'
 
 class AuthAPI {
-  api;
-  constructor() {
-    this.api = create({
-      baseURL: "https://127.0.0.1:8080/api/essentials_kit_management/essentials_kit_management/",
-    });
-  }
+   api
+   constructor() {
+      this.api = create({
+         baseURL:
+            'https://5ea1a14db9f5ca00166c1f27.mockapi.io/api/'
+      })
+   }
 
-  signInAPI(request) {
-    console.log("api call services")
-    return networkCallWithApisauce(
-      this.api,
-      "Loginform/v1/",
-      request,
-      apiMethods.get
-    );
-  }
+   signInAPI(request) {
+      return networkCallWithApisauce(
+          this.api,
+         'v1/signin/',
+         request,
+         apiMethods.get
+      )
+   }
 }
 
-export default AuthAPI;
+export default AuthAPI

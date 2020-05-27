@@ -1,0 +1,1 @@
+export const USER_HOME_PATH = '/essential-kit-management/user/home'

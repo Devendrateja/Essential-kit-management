@@ -7,6 +7,9 @@ import { Redirect } from "react-router-dom"
 
 import SignInPage from  "../../components"
 import DataStrings from "../../../i18n/strings.json"
+import { USER_HOME_PATH } from "../../../UserModule/constants/RouteConstants"
+import { getAccessToken } from "../../../utils/StorageUtils.js"
+ 
 
 @inject("authStore")
 @observer
@@ -15,6 +18,32 @@ class SignInRoute extends React.Component{
     @observable password = ""
     @observable errorMessageUsernameField = ""
     @observable errorMessagePasswordField = ""
+    
+    
+    
+    
+    
+    onChangeUsername = (event) => {
+        this.username = event.target.value;
+        this.errorMessageUsernameField = "";
+    }
+    
+    onChangePassword = (event) => {
+        this.password = event.target.value;
+        this.errorMessagePasswordField = "";
+    }
+    
+    onSignInSuccess = () => {
+        const { history } = this.props;
+        history.push(USER_HOME_PATH);
+    };
+
+    onSignInFailure = () => {
+        const { getUserSignInAPIError: apiError } = this.props.authStore;
+        if (apiError !== null && apiError !== undefined) {
+          this.errorMessage = apiError;
+        }
+    };
     
     
     
@@ -38,24 +67,32 @@ class SignInRoute extends React.Component{
            userSignIn({
                username:this.username,
                password:this.password
-           });
+           }, this.onSignInSuccess, 
+           this.onSignInFailure
+           );
+           
            this.username = "";
            this.password = "";
        }
     }
     
-    onChangeUsername = (event) => {
-        this.username = event.target.value;
-        this.errorMessageUsernameField = "";
+    
+    
+    
+    
+    renderUserHome = () => {
+         const { history } = this.props;
+         return <Redirect to={ USER_HOME_PATH }/>
     }
     
-    onChangePassword = (event) => {
-        this.password = event.target.value;
-        this.errorMessagePasswordField = "";
-    }
     
     render(){
         const { getUserSignInAPIStatus } = this.props.authStore
+        const AccessToken = getAccessToken()
+        if( AccessToken !== undefined){
+            console.log(AccessToken );
+            return this.renderUserHome()
+        }
         return (
            <SignInPage
                 onClickButton={this.onClickButton} 

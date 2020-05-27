@@ -1,68 +1,86 @@
 /*global jest*/
 /*global expect*/
 
-import React from "react";
-import { render, fireEvent, waitFor } from "@testing-library/react";
-import { Router, Route, withRouter } from "react-router-dom";
-import { Provider } from "mobx-react";
-import { createMemoryHistory } from "history";
+import React from 'react'
+import { render, fireEvent, waitFor } from '@testing-library/react'
+import { Router, Route, withRouter } from 'react-router-dom'
+import { Provider } from 'mobx-react'
+import { createMemoryHistory } from 'history'
 
-
-import { SIGN_IN_PATH } from "../../constants/RouteConstants";
-import AuthAPI from "../../services/AuthService/index.api.js";
-import AuthStore from "../../stores/AuthStore";
+import { SIGN_IN_PATH } from '../../constants/RouteConstants'
+import AuthAPI from '../../services/AuthService/index.api.js'
+import AuthStore from '../../stores/AuthStore'
 //import getUserSignInResponse from "../../../fixtures/getUserSignInResponse.json";
 
-import SignInRoute from ".";
+
+
+import SignInRoute from '.'
+
+
+
+
+
+import "@testing-library/jest-dom/extend-expect";
+
+import Cookie from "js-cookie";
+
+let mockSetCookie = jest.fn();
+let mockRemoveCookie = jest.fn();
+let mockGetCookie = jest.fn();
+
+Cookie.set = mockSetCookie;
+Cookie.remove = mockRemoveCookie;
+Cookie.get = mockGetCookie;
+
+global.mockSetCookie = mockSetCookie;
+global.mockRemoveCookie = mockRemoveCookie;
+global.mockGetCookie = mockGetCookie;
+
+
+
 
 
 
 const LocationDisplay = withRouter(({ location }) => (
-  <div data-testid="location-display">{location.pathname}</div>
-));
+   <div data-testid='location-display'>{location.pathname}</div>
+))
 
+describe('SignInRoute Tests', () => {
+   let authAPI
+   let authStore
 
+   beforeEach(() => {
+      authAPI = new AuthAPI()
+      authStore = new AuthStore(authAPI)
+   })
 
-describe("SignInRoute Tests", () => {
-    let authAPI;
-    let authStore;
+   afterEach(() => {
+      jest.resetAllMocks()
+   })
 
-    beforeEach(() => {
-        authAPI = new AuthAPI();
-        authStore = new AuthStore(authAPI);
-    });
+   it("should render username empty error message", () => {
+      //  const {  debug } = render(
+      //    <Router history={createMemoryHistory()}>
+      //       <SignInRoute authStore={authStore} />
+      //    </Router>
+      //  );
+       //const signInButton = getByRole("button", { name: "Sign in" });
+       //debug();
+       //fireEvent.click(signInButton);
 
-    afterEach(() => {
-        jest.resetAllMocks();
-    });
-
-    // it("should render username empty error message", () => {
-    //     const {  debug } = render(
-    //       <Router history={createMemoryHistory()}>
-    //         <SignInRoute authStore={authStore} />
-    //       </Router>
-    //     );
-    //     //const signInButton = getByRole("button", { name: "Sign in" });
-    //     //debug();
-    //     //fireEvent.click(signInButton);
-    
-    //     //getByText(/Please enter username/i);
-    // });
-    it("should render password empty error message", () => {
-    // const { getByText, getByPlaceholderText, getByRole } = render(
-        
-    //     <Router history={createMemoryHistory()}>
-    //         <SignInRoute authStore={authStore} />
-    //     </Router>
-    // );
-    // const username = "test-user";
-    // const usernameField = getByPlaceholderText("Username");
-    // const signInButton = getByRole("button", { name: "Sign in" });
-
-    // fireEvent.change(usernameField, { target: { value: username } });
-    // fireEvent.click(signInButton);
-
-    // getByText(/Please enter password/i);
-  });
-
-});
+       //getByText(/Please enter username/i);
+   });
+   it('should render password empty error message', () => {
+      // const { getByText, getByPlaceholderText, getByRole } = render(
+      //     <Router history={createMemoryHistory()}>
+      //          <SignInRoute authStore={authStore} />
+      //     </Router>
+      // );
+      // const username = "test-user";
+      // const usernameField = getByPlaceholderText("Username");
+      // const signInButton = getByRole("button", { name: "Sign in" });
+      // fireEvent.change(usernameField, { target: { value: username } });
+      // fireEvent.click(signInButton);
+      // getByText(/Please enter password/i);
+   })
+})
