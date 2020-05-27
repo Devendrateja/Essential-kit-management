@@ -4,14 +4,14 @@ import { Colors } from "../../themes/Colors.js"
 
 
 export const Typo32DarkBlueGreyRubikRegular = styled.span`
-font-family: Rubik;
-  font-size: 32px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.25;
-  letter-spacing: normal;
-  color: ${Colors.darkBlueGrey};
+              font-family: Rubik;
+              font-size: 32px;
+              font-weight: normal;
+              font-stretch: normal;
+              font-style: normal;
+              line-height: 1.25;
+              letter-spacing: normal;
+              color: ${Colors.darkBlueGrey};
 `
 
 
@@ -24,4 +24,16 @@ export const Typo12SteelHKGroteskSemiBold = styled.span`
             line-height: 1.33;
             letter-spacing: 0.12px;
             color: ${Colors.steel};
+`
+
+
+export const Typo12NeonRedHKGrotesk_Regular = styled.span`
+            font-family: HKGrotesk;
+            font-size: 12px;
+            font-weight: normal;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 1.33;
+            letter-spacing: normal;
+            color: ${Colors.neonRed};
 `

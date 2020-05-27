@@ -4,5 +4,5 @@ export const Colors = {
     steel:"#7e858e",
     iceBlue:"#f1f7ff",
     darkBlueGrey:"#171f46",
-    
+    neonRed:"#ff0b37",
 }

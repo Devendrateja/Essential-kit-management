@@ -1,0 +1,10 @@
+{
+     "usernameFieldError" : "please enter username",
+    "passwordFieldError" : "please enter password",
+    "inputTypeText" : "text",
+    "inputTypePassword" : "password",
+    "placeholderTextUsername" : "Enter username",
+    "placeholderTextPassword" : "Enter password",
+    "labelTextUsername" : "USERNAME",
+    "labelTextPassword" : "PASSWORD"
+}

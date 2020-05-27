@@ -23,30 +23,29 @@ class AuthStore {
     }
      
     @action.bound
-    setGetUserSignInAPIStatus(status) {
+    setUserSignInAPIStatus(status) {
+        console.log("api status", status)
         this.getUserSignInAPIStatus = status;
     }
 
     @action.bound
-    setGetUserSignInAPIError(error) {
+    setUserSignInAPIError(error) {
         this.getUserSignInAPIError = error;
     }
     @action.bound
     setUserSignInAPIResponse(response) {
+        console.log("response from api call", response)
         setAccessToken(response.length > 0 && response[0].access_token);
     }
 
     @action.bound
-    userSignIn(request, onSuccess, onFailure) {
+    userSignIn(request) {
+        console.log("api call userSignIn store",request)
         const userSignInAPIPromise = this.authAPIService.signInAPI(request);
         return bindPromiseWithOnSuccess(userSignInAPIPromise)
-          .to(this.setGetUserSignInAPIStatus, (response) => {
-            this.setUserSignInAPIResponse(response);
-            onSuccess();
-          })
+          .to(this.setUserSignInAPIStatus, this.setUserSignInAPIResponse)
           .catch((error) => {
-            this.setGetUserSignInAPIError(error);
-            onFailure();
+            this.setUserSignInAPIError(error);
           });
     }
 

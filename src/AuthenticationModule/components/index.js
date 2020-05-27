@@ -9,7 +9,7 @@ import SignInForm from "./SignInForm/index"
 @observer
 class SignInPage extends React.Component{
     render(){
-        const {onClickButton, apiStatus, username, password,errorMessage,onChangeUsername, onChangePassword} = this.props
+        const {onClickButton, apiStatus, username, password,errorMessageUsernameField,errorMessagePasswordField,onChangeUsername, onChangePassword} = this.props
         
         return(
             <SignInForm 
@@ -17,7 +17,8 @@ class SignInPage extends React.Component{
                 apiStatus = {apiStatus}
                 username={username}
                 password={password}
-                errorMessage={errorMessage}
+                errorMessageUsernameField={errorMessageUsernameField}
+                errorMessagePasswordField={errorMessagePasswordField}
                 onChangeUsername={onChangeUsername}
                 onChangePassword={onChangePassword}
             />

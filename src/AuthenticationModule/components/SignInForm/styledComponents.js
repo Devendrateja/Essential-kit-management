@@ -9,7 +9,7 @@ export const SigninContainer = styled.div`${tw`flex flex-col justify-center item
                                 height:1024px;`
                                 
 
-export const Form = styled.form`${tw`flex flex-col justify-center items-center`}
+export const Form = styled.form`${tw`flex flex-col justify-around items-center`}
                     width: 536px;
                     height: 687px;
                     border-radius: 8px;

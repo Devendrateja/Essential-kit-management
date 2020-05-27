@@ -5,9 +5,11 @@ import { API_FETCHING, API_SUCCESS, API_FAILED } from '@ib/api-constants'
 import { RiLoader4Line } from "react-icons/ri"
 
 import Button from "../../../components/common/Button/index"
+import DisplayErrorMessage from "../../../components/common/DisplayErrorMessage/index"
 import InputElement from "../../../components/common/InputElement/index"
 import { Colors } from "../../../themes/Colors"
 import { Typo32DarkBlueGreyRubikRegular,Typo12SteelHKGroteskSemiBold } from "../../../styleGuide/Typos"
+import DataStrings from "../../../i18n/strings.json"
 
 import { SigninContainer, Form  } from "./styledComponents"
 
@@ -26,7 +28,9 @@ import { SigninContainer, Form  } from "./styledComponents"
 @observer
 class SignInForm extends React.Component{
     render(){
-        const {onClickButton, apiStatus, username, password,errorMessage, onChangeUsername, onChangePassword} = this.props
+        const {onClickButton, apiStatus, username, password,errorMessagePasswordField, errorMessageUsernameField, onChangeUsername, onChangePassword} = this.props
+       const {inputTypeText,inputTypePassword,placeholderTextUsername, placeholderTextPassword,labelTextUsername,labelTextPassword} = DataStrings
+       
        
         const buttonCSS = {
             background:Colors.brightBlue,
@@ -42,32 +46,39 @@ class SignInForm extends React.Component{
             border: `solid 1px ${Colors.steel}`,
         }
         
-    
-       
+        
+        
         return (
             <SigninContainer>
+                
                 <Form onSubmit={onClickButton}>
-                    <img src="img/i-b-hub-slogo.svg" alt="ibhubs-logo"/>
-                    <Typo32DarkBlueGreyRubikRegular>Hi there, please sign up</Typo32DarkBlueGreyRubikRegular>
-                    <Typo12SteelHKGroteskSemiBold>username </Typo12SteelHKGroteskSemiBold>
-                    <InputElement
-                        styles={InputElementStyles}
-                        apiStatus={apiStatus}
-                        inputType="text"
-                        placeholderText="username" 
-                        inputValue={username} 
-                        onChangeElement={onChangeUsername} 
-                    />
+                    <div><img src="https://cdn.zeplin.io/5d0afc9102b7fa56760995cc/assets/8b9ff190-f490-4211-b2dd-61f476cfeabd.svg" alt="ibhubs-logo"/></div>
+                    <div><Typo32DarkBlueGreyRubikRegular>Hi there, please sign up</Typo32DarkBlueGreyRubikRegular></div>
+                    <div className="flex flex-col justify-center items-start">
+                        <Typo12SteelHKGroteskSemiBold>{labelTextUsername}</Typo12SteelHKGroteskSemiBold>
+                        <InputElement
+                            styles={InputElementStyles}
+                            apiStatus={apiStatus}
+                            inputType={inputTypeText}
+                            placeholderText={placeholderTextUsername}
+                            inputValue={username} 
+                            onChangeElement={onChangeUsername} 
+                        />
+                        <DisplayErrorMessage errorMessage={errorMessageUsernameField} />
+                    </div>
                    
-                    <Typo12SteelHKGroteskSemiBold>password</Typo12SteelHKGroteskSemiBold>
-                    <InputElement
-                        styles={InputElementStyles}
-                        apiStatus={apiStatus}
-                        inputType="password" 
-                        placeholderText="password" 
-                        inputValue={password} 
-                        onChangeElement={onChangePassword} 
-                    />
+                   <div className="flex flex-col justify-center items-start">
+                        <Typo12SteelHKGroteskSemiBold>{labelTextPassword}</Typo12SteelHKGroteskSemiBold>
+                        <InputElement
+                            styles={InputElementStyles}
+                            apiStatus={apiStatus}
+                            inputType={DataStrings.passwordType}
+                            placeholderText={placeholderTextPassword}
+                            inputValue={password} 
+                            onChangeElement={onChangePassword} 
+                        />
+                        <DisplayErrorMessage errorMessage={errorMessagePasswordField} />
+                    </div>
                     
                     <Button
                         onClickButton={onClickButton} 
@@ -75,7 +86,7 @@ class SignInForm extends React.Component{
                         apiStatus = {apiStatus}
                         buttonCSS = {buttonCSS}
                     />
-                    <div>{errorMessage}</div>
+                    
                     <p>Don't have an account ? <a>signUp</a></p>
                 </Form>
             </SigninContainer>

@@ -6,52 +6,66 @@ import { Redirect } from "react-router-dom"
 
 
 import SignInPage from  "../../components"
+import DataStrings from "../../../i18n/strings.json"
 
+@inject("authStore")
 @observer
 class SignInRoute extends React.Component{
     @observable username = ""
     @observable password = ""
-    @observable errorMessage = ""
+    @observable errorMessageUsernameField = ""
+    @observable errorMessagePasswordField = ""
     
     
     
     onClickButton = (event) => {
        event.preventDefault();
+       
+        const { usernameFieldError,passwordFieldError } = DataStrings
+        const { userSignIn } = this.props.authStore;
+       
        if(this.username === "" || this.username === undefined ){
-           this.errorMessage = "please enter username";
+           this.errorMessageUsernameField = DataStrings.usernameFieldError;
            return;
        }
        else if (this.password === "" || this.password === undefined){
-           this.errorMessage = "please enter password";
+           this.errorMessagePasswordField = DataStrings.passwordFieldError;
            return;
        }
        else{
-           this.errorMessage = "";
-           console.log("button Clicked", this.username, this.password);
+           this.errorMessageUsernameField = "";
+           this.errorMessagePasswordField = "";
+           userSignIn({
+               username:this.username,
+               password:this.password
+           });
+           this.username = "";
+           this.password = "";
        }
-        
     }
     
     onChangeUsername = (event) => {
         this.username = event.target.value;
-        console.log("username" , this.username);
+        this.errorMessageUsernameField = "";
     }
     
     onChangePassword = (event) => {
         this.password = event.target.value;
-        console.log("password", this.password)
+        this.errorMessagePasswordField = "";
     }
     
     render(){
+        const { getUserSignInAPIStatus } = this.props.authStore
         return (
            <SignInPage
                 onClickButton={this.onClickButton} 
                 onChangeUsername={this.onChangeUsername}
                 onChangePassword={this.onChangePassword}
-                apiStatus = {0}
+                apiStatus = {getUserSignInAPIStatus}
                 username={this.username}
                 password={this.password}
-                errorMessage={this.errorMessage}
+                errorMessageUsernameField={this.errorMessageUsernameField}
+                errorMessagePasswordField={this.errorMessagePasswordField}
             />
             )
     }
