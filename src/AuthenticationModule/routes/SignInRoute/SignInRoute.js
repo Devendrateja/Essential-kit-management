@@ -3,6 +3,7 @@ import { observable, action } from "mobx"
 import { observer, inject } from "mobx-react"
 import { API_FETCHING, API_SUCCESS, API_FAILED } from '@ib/api-constants'
 import { Redirect } from "react-router-dom"
+import { withRouter } from "react-router-dom";
 
 
 import SignInPage from  "../../components"
@@ -18,8 +19,7 @@ class SignInRoute extends React.Component{
     @observable password = ""
     @observable errorMessageUsernameField = ""
     @observable errorMessagePasswordField = ""
-    
-    
+    @observable errorMessage = ""
     
     
     
@@ -67,9 +67,7 @@ class SignInRoute extends React.Component{
            userSignIn({
                username:this.username,
                password:this.password
-           }, this.onSignInSuccess, 
-           this.onSignInFailure
-           );
+           }, this.onSignInSuccess, this.onSignInFailure)
            
            this.username = "";
            this.password = "";
@@ -108,5 +106,5 @@ class SignInRoute extends React.Component{
     }
 }
 
-export default SignInRoute;
+export default withRouter(SignInRoute);
 

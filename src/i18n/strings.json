@@ -3,8 +3,8 @@
     "passwordFieldError" : "please enter password",
     "inputTypeText" : "text",
     "inputTypePassword" : "password",
-    "placeholderTextUsername" : "Enter username",
-    "placeholderTextPassword" : "Enter password",
+    "placeholderTextUsername" : "username",
+    "placeholderTextPassword" : "password",
     "labelTextUsername" : "USERNAME",
     "labelTextPassword" : "PASSWORD"
 }
