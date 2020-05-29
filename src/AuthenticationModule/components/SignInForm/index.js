@@ -13,7 +13,7 @@ import {
    Typo12SteelHKGroteskSemiBold
 } from '../../../styleGuide/Typos'
 import DataStrings from '../../../i18n/strings.json'
-import { ibhubsLogo } from "../../../styleGuide/images"
+import { ibhubsLogo } from '../../../styleGuide/images'
 
 import { SigninContainer, Form } from './styledComponents'
 
@@ -58,8 +58,8 @@ class SignInForm extends React.Component {
       const InputElementStyles = {
          background: Colors.white,
          width: '320px',
-         height: '40px',
-         borderRadius: '2px',
+         height: '50px',
+         borderRadius: '5px',
          border: `solid 1px ${Colors.steel}`
       }
 
@@ -67,10 +67,7 @@ class SignInForm extends React.Component {
          <SigninContainer>
             <Form onSubmit={onClickButton}>
                <div>
-                  <img 
-                     src={ibhubsLogo.src}
-                     alt={ibhubsLogo.alt}
-                  />
+                  <img src={ibhubsLogo.src} alt={ibhubsLogo.alt} />
                </div>
                <div>
                   <Typo32DarkBlueGreyRubikRegular>
@@ -130,7 +127,6 @@ class SignInForm extends React.Component {
 }
 
 export default SignInForm
-
 
 // <img
 //                      src='https://cdn.zeplin.io/5d0afc9102b7fa56760995cc/assets/8b9ff190-f490-4211-b2dd-61f476cfeabd.svg'

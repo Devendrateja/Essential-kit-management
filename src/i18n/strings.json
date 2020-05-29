@@ -6,5 +6,23 @@
     "placeholderTextUsername" : "username",
     "placeholderTextPassword" : "password",
     "labelTextUsername" : "USERNAME",
-    "labelTextPassword" : "PASSWORD"
+    "labelTextPassword" : "PASSWORD",
+    "UserModule" : {
+        "Header" : {
+            "HOME":"HOME",
+            "PAYREQUEST" : "PAY REQUEST",
+            "MYWALLET" : "MY WALLET"
+        },
+        "TitleBar" : {
+            "SNO":"S.no",
+            "NAME" : "NAME",
+            "STATUS" : "STATUS",
+            "DATE" : "DATE",
+            "TOTALITEMS" : "TOTAL ITEMS",
+            "PENDINGITEMS" : "PENDING ITEMS",
+            "ESTIMATEDCOST" : "ESTIMATED COST",
+            "COSTINCURRED" : "COST INCURRED"
+            
+        }
+    }
 }

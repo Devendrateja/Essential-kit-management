@@ -1,46 +1,73 @@
-import React from "react"
-import { observer } from "mobx-react"
-import { observable } from "mobx"
-import { Redirect} from "react-router-dom"
-import { withRouter } from "react-router-dom"
-import NavigationButton from "../../components/common/NavigationButton"
+import React from 'react'
+import { observer } from 'mobx-react'
+import { observable } from 'mobx'
+import { Redirect } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 
+import NavigationButton from '../../components/common/NavigationButton'
+import LoadingWrapperWithFailure from '../../components/common/LoadingWrapperWithFailure'
 
-
-import { clearUserSession } from "../../utils/StorageUtils.js"
-import FormsPage from "./FormsPage"
-
+import Header from './Header'
+import TitleBar from './TitleBar'
+import TableHeader from './TableHeader'
+import ListOfForms from './ListOfForms'
+import Pagination from './Pagination'
+import { Container, MiniContainer } from './styledComponents'
 
 @observer
-class UserHome extends React.Component{
-    
-    signOut = () => {
-         clearUserSession()
-        this.redirectToSignInPage()
-    }
-    
-    redirectToSignInPage = () => {
-        const { history } = this.props
-        const signin = history.push('/essential-kit-management/signin')
-        return <div>{signin}</div>
-        // return (
-        //     <Redirect to='/essential-kit-management/signin'/>
-        //     )
-    }
-    
-    render(){
-        return (
-        
-                <div onClick={this.signOut}>sign out</div>
-                
-            
-            )
-    }
+class UserDashBoard extends React.Component {
+   componentDidMount() {
+      const { getFormsList } = this.props
+      getFormsList()
+   }
+
+   render() {
+      const {
+         redirectToSignInPage,
+         signOut,
+         getFormsList,
+         listOfForms,
+         getFormsAPIStatus,
+         getFormsAPIError,
+         createFormComponent,
+         getStatusOfForm,
+         renderSuccessUI,
+         goToNextPage,
+         goToPreviousPage,
+         currentPage,
+         totalPages,
+         onSelectForm
+      } = this.props
+
+      return (
+         <Container>
+            <Header 
+               redirectToSignInPage={redirectToSignInPage}
+               signOut={signOut}
+            />
+            <MiniContainer>
+               <TitleBar/>
+               <TableHeader />
+               <LoadingWrapperWithFailure
+                  renderSuccessUI={renderSuccessUI}
+                  getFormsList={getFormsList}
+                  getStatusOfForm={getStatusOfForm}
+                  listOfForms={listOfForms}
+                  onSelectForm={onSelectForm}
+                  apiStatus={400}
+                  apiError={getFormsAPIError}
+                  createFormComponent={createFormComponent}
+               />
+               <Pagination
+                  goToNextPage={goToNextPage}
+                  currentPage={currentPage}
+                  totalPages={totalPages}
+                  goToPreviousPage={goToPreviousPage}
+               />
+            </MiniContainer>
+         </Container>
+      )
+   }
 }
 
-
-
-//            <div onClick={this.signOut}><NavigationButton /></div>
-
-export default withRouter(UserHome);
-//<FormsPage />
+export default withRouter(UserDashBoard)

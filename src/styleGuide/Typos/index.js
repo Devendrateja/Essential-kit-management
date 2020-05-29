@@ -13,6 +13,28 @@ export const Typo32DarkBlueGreyRubikRegular = styled.span`
    color: ${Colors.darkBlueGrey};
 `
 
+export const Typo32DarkBlueGreyHKGroteskRegular = styled.span`
+   font-family: HKGrotesk;
+   font-size: 32px;
+   font-weight: normal;
+   font-stretch: normal;
+   font-style: normal;
+   line-height: 1.25;
+   letter-spacing: normal;
+   color: ${Colors.darkBlueGrey};
+`
+
+export const Typo14SteelHKGroteskRegular = styled.span`
+   font-family: HKGrotesk;
+   font-size: 14px;
+   font-weight: normal;
+   font-stretch: normal;
+   font-style: normal;
+   line-height: 1.71;
+   letter-spacing: normal;
+   color: ${Colors.steel};
+`
+
 export const Typo12SteelHKGroteskSemiBold = styled.span`
    font-family: HKGrotesk;
    font-size: 12px;
@@ -33,4 +55,14 @@ export const Typo12NeonRedHKGrotesk_Regular = styled.span`
    line-height: 1.33;
    letter-spacing: normal;
    color: ${Colors.neonRed};
+`
+export const Typo12DarkBlueGreyHKGroteskSemiBold = styled.span`
+   font-family: HKGrotesk;
+   font-size: 12px;
+   font-weight: 600;
+   font-stretch: normal;
+   font-style: normal;
+   line-height: 1.33;
+   letter-spacing: normal;
+   color: ${Colors.darkBlueGrey};
 `

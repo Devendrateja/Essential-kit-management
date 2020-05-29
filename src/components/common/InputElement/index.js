@@ -12,7 +12,7 @@ import { InputEl } from './styledComponents.js'
 @observer
 class InputElement extends React.Component {
    render() {
-      const { 
+      const {
          onChangeElement,
          inputType,
          placeholderText,
