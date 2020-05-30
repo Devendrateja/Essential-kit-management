@@ -1,0 +1,44 @@
+{
+  "formId": 1,
+  "formName": "Snacks",
+  "formDescription": "",
+  "totalItems": 20,
+  "totalCost": 0,
+  "sectionDetails": [
+    {
+      "id": 10,
+      "name": "snack items",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ille vero, si insipiens-quo certe, quoniam tyrannus Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ille vero, si insipiens-quo certe, quoniam tyrannus Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ille vero, si insipiens-quo certe, quoniam tyrannus ",
+      "itemDetails": [
+        {
+          "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ille vero, si insipiens-quo certe, quoniam tyrannus Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ille vero, si insipiens-quo certe, quoniam tyrannus Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ille vero, si insipiens-quo certe, quoniam tyrannus ",
+          "id": 101,
+          "name": "nut crackers",
+          "brands": [
+            {
+              "id": 1010,
+              "brand": "dabour",
+              "maxQuantity": 4,
+              "pricePerItem": 10,
+              "count": 0
+            },
+            {
+              "id": 1011,
+              "brand": "labour",
+              "maxQuantity": 8,
+              "pricePerItem": 5,
+              "count": 0
+            },
+            {
+              "id": 1011,
+              "brand": "rabour",
+              "maxQuantity": 5,
+              "pricePerItem": 9,
+              "count": 0
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

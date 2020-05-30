@@ -21,8 +21,11 @@
             "TOTALITEMS" : "TOTAL ITEMS",
             "PENDINGITEMS" : "PENDING ITEMS",
             "ESTIMATEDCOST" : "ESTIMATED COST",
-            "COSTINCURRED" : "COST INCURRED"
-            
+            "COSTINCURRED" : "COST INCURRED",
+            "DESCRIPTION" : "DESCRIPTION",
+            "BRAND" :"BRAND",
+            "QUANTITY" : "QUANTITY",
+            "PRICE" : "PRICE"
         }
     }
 }

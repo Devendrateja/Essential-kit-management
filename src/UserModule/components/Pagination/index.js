@@ -22,15 +22,15 @@ class Pagination extends React.Component {
             >
                {'<'}
             </Button>
-            <Span>1</Span>
-            <Span>..</Span>
+            <Span border={currentPage===1 ? true : false}>1</Span>
+            <Span border={false}>..</Span>
             {currentPage !== 1 && currentPage !== totalPages && (
                <span>
-                  <Span>{currentPage}</Span>
-                  <Span>..</Span>
+                  <Span border={true}>{currentPage}</Span>
+                  <Span border={false}>..</Span>
                </span>
             )}
-            <Span>{totalPages}</Span>
+            <Span border={currentPage===totalPages ? true : false}>{totalPages}</Span>
             <Button
                onClick={goToNextPage}
                disabled={currentPage >= totalPages ? true : false}

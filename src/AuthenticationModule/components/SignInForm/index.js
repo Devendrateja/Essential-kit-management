@@ -51,14 +51,14 @@ class SignInForm extends React.Component {
 
       const buttonCSS = {
          background: Colors.brightBlue,
-         width: '320px',
+         width: '66%',
          height: '40px',
          borderRadius: '4px'
       }
       const InputElementStyles = {
          background: Colors.white,
-         width: '320px',
-         height: '50px',
+         width: '100%',
+         height: '70px',
          borderRadius: '5px',
          border: `solid 1px ${Colors.steel}`
       }
@@ -70,11 +70,11 @@ class SignInForm extends React.Component {
                   <img src={ibhubsLogo.src} alt={ibhubsLogo.alt} />
                </div>
                <div>
-                  <Typo32DarkBlueGreyRubikRegular>
-                     Hi there, please sign up
+                  <Typo32DarkBlueGreyRubikRegular className="text-center">
+                     Hi there,<br/> Login
                   </Typo32DarkBlueGreyRubikRegular>
                </div>
-               <div className='flex flex-col justify-center items-start'>
+               <div className='flex flex-col justify-center items-start w-8/12'>
                   <Typo12SteelHKGroteskSemiBold>
                      {labelTextUsername}
                   </Typo12SteelHKGroteskSemiBold>
@@ -91,7 +91,7 @@ class SignInForm extends React.Component {
                   />
                </div>
 
-               <div className='flex flex-col justify-center items-start'>
+               <div className='flex flex-col justify-center items-start w-8/12'>
                   <Typo12SteelHKGroteskSemiBold>
                      {labelTextPassword}
                   </Typo12SteelHKGroteskSemiBold>

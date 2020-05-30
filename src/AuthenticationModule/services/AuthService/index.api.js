@@ -2,6 +2,8 @@ import { create } from 'apisauce'
 import { apiMethods } from '../../../constants/APIConstants'
 import { networkCallWithApisauce } from '../../../utils/APIUtils'
 
+import getUserSignInResponse from "../../fixtures/getUserSignInResponse.json"
+
 class AuthAPI {
    api
    constructor() {
@@ -10,13 +12,14 @@ class AuthAPI {
       })
    }
 
-   signInAPI(request) {
-      return networkCallWithApisauce(
+   async signInAPI(request) {
+      await networkCallWithApisauce(
          this.api,
          'v1/signin/',
          request,
          apiMethods.get
       )
+      return getUserSignInResponse
    }
 }
 

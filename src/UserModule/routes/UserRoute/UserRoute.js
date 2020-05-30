@@ -25,6 +25,8 @@ import {
 class UserRoute extends React.Component {
    @observable currentPage = 1
 
+   
+   
    goToNextPage = () => {
       const { getFormsList } = this.props.formStore
       this.currentPage += 1
@@ -40,8 +42,14 @@ class UserRoute extends React.Component {
    onSelectForm = (id) => {
       console.log("selected", id)
       const { history } = this.props
-      const renderSelectedForm = history.push(SELECTED_FORM_PATH)
+      const renderSelectedForm = history.push(`${SELECTED_FORM_PATH}/:${id}`)
       return <div>{renderSelectedForm}</div>
+   }
+   
+   onRetryClick = () => {
+      const { getFormsList } = this.props.formStore
+      console.log("retry clicked")
+      getFormsList()
    }
 
    getStatusOfForm(newForm) {
@@ -114,6 +122,7 @@ class UserRoute extends React.Component {
             listOfForms={listOfForms}
             getFormsAPIStatus={getFormsAPIStatus}
             getFormsAPIError={getFormsAPIError}
+            onRetryClick={this.onRetryClick}
             createFormComponent={createFormComponent}
             getStatusOfForm={this.getStatusOfForm}
             goToNextPage={this.goToNextPage}

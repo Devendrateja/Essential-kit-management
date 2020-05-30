@@ -32,6 +32,7 @@ class AuthStore {
    }
    @action.bound
    setUserSignInAPIResponse(response) {
+      console.log(response)
       setAccessToken(response.length > 0 && response[0].access_token)
    }
 

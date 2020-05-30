@@ -29,6 +29,7 @@ class UserDashBoard extends React.Component {
          listOfForms,
          getFormsAPIStatus,
          getFormsAPIError,
+         onRetryClick,
          createFormComponent,
          getStatusOfForm,
          renderSuccessUI,
@@ -54,8 +55,9 @@ class UserDashBoard extends React.Component {
                   getStatusOfForm={getStatusOfForm}
                   listOfForms={listOfForms}
                   onSelectForm={onSelectForm}
-                  apiStatus={400}
+                  apiStatus={getFormsAPIStatus}
                   apiError={getFormsAPIError}
+                  onRetryClick={onRetryClick}
                   createFormComponent={createFormComponent}
                />
                <Pagination

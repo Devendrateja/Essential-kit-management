@@ -9,7 +9,7 @@ import { SelectedFormRoute } from "./SelectedFormRoute"
 
 const EssentialKitUserHomeRoute = [
    <Route key={USER_HOME_PATH} path={USER_HOME_PATH} component={UserRoute} />,
-   <Route key={ SELECTED_FORM_PATH } path={ SELECTED_FORM_PATH } component={ SelectedFormRoute } />
+   <Route key={ SELECTED_FORM_PATH } path={ `${SELECTED_FORM_PATH}/:id` } component={ SelectedFormRoute } />
 ]
 
 export default EssentialKitUserHomeRoute

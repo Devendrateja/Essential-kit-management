@@ -82,8 +82,7 @@ class SignInRoute extends React.Component {
    render() {
       const { getUserSignInAPIStatus } = this.props.authStore
       const AccessToken = getAccessToken()
-      if (AccessToken !== undefined) {
-         console.log(AccessToken)
+      if (AccessToken) {
          return this.renderUserHome()
       }
       

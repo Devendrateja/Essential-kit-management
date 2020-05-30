@@ -39,3 +39,10 @@ export const NavDown = {
       'https://cdn.zeplin.io/5d0afc9102b7fa56760995cc/assets/8d5795d3-d0e9-4719-a987-6f0f1bca663d.svg',
    alt: 'downImg'
 }
+
+
+export const NavBack = {
+   src:
+      "https://cdn.zeplin.io/5d0afc9102b7fa56760995cc/assets/6127e8d9-6945-4c29-a9ed-9122cd42a767.svg",
+   alt:"back"
+}
