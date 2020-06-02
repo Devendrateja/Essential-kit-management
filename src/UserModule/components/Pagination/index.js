@@ -3,37 +3,65 @@ import { observer } from 'mobx-react'
 import { observable } from 'mobx'
 import { FcNext, FcPrevious } from 'react-icons/fc'
 
-import { Container, Span, Button } from './styledComponents'
+import { Container, Span, Button, Input } from './styledComponents'
 
 @observer
 class Pagination extends React.Component {
+   pageChanged = true
+
+   onChangeInput(event) {
+      const { currentPage } = this.props
+      console.log(event.target.value)
+      currentPage = event.target.value
+   }
    render() {
       const {
          currentPage,
-         totalPages,
          goToNextPage,
-         goToPreviousPage
+         goToPreviousPage,
+         onEnterPageNumber,
+         offset,
+         limitedNoOfFormsPerPage,
+         totalNoOfForms
       } = this.props
+
+      this.pageChanged = true
+
+      const currentPageNo = parseInt(
+         (offset + limitedNoOfFormsPerPage) / limitedNoOfFormsPerPage
+      )
+      let pages = parseInt(totalNoOfForms / limitedNoOfFormsPerPage)
+      let remainingPages = parseInt(totalNoOfForms % limitedNoOfFormsPerPage)
+      const totalNoOfPages = pages + remainingPages
+      console.log('total no', totalNoOfForms)
+
       return (
          <Container>
             <Button
                onClick={goToPreviousPage}
-               disabled={currentPage <= 1 ? true : false}
+               disabled={currentPageNo <= 1 ? true : false}
             >
                {'<'}
             </Button>
-            <Span border={currentPage===1 ? true : false}>1</Span>
-            <Span border={false}>..</Span>
-            {currentPage !== 1 && currentPage !== totalPages && (
+            <Span border={currentPageNo === 1 ? true : false}>1</Span>
+            <span>&nbsp;..&nbsp;</span>
+            {currentPageNo !== 1 && currentPageNo !== totalNoOfPages && (
                <span>
-                  <Span border={true}>{currentPage}</Span>
-                  <Span border={false}>..</Span>
+                  <Input
+                     border={true}
+                     value={this.pageChanged ? currentPageNo : currentPage}
+                     onKeyDown={onEnterPageNumber}
+                     onChange={this.onChangeInput}
+                  />
+                  <span>&nbsp;..&nbsp;</span>
                </span>
             )}
-            <Span border={currentPage===totalPages ? true : false}>{totalPages}</Span>
+            <Span border={currentPageNo === totalNoOfPages ? true : false}>
+               {totalNoOfPages}
+            </Span>
             <Button
                onClick={goToNextPage}
-               disabled={currentPage >= totalPages ? true : false}
+               disabled={currentPageNo >= totalNoOfPages ? true : false}
             >
                {'>'}
             </Button>

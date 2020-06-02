@@ -1,11 +1,8 @@
-import React from "react"
-import { observer } from "mobx-react"
-import { observable } from "mobx"
-
+import React from 'react'
+import { observer } from 'mobx-react'
+import { observable } from 'mobx'
 
 import DataStrings from '../../../../i18n/strings.json'
-
-
 
 import {
    Container,
@@ -13,15 +10,14 @@ import {
    AlignLeft,
    AlignRight,
    S_no,
-   LastCol
+   LastCol,
+   AlignCenter
 } from './styledComponents'
 
-
-
 @observer
-class SelectedFormTableHeader extends React.Component{
-    render(){
-        const {
+class SelectedFormTableHeader extends React.Component {
+   render() {
+      const {
          SNO,
          NAME,
          DESCRIPTION,
@@ -29,8 +25,8 @@ class SelectedFormTableHeader extends React.Component{
          QUANTITY,
          PRICE
       } = DataStrings.UserModule.TitleBar
-        return(
-             <Container>
+      return (
+         <Container>
             <S_no>
                <AlignLeft>{SNO}</AlignLeft>
             </S_no>
@@ -44,18 +40,14 @@ class SelectedFormTableHeader extends React.Component{
                <AlignLeft>{BRAND}</AlignLeft>
             </Span>
             <Span>
-               <AlignLeft>{QUANTITY}</AlignLeft>
+               <AlignCenter>{QUANTITY}</AlignCenter>
             </Span>
             <LastCol>
                <AlignRight>{PRICE}</AlignRight>
             </LastCol>
          </Container>
-        )
-    }
+      )
+   }
 }
 
-
-
-
-
-export default SelectedFormTableHeader;
+export default SelectedFormTableHeader

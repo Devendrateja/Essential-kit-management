@@ -20,9 +20,7 @@ const App = () => {
                   <Page1 />
                </Route>
                {EssentialKitSignInRoute}
-               {EssentialKitUserHomeRoute.map(eachRoute => {
-                  return eachRoute
-               })}
+               {EssentialKitUserHomeRoute}
                <Route path='/'>
                   <HomePage />
                </Route>

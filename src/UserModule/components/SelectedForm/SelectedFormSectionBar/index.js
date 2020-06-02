@@ -8,53 +8,45 @@ import SelectedFormTableRow from "../SelectedFormTableRow"
 import { Typo12DarkBlueGreyHKGroteskSemiBold } from "../../../../styleGuide/Typos"
 
 import getSelectedFormResponse from "../../../fixtures/getSelectedFormResponse.json"
-import {  Typo16DarkBlueGreyHKGroteskRegular } from "../../../../styleGuide/Typos"
+import { Typo16DarkBlueGreyHKGroteskRegular } from "../../../../styleGuide/Typos"
 
-import { Container, Span, Table,InstructionsBar,RedText,BlackText,Note, } from "./styledComponents"
+import { Container, Span, Table, InstructionsBar, RedText, BlackText, Note, } from "./styledComponents"
 
 
 @observer
-class SelectedFormSectionBar extends React.Component{
+class SelectedFormSectionBar extends React.Component {
     @observable listOfItems = []
-    
-    // listOfItems = (items) => {
-    //     console.log("items in the listOfItems", items)
-    //     return items.map((eachItem,index) => {
-    //                 return  <SelectedFormTableRow key={index} itemDetails={eachItem}  />
-    //     });
-    // }
-    componentDidMount(){
+
+    componentDidMount() {
         const { listOfSections } = this.props
         this.listOfItems = listOfSections[0].itemDetails
     }
-    
-    
-    onSelectSection=(items)=>{
-        console.log("onSelectSection", items)
-    //     return (
-    //         <Table>
-    //             <SelectedFormTableHeader />
-    //                 {
-    //                     this.listOfItems(items)
-    //                 }
-    //         </Table>
-    //         )
-            
+
+
+
+
+    onSelectSection = (id) => {
+        const { selectedFormData, listOfSections } = this.props.selectedFormStore
+        selectedFormData.selectedSectionId = id;
+        this.listOfItems = selectedFormData.selectedSectionData.itemDetails
     }
-    
-    
+
+
+
     sections = (list) => {
         return list.map((eachSection) => {
-            return <Typo12DarkBlueGreyHKGroteskSemiBold key={eachSection.id} onClick={()=>this.onSelectSection(eachSection.itemDetails)} ><Span>{eachSection.name}</Span></Typo12DarkBlueGreyHKGroteskSemiBold>
+            return <Typo12DarkBlueGreyHKGroteskSemiBold key={eachSection.id} id={eachSection.id} onClick={()=>this.onSelectSection(eachSection.id)} ><Span>{eachSection.name}</Span></Typo12DarkBlueGreyHKGroteskSemiBold>
         })
     }
-    
-    render(){
-        const { listOfSections } = this.props
-        
-        return(
+
+
+
+    render() {
+        const { listOfSections, selectedFormData, sections } = this.props
+
+        return (
             <div>
-                {this.sections(listOfSections)}
+                {listOfSections.length !==0 &&  this.sections(listOfSections)}
                 
                 <Note>
                         <Typo16DarkBlueGreyHKGroteskRegular>
@@ -72,16 +64,17 @@ class SelectedFormSectionBar extends React.Component{
                     <SelectedFormTableHeader />
                     {
                         this.listOfItems.length !==0 &&
-                        this.listOfItems.map(eachItem => {
-                            return <SelectedFormTableRow key={eachItem.id} item={eachItem}/>
+                        this.listOfItems.map((eachItem,index) => {
+                       
+                            return <SelectedFormTableRow key={Math.random()} sno={index+1}   item={eachItem} />
                         })
                     }
                     
                 </Table>
             </div>
-            )
-            
-            
+        )
+
+
     }
 }
 

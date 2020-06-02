@@ -2,8 +2,6 @@ import { create } from 'apisauce'
 import { apiMethods } from '../../../constants/APIConstants'
 import { networkCallWithApisauce } from '../../../utils/APIUtils'
 
-import getUserResponse from '../../fixtures/getUserResponse.json'
-
 class FormAPI {
    api
 
@@ -13,10 +11,8 @@ class FormAPI {
       })
    }
 
-   async getFormsAPI() {
-      console.log('network call')
-      await networkCallWithApisauce(this.api, '', {}, apiMethods.get)
-      return getUserResponse
+   getFormsAPI() {
+      return networkCallWithApisauce(this.api, '', {}, apiMethods.get)
    }
 }
 

@@ -8,8 +8,7 @@ import { withRouter } from 'react-router-dom'
 import UserDashBoard from '../../components'
 import { clearUserSession } from '../../../utils/StorageUtils.js'
 import NoDataView from '../../../components/common/NoDataView'
-import { SELECTED_FORM_PATH } from "../../constants/RouteConstants"
-
+import { SELECTED_FORM_PATH } from '../../constants/RouteConstants'
 
 import ListOfForms from '../../components/ListOfForms'
 
@@ -23,33 +22,54 @@ import {
 @inject('formStore')
 @observer
 class UserRoute extends React.Component {
-   @observable currentPage = 1
+   limit = 1
+   @observable currentPage = 0
+   @observable offset = 0
 
-   
-   
+   componentDidMount() {
+      const { getFormsList } = this.props.formStore
+      getFormsList(this.limit, this.offset)
+   }
+
+   onEnterPageNumber = event => {
+      console.log('event on key down', this.currentPage)
+      // if(event.keyCode == 13){
+
+      // }
+   }
+
+   // goToSelectedPage = (event) => {
+   //    const { getFormsList } = this.props.formStore
+   //    // this.currentPage = page;
+   //    // this.offset = ((page-1)*(this.limit))
+   //    // getFormsList(this.limit, this.offset)
+   // }
+
    goToNextPage = () => {
       const { getFormsList } = this.props.formStore
       this.currentPage += 1
-      getFormsList()
+      this.offset += this.limit
+      getFormsList(this.limit, this.offset)
    }
 
    goToPreviousPage = () => {
       this.currentPage -= 1
       const { getFormsList } = this.props.formStore
-      getFormsList()
+      this.offset -= this.limit
+      getFormsList(this.limit, this.offset)
    }
-   
-   onSelectForm = (id) => {
-      console.log("selected", id)
+
+   onSelectForm = id => {
+      console.log('selected', id)
       const { history } = this.props
       const renderSelectedForm = history.push(`${SELECTED_FORM_PATH}/:${id}`)
       return <div>{renderSelectedForm}</div>
    }
-   
+
    onRetryClick = () => {
       const { getFormsList } = this.props.formStore
-      console.log("retry clicked")
-      getFormsList()
+      console.log('retry clicked')
+      getFormsList(this.limit, this.offset)
    }
 
    getStatusOfForm(newForm) {
@@ -111,9 +131,10 @@ class UserRoute extends React.Component {
          listOfForms,
          getFormsAPIStatus,
          getFormsAPIError,
-         createFormComponent
+         createFormComponent,
+         totalNoOfForms
       } = this.props.formStore
-   
+
       return (
          <UserDashBoard
             redirectToSignInPage={this.redirectToSignInPage}
@@ -125,10 +146,13 @@ class UserRoute extends React.Component {
             onRetryClick={this.onRetryClick}
             createFormComponent={createFormComponent}
             getStatusOfForm={this.getStatusOfForm}
+            offset={this.offset}
+            limitedNoOfFormsPerPage={this.limit}
+            totalNoOfForms={totalNoOfForms}
             goToNextPage={this.goToNextPage}
             goToPreviousPage={this.goToPreviousPage}
+            onEnterPageNumber={this.onEnterPageNumber}
             currentPage={this.currentPage}
-            totalPages={10}
             onSelectForm={this.onSelectForm}
             signOut={this.signOut}
          />

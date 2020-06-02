@@ -16,6 +16,7 @@ class FormStore {
    @observable getFormsAPIStatus
    @observable getFormsAPIError
    @observable listOfForms
+   @observable totalNoOfForms
 
    constructor(formAPI) {
       this.formsAPIService = formAPI
@@ -43,12 +44,13 @@ class FormStore {
    @action.bound
    setFormsAPIResponse(response) {
       console.log('response from fixtures', response)
-      this.listOfForms = response
+      this.listOfForms = response.formsList
+      this.totalNoOfForms = response.totalForms
    }
 
    @action.bound
-   getFormsList() {
-      const promise = this.formsAPIService.getFormsAPI()
+   getFormsList(limit, offset) {
+      const promise = this.formsAPIService.getFormsAPI(limit, offset)
       return bindPromiseWithOnSuccess(promise)
          .to(this.setGetFormsAPIStatus, this.setFormsAPIResponse)
          .catch(this.setGetFormsAPIError)

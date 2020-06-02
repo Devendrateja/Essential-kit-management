@@ -2,7 +2,7 @@ import { create } from 'apisauce'
 import { apiMethods } from '../../../constants/APIConstants'
 import { networkCallWithApisauce } from '../../../utils/APIUtils'
 
-import getUserSignInResponse from "../../fixtures/getUserSignInResponse.json"
+import getUserSignInResponse from '../../fixtures/getUserSignInResponse.json'
 
 class AuthAPI {
    api

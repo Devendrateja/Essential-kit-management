@@ -18,8 +18,8 @@ class Header extends React.Component {
    }
    render() {
       const { HOME, PAYREQUEST, MYWALLET } = DataStrings.UserModule.Header
-      const { signOut }  = this.props
-      
+      const { signOut } = this.props
+
       return (
          <HeaderContainer>
             <SideBlocks>
@@ -47,9 +47,10 @@ class Header extends React.Component {
                      <Span>{MYWALLET}</Span>
                   </Typo12DarkBlueGreyHKGroteskSemiBold>
                </Text>
-               <div className="px-8" onClick={signOut}>signOut</div>
+               <div className='px-8' onClick={signOut}>
+                  signOut
+               </div>
                <UserProfileIcon />
-               
             </SideBlocks>
          </HeaderContainer>
       )

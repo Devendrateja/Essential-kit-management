@@ -10,7 +10,7 @@ export const Container = styled.div`${tw`flex justify-between items-center  text
 export const Span = styled.span`
    ${tw`flex justify-center items-center p-1 mx-2 whitespace-normal`}
    width:18%;
-   items-centerflex-wrap: wrap;
+   flex-wrap: wrap;
    font-family: HKGrotesk;
    font-size: 12px;
    font-weight: 600;
@@ -18,14 +18,14 @@ export const Span = styled.span`
    font-style: normal;
    line-height: 1.33;
    letter-spacing: normal;
-   color: ${Colors.darkBlueGrey};
+   color: ${Colors.steel};
 `
 
 export const LastCol = styled.span`
    ${tw`flex justify-center items-center p-1 mx-2 whitespace-normal`}
    width:10%;
    margin-right: 20px;
-   items-centerflex-wrap: wrap;
+   flex-wrap: wrap;
    font-family: HKGrotesk;
    font-size: 12px;
    font-weight: 600;
@@ -44,10 +44,14 @@ export const AlignRight = styled.span`
    ${tw`w-full text-right `}
 `
 
+export const AlignCenter = styled.span`
+   ${tw`w-full text-center`}
+`
+
 export const S_no = styled.span`
    ${tw`flex justify-center items-center p-1 mx-2 whitespace-normal`}
    width:5%;
-   items-centerflex-wrap: wrap;
+   flex-wrap: wrap;
    font-family: HKGrotesk;
    font-size: 12px;
    font-weight: 600;
@@ -55,4 +59,5 @@ export const S_no = styled.span`
    font-style: normal;
    line-height: 1.33;
    letter-spacing: normal;
-   color: ${Colors.darkBlueGrey};`
+   color: ${Colors.steel};
+`

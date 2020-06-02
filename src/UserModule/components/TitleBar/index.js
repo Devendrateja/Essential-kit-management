@@ -15,7 +15,6 @@ class TitleBar extends React.Component {
             <Typo32DarkBlueGreyHKGroteskRegular>
                Forms
             </Typo32DarkBlueGreyHKGroteskRegular>
-            
          </Container>
       )
    }

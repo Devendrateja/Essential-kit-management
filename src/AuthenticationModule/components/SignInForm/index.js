@@ -70,8 +70,9 @@ class SignInForm extends React.Component {
                   <img src={ibhubsLogo.src} alt={ibhubsLogo.alt} />
                </div>
                <div>
-                  <Typo32DarkBlueGreyRubikRegular className="text-center">
-                     Hi there,<br/> Login
+                  <Typo32DarkBlueGreyRubikRegular className='text-center'>
+                     Hi there,
+                     <br /> Login
                   </Typo32DarkBlueGreyRubikRegular>
                </div>
                <div className='flex flex-col justify-center items-start w-8/12'>
@@ -127,8 +128,3 @@ class SignInForm extends React.Component {
 }
 
 export default SignInForm
-
-// <img
-//                      src='https://cdn.zeplin.io/5d0afc9102b7fa56760995cc/assets/8b9ff190-f490-4211-b2dd-61f476cfeabd.svg'
-//                      alt='ibhubs-logo'
-//                   />

@@ -1,39 +1,869 @@
 {
-  "formId": 1,
-  "formName": "Snacks",
-  "formDescription": "",
-  "totalItems": 20,
-  "totalCost": 0,
-  "sectionDetails": [
+  "form_id" : 1,
+  "form_name": "Snacks",
+  "form_description":"" ,
+  "total_items": 20,
+  "total_cost": 0,
+  "section_details": [
     {
-      "id": 10,
-      "name": "snack items",
+      "section_id": 10,
+      "section_name": "snack items",
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ille vero, si insipiens-quo certe, quoniam tyrannus Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ille vero, si insipiens-quo certe, quoniam tyrannus Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ille vero, si insipiens-quo certe, quoniam tyrannus ",
-      "itemDetails": [
+      "item_details": [
         {
           "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ille vero, si insipiens-quo certe, quoniam tyrannus Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ille vero, si insipiens-quo certe, quoniam tyrannus Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ille vero, si insipiens-quo certe, quoniam tyrannus ",
-          "id": 101,
-          "name": "nut crackers",
+          "item_id": 101,
+          "Item_name": "nut crackers",
           "brands": [
             {
-              "id": 1010,
+              "brand_id": 1010,
               "brand": "dabour",
-              "maxQuantity": 4,
-              "pricePerItem": 10,
+              "max_min_quantity": 4,
+              "price_per_item": 20,
               "count": 0
             },
             {
-              "id": 1011,
-              "brand": "labour",
-              "maxQuantity": 8,
-              "pricePerItem": 5,
+              "brand_id": 1011,
+              "brand": "nestle",
+              "max_min_quantity": 8,
+              "price_per_item": 10,
+              "count": 1
+            },
+            {
+              "brand_id": 1012,
+              "brand": "darkgrain",
+              "max_min_quantity": 2,
+              "price_per_item": 30,
               "count": 0
             },
             {
-              "id": 1011,
-              "brand": "rabour",
-              "maxQuantity": 5,
-              "pricePerItem": 9,
+              "brand_id": 1013,
+              "brand": "horlicks",
+              "max_min_quantity": 3,
+              "price_per_item": 40,
+              "count": 0
+            },
+            {
+              "brand_id": 1014,
+              "brand": "boost",
+              "max_min_quantity": 10,
+              "price_per_item": 50,
+              "count": 0
+            }
+          ]
+        },
+        {
+          "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ille vero, si insipiens-quo certe, quoniam tyrannus Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ille vero, si insipiens-quo certe, quoniam tyrannus Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ille vero, si insipiens-quo certe, quoniam tyrannus ",
+          "item_id": 102,
+          "Item_name": "nut crackers",
+          "brands": [
+            {
+              "brand_id": 1015,
+              "brand": "dabour",
+              "max_min_quantity": 4,
+              "price_per_item": 20,
+              "count": 0
+            },
+            {
+              "brand_id": 1016,
+              "brand": "nestle",
+              "max_min_quantity": 8,
+              "price_per_item": 10,
+              "count": 0
+            },
+            {
+              "brand_id": 1017,
+              "brand": "darkgrain",
+              "max_min_quantity": 2,
+              "price_per_item": 30,
+              "count": 0
+            },
+            {
+              "brand_id": 1018,
+              "brand": "horlicks",
+              "max_min_quantity": 3,
+              "price_per_item": 40,
+              "count": 0
+            },
+            {
+              "brand_id": 1019,
+              "brand": "boost",
+              "max_min_quantity": 10,
+              "price_per_item": 50,
+              "count": 0
+            }
+          ]
+        },{
+          "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ille vero, si insipiens-quo certe, quoniam tyrannus Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ille vero, si insipiens-quo certe, quoniam tyrannus Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ille vero, si insipiens-quo certe, quoniam tyrannus ",
+          "item_id": 103,
+          "Item_name": "nut crackers",
+          "brands": [
+            {
+              "brand_id": 1010,
+              "brand": "dabour",
+              "max_min_quantity": 4,
+              "price_per_item": 20,
+              "count": 0
+            },
+            {
+              "brand_id": 1011,
+              "brand": "nestle",
+              "max_min_quantity": 8,
+              "price_per_item": 10,
+              "count": 0
+            },
+            {
+              "brand_id": 1012,
+              "brand": "darkgrain",
+              "max_min_quantity": 2,
+              "price_per_item": 30,
+              "count": 0
+            },
+            {
+              "brand_id": 1013,
+              "brand": "horlicks",
+              "max_min_quantity": 3,
+              "price_per_item": 40,
+              "count": 0
+            },
+            {
+              "brand_id": 1014,
+              "brand": "boost",
+              "max_min_quantity": 10,
+              "price_per_item": 50,
+              "count": 0
+            }
+          ]
+        },{
+          "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ille vero, si insipiens-quo certe, quoniam tyrannus Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ille vero, si insipiens-quo certe, quoniam tyrannus Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ille vero, si insipiens-quo certe, quoniam tyrannus ",
+          "item_id": 104,
+          "Item_name": "nut crackers",
+          "brands": [
+            {
+              "brand_id": 1010,
+              "brand": "dabour",
+              "max_min_quantity": 4,
+              "price_per_item": 20,
+              "count": 0
+            },
+            {
+              "brand_id": 1011,
+              "brand": "nestle",
+              "max_min_quantity": 8,
+              "price_per_item": 10,
+              "count": 0
+            },
+            {
+              "brand_id": 1012,
+              "brand": "darkgrain",
+              "max_min_quantity": 2,
+              "price_per_item": 30,
+              "count": 0
+            },
+            {
+              "brand_id": 1013,
+              "brand": "horlicks",
+              "max_min_quantity": 3,
+              "price_per_item": 40,
+              "count": 0
+            },
+            {
+              "brand_id": 1014,
+              "brand": "boost",
+              "max_min_quantity": 10,
+              "price_per_item": 50,
+              "count": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "section_id": 11,
+      "section_name": "instant energy ",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ille vero, si insipiens-quo certe, quoniam tyrannus Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ille vero, si insipiens-quo certe, quoniam tyrannus Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ille vero, si insipiens-quo certe, quoniam tyrannus ",
+      "item_details": [
+        {
+          "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ille vero, si insipiens-quo certe, quoniam tyrannus Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ille vero, si insipiens-quo certe, quoniam tyrannus Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ille vero, si insipiens-quo certe, quoniam tyrannus ",
+          "item_id": 101,
+          "Item_name": "glucose",
+          "brands": [
+            {
+              "brand_id": 1010,
+              "brand": "dabour",
+              "max_min_quantity": 4,
+              "price_per_item": 20,
+              "count": 0
+            },
+            {
+              "brand_id": 1011,
+              "brand": "nestle",
+              "max_min_quantity": 8,
+              "price_per_item": 10,
+              "count": 0
+            },
+            {
+              "brand_id": 1012,
+              "brand": "darkgrain",
+              "max_min_quantity": 2,
+              "price_per_item": 30,
+              "count": 0
+            },
+            {
+              "brand_id": 1013,
+              "brand": "horlicks",
+              "max_min_quantity": 3,
+              "price_per_item": 40,
+              "count": 0
+            },
+            {
+              "brand_id": 1014,
+              "brand": "boost",
+              "max_min_quantity": 10,
+              "price_per_item": 50,
+              "count": 0
+            }
+          ]
+        },
+        {
+          "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ille vero, si insipiens-quo certe, quoniam tyrannus Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ille vero, si insipiens-quo certe, quoniam tyrannus Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ille vero, si insipiens-quo certe, quoniam tyrannus ",
+          "item_id": 102,
+          "Item_name": "nut crackers",
+          "brands": [
+            {
+              "brand_id": 1010,
+              "brand": "dabour",
+              "max_min_quantity": 4,
+              "price_per_item": 20,
+              "count": 0
+            },
+            {
+              "brand_id": 1011,
+              "brand": "nestle",
+              "max_min_quantity": 8,
+              "price_per_item": 10,
+              "count": 0
+            },
+            {
+              "brand_id": 1012,
+              "brand": "darkgrain",
+              "max_min_quantity": 2,
+              "price_per_item": 30,
+              "count": 0
+            },
+            {
+              "brand_id": 1013,
+              "brand": "horlicks",
+              "max_min_quantity": 3,
+              "price_per_item": 40,
+              "count": 0
+            },
+            {
+              "brand_id": 1014,
+              "brand": "boost",
+              "max_min_quantity": 10,
+              "price_per_item": 50,
+              "count": 0
+            }
+          ]
+        },{
+          "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ille vero, si insipiens-quo certe, quoniam tyrannus Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ille vero, si insipiens-quo certe, quoniam tyrannus Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ille vero, si insipiens-quo certe, quoniam tyrannus ",
+          "item_id": 103,
+          "Item_name": "nut crackers",
+          "brands": [
+            {
+              "brand_id": 1010,
+              "brand": "dabour",
+              "max_min_quantity": 4,
+              "price_per_item": 20,
+              "count": 0
+            },
+            {
+              "brand_id": 1011,
+              "brand": "nestle",
+              "max_min_quantity": 8,
+              "price_per_item": 10,
+              "count": 0
+            },
+            {
+              "brand_id": 1012,
+              "brand": "darkgrain",
+              "max_min_quantity": 2,
+              "price_per_item": 30,
+              "count": 0
+            },
+            {
+              "brand_id": 1013,
+              "brand": "horlicks",
+              "max_min_quantity": 3,
+              "price_per_item": 40,
+              "count": 0
+            },
+            {
+              "brand_id": 1014,
+              "brand": "boost",
+              "max_min_quantity": 10,
+              "price_per_item": 50,
+              "count": 0
+            }
+          ]
+        },{
+          "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ille vero, si insipiens-quo certe, quoniam tyrannus Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ille vero, si insipiens-quo certe, quoniam tyrannus Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ille vero, si insipiens-quo certe, quoniam tyrannus ",
+          "item_id": 104,
+          "Item_name": "nut crackers",
+          "brands": [
+            {
+              "brand_id": 1010,
+              "brand": "dabour",
+              "max_min_quantity": 4,
+              "price_per_item": 20,
+              "count": 0
+            },
+            {
+              "brand_id": 1011,
+              "brand": "nestle",
+              "max_min_quantity": 8,
+              "price_per_item": 10,
+              "count": 0
+            },
+            {
+              "brand_id": 1012,
+              "brand": "darkgrain",
+              "max_min_quantity": 2,
+              "price_per_item": 30,
+              "count": 0
+            },
+            {
+              "brand_id": 1013,
+              "brand": "horlicks",
+              "max_min_quantity": 3,
+              "price_per_item": 40,
+              "count": 0
+            },
+            {
+              "brand_id": 1014,
+              "brand": "boost",
+              "max_min_quantity": 10,
+              "price_per_item": 50,
+              "count": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "section_id": 12,
+      "section_name": "biscuits",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ille vero, si insipiens-quo certe, quoniam tyrannus Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ille vero, si insipiens-quo certe, quoniam tyrannus Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ille vero, si insipiens-quo certe, quoniam tyrannus ",
+      "item_details": [
+        {
+          "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ille vero, si insipiens-quo certe, quoniam tyrannus Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ille vero, si insipiens-quo certe, quoniam tyrannus Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ille vero, si insipiens-quo certe, quoniam tyrannus ",
+          "item_id": 101,
+          "Item_name": "parle-g",
+          "brands": [
+            {
+              "brand_id": 1010,
+              "brand": "dabour",
+              "max_min_quantity": 4,
+              "price_per_item": 20,
+              "count": 0
+            },
+            {
+              "brand_id": 1011,
+              "brand": "nestle",
+              "max_min_quantity": 8,
+              "price_per_item": 10,
+              "count": 0
+            },
+            {
+              "brand_id": 1012,
+              "brand": "darkgrain",
+              "max_min_quantity": 2,
+              "price_per_item": 30,
+              "count": 0
+            },
+            {
+              "brand_id": 1013,
+              "brand": "horlicks",
+              "max_min_quantity": 3,
+              "price_per_item": 40,
+              "count": 0
+            },
+            {
+              "brand_id": 1014,
+              "brand": "boost",
+              "max_min_quantity": 10,
+              "price_per_item": 50,
+              "count": 0
+            }
+          ]
+        },
+        {
+          "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ille vero, si insipiens-quo certe, quoniam tyrannus Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ille vero, si insipiens-quo certe, quoniam tyrannus Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ille vero, si insipiens-quo certe, quoniam tyrannus ",
+          "item_id": 102,
+          "Item_name": "nut crackers",
+          "brands": [
+            {
+              "brand_id": 1010,
+              "brand": "dabour",
+              "max_min_quantity": 4,
+              "price_per_item": 20,
+              "count": 0
+            },
+            {
+              "brand_id": 1011,
+              "brand": "nestle",
+              "max_min_quantity": 8,
+              "price_per_item": 10,
+              "count": 0
+            },
+            {
+              "brand_id": 1012,
+              "brand": "darkgrain",
+              "max_min_quantity": 2,
+              "price_per_item": 30,
+              "count": 0
+            },
+            {
+              "brand_id": 1013,
+              "brand": "horlicks",
+              "max_min_quantity": 3,
+              "price_per_item": 40,
+              "count": 0
+            },
+            {
+              "brand_id": 1014,
+              "brand": "boost",
+              "max_min_quantity": 10,
+              "price_per_item": 50,
+              "count": 0
+            }
+          ]
+        },{
+          "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ille vero, si insipiens-quo certe, quoniam tyrannus Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ille vero, si insipiens-quo certe, quoniam tyrannus Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ille vero, si insipiens-quo certe, quoniam tyrannus ",
+          "item_id": 103,
+          "Item_name": "nut crackers",
+          "brands": [
+            {
+              "brand_id": 1010,
+              "brand": "dabour",
+              "max_min_quantity": 4,
+              "price_per_item": 20,
+              "count": 0
+            },
+            {
+              "brand_id": 1011,
+              "brand": "nestle",
+              "max_min_quantity": 8,
+              "price_per_item": 10,
+              "count": 0
+            },
+            {
+              "brand_id": 1012,
+              "brand": "darkgrain",
+              "max_min_quantity": 2,
+              "price_per_item": 30,
+              "count": 0
+            },
+            {
+              "brand_id": 1013,
+              "brand": "horlicks",
+              "max_min_quantity": 3,
+              "price_per_item": 40,
+              "count": 0
+            },
+            {
+              "brand_id": 1014,
+              "brand": "boost",
+              "max_min_quantity": 10,
+              "price_per_item": 50,
+              "count": 0
+            }
+          ]
+        },{
+          "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ille vero, si insipiens-quo certe, quoniam tyrannus Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ille vero, si insipiens-quo certe, quoniam tyrannus Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ille vero, si insipiens-quo certe, quoniam tyrannus ",
+          "item_id": 104,
+          "Item_name": "nut crackers",
+          "brands": [
+            {
+              "brand_id": 1010,
+              "brand": "dabour",
+              "max_min_quantity": 4,
+              "price_per_item": 20,
+              "count": 0
+            },
+            {
+              "brand_id": 1011,
+              "brand": "nestle",
+              "max_min_quantity": 8,
+              "price_per_item": 10,
+              "count": 0
+            },
+            {
+              "brand_id": 1012,
+              "brand": "darkgrain",
+              "max_min_quantity": 2,
+              "price_per_item": 30,
+              "count": 0
+            },
+            {
+              "brand_id": 1013,
+              "brand": "horlicks",
+              "max_min_quantity": 3,
+              "price_per_item": 40,
+              "count": 0
+            },
+            {
+              "brand_id": 1014,
+              "brand": "boost",
+              "max_min_quantity": 10,
+              "price_per_item": 50,
+              "count": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "section_id": 13,
+      "section_name": "chocolates",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ille vero, si insipiens-quo certe, quoniam tyrannus Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ille vero, si insipiens-quo certe, quoniam tyrannus Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ille vero, si insipiens-quo certe, quoniam tyrannus ",
+      "item_details": [
+        {
+          "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ille vero, si insipiens-quo certe, quoniam tyrannus Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ille vero, si insipiens-quo certe, quoniam tyrannus Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ille vero, si insipiens-quo certe, quoniam tyrannus ",
+          "item_id": 101,
+          "Item_name": "dairy milk",
+          "brands": [
+            {
+              "brand_id": 1010,
+              "brand": "dabour",
+              "max_min_quantity": 4,
+              "price_per_item": 20,
+              "count": 0
+            },
+            {
+              "brand_id": 1011,
+              "brand": "nestle",
+              "max_min_quantity": 8,
+              "price_per_item": 10,
+              "count": 0
+            },
+            {
+              "brand_id": 1012,
+              "brand": "darkgrain",
+              "max_min_quantity": 2,
+              "price_per_item": 30,
+              "count": 0
+            },
+            {
+              "brand_id": 1013,
+              "brand": "horlicks",
+              "max_min_quantity": 3,
+              "price_per_item": 40,
+              "count": 0
+            },
+            {
+              "brand_id": 1014,
+              "brand": "boost",
+              "max_min_quantity": 10,
+              "price_per_item": 50,
+              "count": 0
+            }
+          ]
+        },
+        {
+          "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ille vero, si insipiens-quo certe, quoniam tyrannus Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ille vero, si insipiens-quo certe, quoniam tyrannus Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ille vero, si insipiens-quo certe, quoniam tyrannus ",
+          "item_id": 102,
+          "Item_name": "nut crackers",
+          "brands": [
+            {
+              "brand_id": 1010,
+              "brand": "dabour",
+              "max_min_quantity": 4,
+              "price_per_item": 20,
+              "count": 0
+            },
+            {
+              "brand_id": 1011,
+              "brand": "nestle",
+              "max_min_quantity": 8,
+              "price_per_item": 10,
+              "count": 0
+            },
+            {
+              "brand_id": 1012,
+              "brand": "darkgrain",
+              "max_min_quantity": 2,
+              "price_per_item": 30,
+              "count": 0
+            },
+            {
+              "brand_id": 1013,
+              "brand": "horlicks",
+              "max_min_quantity": 3,
+              "price_per_item": 40,
+              "count": 0
+            },
+            {
+              "brand_id": 1014,
+              "brand": "boost",
+              "max_min_quantity": 10,
+              "price_per_item": 50,
+              "count": 0
+            }
+          ]
+        },{
+          "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ille vero, si insipiens-quo certe, quoniam tyrannus Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ille vero, si insipiens-quo certe, quoniam tyrannus Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ille vero, si insipiens-quo certe, quoniam tyrannus ",
+          "item_id": 103,
+          "Item_name": "nut crackers",
+          "brands": [
+            {
+              "brand_id": 1010,
+              "brand": "dabour",
+              "max_min_quantity": 4,
+              "price_per_item": 20,
+              "count": 0
+            },
+            {
+              "brand_id": 1011,
+              "brand": "nestle",
+              "max_min_quantity": 8,
+              "price_per_item": 10,
+              "count": 0
+            },
+            {
+              "brand_id": 1012,
+              "brand": "darkgrain",
+              "max_min_quantity": 2,
+              "price_per_item": 30,
+              "count": 0
+            },
+            {
+              "brand_id": 1013,
+              "brand": "horlicks",
+              "max_min_quantity": 3,
+              "price_per_item": 40,
+              "count": 0
+            },
+            {
+              "brand_id": 1014,
+              "brand": "boost",
+              "max_min_quantity": 10,
+              "price_per_item": 50,
+              "count": 0
+            }
+          ]
+        },{
+          "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ille vero, si insipiens-quo certe, quoniam tyrannus Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ille vero, si insipiens-quo certe, quoniam tyrannus Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ille vero, si insipiens-quo certe, quoniam tyrannus ",
+          "item_id": 104,
+          "Item_name": "nut crackers",
+          "brands": [
+            {
+              "brand_id": 1010,
+              "brand": "dabour",
+              "max_min_quantity": 4,
+              "price_per_item": 20,
+              "count": 0
+            },
+            {
+              "brand_id": 1011,
+              "brand": "nestle",
+              "max_min_quantity": 8,
+              "price_per_item": 10,
+              "count": 0
+            },
+            {
+              "brand_id": 1012,
+              "brand": "darkgrain",
+              "max_min_quantity": 2,
+              "price_per_item": 30,
+              "count": 0
+            },
+            {
+              "brand_id": 1013,
+              "brand": "horlicks",
+              "max_min_quantity": 3,
+              "price_per_item": 40,
+              "count": 0
+            },
+            {
+              "brand_id": 1014,
+              "brand": "boost",
+              "max_min_quantity": 10,
+              "price_per_item": 50,
+              "count": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "section_id": 14,
+      "section_name": "healthy Drink",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ille vero, si insipiens-quo certe, quoniam tyrannus Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ille vero, si insipiens-quo certe, quoniam tyrannus Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ille vero, si insipiens-quo certe, quoniam tyrannus ",
+      "item_details": [
+        {
+          "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ille vero, si insipiens-quo certe, quoniam tyrannus Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ille vero, si insipiens-quo certe, quoniam tyrannus Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ille vero, si insipiens-quo certe, quoniam tyrannus ",
+          "item_id": 101,
+          "Item_name": "orane tang",
+          "brands": [
+            {
+              "brand_id": 1010,
+              "brand": "dabour",
+              "max_min_quantity": 4,
+              "price_per_item": 20,
+              "count": 0
+            },
+            {
+              "brand_id": 1011,
+              "brand": "nestle",
+              "max_min_quantity": 8,
+              "price_per_item": 10,
+              "count": 0
+            },
+            {
+              "brand_id": 1012,
+              "brand": "darkgrain",
+              "max_min_quantity": 2,
+              "price_per_item": 30,
+              "count": 0
+            },
+            {
+              "brand_id": 1013,
+              "brand": "horlicks",
+              "max_min_quantity": 3,
+              "price_per_item": 40,
+              "count": 0
+            },
+            {
+              "brand_id": 1014,
+              "brand": "boost",
+              "max_min_quantity": 10,
+              "price_per_item": 50,
+              "count": 0
+            }
+          ]
+        },
+        {
+          "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ille vero, si insipiens-quo certe, quoniam tyrannus Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ille vero, si insipiens-quo certe, quoniam tyrannus Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ille vero, si insipiens-quo certe, quoniam tyrannus ",
+          "item_id": 102,
+          "Item_name": "nut crackers",
+          "brands": [
+            {
+              "brand_id": 1010,
+              "brand": "dabour",
+              "max_min_quantity": 4,
+              "price_per_item": 20,
+              "count": 0
+            },
+            {
+              "brand_id": 1011,
+              "brand": "nestle",
+              "max_min_quantity": 8,
+              "price_per_item": 10,
+              "count": 0
+            },
+            {
+              "brand_id": 1012,
+              "brand": "darkgrain",
+              "max_min_quantity": 2,
+              "price_per_item": 30,
+              "count": 0
+            },
+            {
+              "brand_id": 1013,
+              "brand": "horlicks",
+              "max_min_quantity": 3,
+              "price_per_item": 40,
+              "count": 0
+            },
+            {
+              "brand_id": 1014,
+              "brand": "boost",
+              "max_min_quantity": 10,
+              "price_per_item": 50,
+              "count": 0
+            }
+          ]
+        },{
+          "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ille vero, si insipiens-quo certe, quoniam tyrannus Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ille vero, si insipiens-quo certe, quoniam tyrannus Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ille vero, si insipiens-quo certe, quoniam tyrannus ",
+          "item_id": 103,
+          "Item_name": "nut crackers",
+          "brands": [
+            {
+              "brand_id": 1010,
+              "brand": "dabour",
+              "max_min_quantity": 4,
+              "price_per_item": 20,
+              "count": 0
+            },
+            {
+              "brand_id": 1011,
+              "brand": "nestle",
+              "max_min_quantity": 8,
+              "price_per_item": 10,
+              "count": 0
+            },
+            {
+              "brand_id": 1012,
+              "brand": "darkgrain",
+              "max_min_quantity": 2,
+              "price_per_item": 30,
+              "count": 0
+            },
+            {
+              "brand_id": 1013,
+              "brand": "horlicks",
+              "max_min_quantity": 3,
+              "price_per_item": 40,
+              "count": 0
+            },
+            {
+              "brand_id": 1014,
+              "brand": "boost",
+              "max_min_quantity": 10,
+              "price_per_item": 50,
+              "count": 0
+            }
+          ]
+        },{
+          "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ille vero, si insipiens-quo certe, quoniam tyrannus Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ille vero, si insipiens-quo certe, quoniam tyrannus Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ille vero, si insipiens-quo certe, quoniam tyrannus ",
+          "item_id": 104,
+          "Item_name": "nut crackers",
+          "brands": [
+            {
+              "brand_id": 1010,
+              "brand": "dabour",
+              "max_min_quantity": 4,
+              "price_per_item": 20,
+              "count": 0
+            },
+            {
+              "brand_id": 1011,
+              "brand": "nestle",
+              "max_min_quantity": 8,
+              "price_per_item": 10,
+              "count": 0
+            },
+            {
+              "brand_id": 1012,
+              "brand": "darkgrain",
+              "max_min_quantity": 2,
+              "price_per_item": 30,
+              "count": 0
+            },
+            {
+              "brand_id": 1013,
+              "brand": "horlicks",
+              "max_min_quantity": 3,
+              "price_per_item": 40,
+              "count": 0
+            },
+            {
+              "brand_id": 1014,
+              "brand": "boost",
+              "max_min_quantity": 10,
+              "price_per_item": 50,
               "count": 0
             }
           ]

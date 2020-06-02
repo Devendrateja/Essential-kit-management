@@ -16,11 +16,6 @@ import { Container, MiniContainer } from './styledComponents'
 
 @observer
 class UserDashBoard extends React.Component {
-   componentDidMount() {
-      const { getFormsList } = this.props
-      getFormsList()
-   }
-
    render() {
       const {
          redirectToSignInPage,
@@ -35,19 +30,22 @@ class UserDashBoard extends React.Component {
          renderSuccessUI,
          goToNextPage,
          goToPreviousPage,
+         onEnterPageNumber,
          currentPage,
-         totalPages,
+         offset,
+         limitedNoOfFormsPerPage,
+         totalNoOfForms,
          onSelectForm
       } = this.props
 
       return (
          <Container>
-            <Header 
+            <Header
                redirectToSignInPage={redirectToSignInPage}
                signOut={signOut}
             />
             <MiniContainer>
-               <TitleBar/>
+               <TitleBar />
                <TableHeader />
                <LoadingWrapperWithFailure
                   renderSuccessUI={renderSuccessUI}
@@ -63,8 +61,11 @@ class UserDashBoard extends React.Component {
                <Pagination
                   goToNextPage={goToNextPage}
                   currentPage={currentPage}
-                  totalPages={totalPages}
                   goToPreviousPage={goToPreviousPage}
+                  onEnterPageNumber={onEnterPageNumber}
+                  offset={offset}
+                  limitedNoOfFormsPerPage={limitedNoOfFormsPerPage}
+                  totalNoOfForms={totalNoOfForms}
                />
             </MiniContainer>
          </Container>

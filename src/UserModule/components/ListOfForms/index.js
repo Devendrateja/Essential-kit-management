@@ -4,14 +4,18 @@ import { observable } from 'mobx'
 
 import { Container, Span } from './styledComponents'
 
-
 import FormComponent from '../FormComponent'
 
 @observer
 class ListOfForms extends React.Component {
    render() {
       let count = 0
-      const { listOfForms, createFormComponent, getStatusOfForm,onSelectForm } = this.props
+      const {
+         listOfForms,
+         createFormComponent,
+         getStatusOfForm,
+         onSelectForm
+      } = this.props
       console.log(listOfForms, 'listOfForms')
       return (
          <div>

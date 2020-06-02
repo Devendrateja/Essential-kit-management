@@ -15,12 +15,12 @@ import {
 @observer
 class FormComponent extends React.Component {
    render() {
-      const { sno, newForm, getStatusOfForm ,onSelectForm} = this.props
+      const { sno, newForm, getStatusOfForm, onSelectForm } = this.props
 
       let status = getStatusOfForm(newForm)
-      
+
       return (
-         <Container onClick={()=>onSelectForm(newForm.formId)} >
+         <Container onClick={() => onSelectForm(newForm.formId)}>
             <S_no>
                <AlignLeft>{sno}</AlignLeft>
             </S_no>

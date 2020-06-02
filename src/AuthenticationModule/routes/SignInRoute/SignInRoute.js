@@ -85,7 +85,7 @@ class SignInRoute extends React.Component {
       if (AccessToken) {
          return this.renderUserHome()
       }
-      
+
       return (
          <SignInPage
             onClickButton={this.onClickButton}
