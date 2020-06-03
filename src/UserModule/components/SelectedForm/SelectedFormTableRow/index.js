@@ -35,7 +35,8 @@ class SelectedFormTableRow extends React.Component {
       if (defaultBrand !== undefined) {
          this.selectedBrand = {
             value: defaultBrand.brandName,
-            label: defaultBrand.brandName
+            label: defaultBrand.brandName,
+            id:defaultBrand.id
          }
 
 
@@ -90,6 +91,7 @@ class SelectedFormTableRow extends React.Component {
       }
       (this.selectedQuantity !== 0 ) ? this.totalPriceOfAnItem = this.selectedQuantity.value  * this.pricePerItem : this.totalPriceOfAnItem = 0
       item.setUserSelectedBrandWithQuantity(this.selectedBrand.id, this.selectedQuantity.value, this.totalPriceOfAnItem)
+      
    }
 
    handleQuantity = qty => {
@@ -179,3 +181,4 @@ class SelectedFormTableRow extends React.Component {
 }
 
 export default SelectedFormTableRow
+//

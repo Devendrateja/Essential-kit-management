@@ -43,7 +43,7 @@ class SelectedFormModel {
       let totalItems = 0
       this.sectionDetails.forEach(section => {
             section.itemDetails.forEach(eachItem => {
-               totalCost = totalCost+eachItem.totalPriceOfAnItem
+               totalCost = ((isNaN(eachItem.totalPriceOfAnItem)) ? totalCost : totalCost+eachItem.totalPriceOfAnItem)
                totalItems = (isNaN(eachItem.selectedQuantityPerItem)) ? totalItems : totalItems+eachItem.selectedQuantityPerItem
             })
       })
@@ -56,3 +56,4 @@ class SelectedFormModel {
 }
 
 export default SelectedFormModel
+// 

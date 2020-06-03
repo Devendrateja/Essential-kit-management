@@ -3,10 +3,10 @@ import { observable, action } from 'mobx'
 
 class BrandModel {
    id
-   brandName
-   maxQuantity
-   pricePerItem
-   count
+   @observable brandName
+   @observable maxQuantity
+   @observable pricePerItem
+   @observable count
 
    constructor(brand) {
       this.id = brand.brand_id
