@@ -52,6 +52,40 @@ class SelectedFormModel {
          itemsAdded : totalItems
       }
    }
+   
+   updateUserData = () => {
+      let userData = []
+      
+      
+      this.sectionDetails.forEach(eachSection => {
+         
+         let itemsData = []
+         eachSection.itemDetails.forEach(eachItem => {
+            const brand = eachItem.userSelectedBrandWithQuantity
+            if(brand !== undefined){
+               itemsData.push({
+                  item_id:eachItem.id,
+                  brands :[{
+                     brand_id:brand.id,
+                     count : brand.count
+                  }]
+               })
+            }
+         })
+         
+         if(itemsData.length !== 0){
+            userData.push({
+               section_id : eachSection.id,
+               item_details : itemsData
+         })
+         }
+         
+      })
+      console.log("userrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr")
+      return userData
+      
+   }
+   
 
 }
 

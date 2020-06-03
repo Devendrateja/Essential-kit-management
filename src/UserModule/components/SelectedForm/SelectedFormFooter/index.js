@@ -16,6 +16,13 @@ import {
 @observer
 class SelectedFormFooter extends React.Component {
    
+   
+   saveUserData = () => {
+      const { selectedFormData } = this.props
+      const data = selectedFormData.updateUserData()
+      console.log("updated userData", data)
+   }
+   
    render() {
       const {
          ItemsAdded,
@@ -49,8 +56,8 @@ class SelectedFormFooter extends React.Component {
                </Typo14WhiteHKGroteskSemiBold>
             </ValuationRow>
             <UpdateBlock>
-               <SaveButton>{Save}</SaveButton>
-               <Button>{ProceedToPay}</Button>
+               <SaveButton disabled={apiStatus!==API_SUCCESS ? true : false }  onClick={this.saveUserData}>{Save}</SaveButton>
+               <Button disabled={apiStatus!==API_SUCCESS ? true : false }>{ProceedToPay}</Button>
             </UpdateBlock>
          </Footer>
       )

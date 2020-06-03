@@ -27,7 +27,6 @@ class ItemModel {
          eachBrand.id === brandId
             ? (eachBrand.count = qty)
             : (eachBrand.count = 0)
-            console.log("...........................................",eachBrand.brandName, eachBrand.count,eachBrand)
       })
       this.totalPriceOfAnItem = totalPrice;
       this.selectedQuantityPerItem = qty
@@ -46,6 +45,9 @@ class ItemModel {
       
       return defaultBrand
    }
+   
+   
+   
    
    
    

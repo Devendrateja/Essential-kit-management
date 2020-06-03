@@ -21,12 +21,14 @@ class SectionModel {
    }
    
    
-   @computed
-   get slectedItemData(){
-      return this.itemDetails.find(eachItem => {
-         return eachItem.id === this.selectedItemId
-      })
-   }
+   
+   
+   // @computed
+   // get slectedItemData(){
+   //    return this.itemDetails.find(eachItem => {
+   //       return eachItem.id === this.selectedItemId
+   //    })
+   // }
    
    
    
