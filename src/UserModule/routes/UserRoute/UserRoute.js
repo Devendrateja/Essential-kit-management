@@ -33,17 +33,8 @@ class UserRoute extends React.Component {
 
    onEnterPageNumber = event => {
       console.log('event on key down', this.currentPage)
-      // if(event.keyCode == 13){
-
-      // }
    }
 
-   // goToSelectedPage = (event) => {
-   //    const { getFormsList } = this.props.formStore
-   //    // this.currentPage = page;
-   //    // this.offset = ((page-1)*(this.limit))
-   //    // getFormsList(this.limit, this.offset)
-   // }
 
    goToNextPage = () => {
       const { getFormsList } = this.props.formStore

@@ -6,6 +6,7 @@ class SelectedFormModel {
    fromId
    @observable formName
    @observable formDescription
+   @observable closeDate
    @observable totalItems
    @observable totalCost
    @observable sectionDetails
@@ -14,13 +15,15 @@ class SelectedFormModel {
    constructor(form) {
       this.fromId = form.form_id
       this.formName = form.form_name
+      this.closeDate = form.close_date
       this.formDescription = form.form_description
       this.totalItems = form.total_items
       this.totalCost = form.total_cost
-      this.sectionDetails = form.section_details.map(eachSection => {
+      this.sectionDetails = form.sections_details.map(eachSection => {
          const newSection = new SectionModel(eachSection)
          return newSection
       })
+      
    }
 
 
@@ -32,8 +35,23 @@ class SelectedFormModel {
          return eachSection.id === this.selectedSectionId
       })
    }
-
-
+   
+   
+   @computed
+   get userSelectedQuantityAndCost(){
+      let totalCost = 0
+      let totalItems = 0
+      this.sectionDetails.forEach(section => {
+            section.itemDetails.forEach(eachItem => {
+               totalCost = totalCost+eachItem.totalPriceOfAnItem
+               totalItems = (isNaN(eachItem.selectedQuantityPerItem)) ? totalItems : totalItems+eachItem.selectedQuantityPerItem
+            })
+      })
+      return {
+         totalCost : totalCost,
+         itemsAdded : totalItems
+      }
+   }
 
 }
 

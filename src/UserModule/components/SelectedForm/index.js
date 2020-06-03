@@ -3,6 +3,7 @@ import { observer } from 'mobx-react'
 import { observable } from 'mobx'
 import { Redirect } from 'react-router-dom'
 import { withRouter } from 'react-router-dom'
+import { API_FETCHING, API_SUCCESS, API_FAILED } from '@ib/api-constants'
 
 import Header from '../Header'
 import SelectedFormTitleBar from './SelectedFormTitleBar'
@@ -34,11 +35,12 @@ class SelectedForm extends React.Component {
          apiStatus,
          getSelectedFormAPIError,
          changeSection,
-         onClickRetry
+         onClickRetry,
+         signOut
       } = this.props
       return (
          <Container>
-            <Header />
+            <Header signOut={signOut} />
             <Body>
                <SelectedFormTitleBar selectedFormData={selectedFormData} />
                <LoadingWrapperWithFailure
@@ -48,9 +50,11 @@ class SelectedForm extends React.Component {
                />
             </Body>
             <SelectedFormFooter
-               apiStatus={apiStatus}
-               selectedFormData={selectedFormData}
+                     apiStatus={apiStatus}
+                     selectedFormData={selectedFormData}
             />
+            }
+            
          </Container>
       )
    }

@@ -26,7 +26,7 @@ class SelectedFormSectionBar extends React.Component {
 
 
     onSelectSection = (id) => {
-        const { selectedFormData, listOfSections } = this.props.selectedFormStore
+        const { selectedFormData, listOfSections } = this.props
         selectedFormData.selectedSectionId = id;
         this.listOfItems = selectedFormData.selectedSectionData.itemDetails
     }
@@ -35,7 +35,7 @@ class SelectedFormSectionBar extends React.Component {
 
     sections = (list) => {
         return list.map((eachSection) => {
-            return <Typo12DarkBlueGreyHKGroteskSemiBold key={eachSection.id} id={eachSection.id} onClick={()=>this.onSelectSection(eachSection.id)} ><Span>{eachSection.name}</Span></Typo12DarkBlueGreyHKGroteskSemiBold>
+            return <Typo12DarkBlueGreyHKGroteskSemiBold key={eachSection.id} id={eachSection.id} onClick={()=>this.onSelectSection(eachSection.id)} ><Span className="">{eachSection.name}</Span></Typo12DarkBlueGreyHKGroteskSemiBold>
         })
     }
 
@@ -66,7 +66,7 @@ class SelectedFormSectionBar extends React.Component {
                         this.listOfItems.length !==0 &&
                         this.listOfItems.map((eachItem,index) => {
                        
-                            return <SelectedFormTableRow key={Math.random()} sno={index+1}   item={eachItem} />
+                            return <SelectedFormTableRow key={eachItem.id} sno={index+1} selectedFormData={selectedFormData}  item={eachItem} />
                         })
                     }
                     

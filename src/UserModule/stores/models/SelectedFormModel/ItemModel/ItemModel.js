@@ -8,6 +8,8 @@ class ItemModel {
    @observable name
    @observable brands
    @observable selectedBrandId
+   @observable totalPriceOfAnItem = 0
+   @observable selectedQuantityPerItem = 0
    
    constructor(item) {
       this.id = item.item_id
@@ -20,12 +22,14 @@ class ItemModel {
    }
 
    @action.bound
-   setUserSelectedBrandWithQuantity(brandId, qty){
+   setUserSelectedBrandWithQuantity(brandId, qty,totalPrice){
       this.brands.forEach(eachBrand => {
          eachBrand.id === brandId
             ? (eachBrand.count = qty)
             : (eachBrand.count = 0)
       })
+      this.totalPriceOfAnItem = totalPrice;
+      this.selectedQuantityPerItem = qty
    }
    
    

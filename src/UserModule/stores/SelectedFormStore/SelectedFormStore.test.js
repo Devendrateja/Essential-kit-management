@@ -51,16 +51,31 @@ describe("SelectedForm store tests", () => {
     })
     
     
-    it('should test the FormStore fetching state', () => {
-      const mockLoadingPromise = new Promise(function(resolve, reject) {})
-      const mockSelectedFormAPI = jest.fn()
-      mockSelectedFormAPI.mockReturnValue(mockLoadingPromise)
-      selectedFormAPI.getSelectedFormAPI = mockSelectedFormAPI
-
-      selectedFormStore.getSelectedFormData()
-      expect(selectedFormStore.getSelectedFormAPIStatus).toBe(API_FETCHING)
+    it('should test the SelectedFormStore fetching state', () => {
+        selectedFormStore.getSelectedFormData()
+        expect(selectedFormStore.getSelectedFormAPIStatus).toBe(API_FETCHING)
    })
     
+    
+    it('should test the selectedFormStore success  state', async () => {
+        await selectedFormStore.getSelectedFormData()
+        expect(selectedFormStore.getSelectedFormAPIStatus).toBe(API_SUCCESS)
+   })
+   
+   it('should test the selectedFormStore failure state', async () => {
+      const mockFailurePromise = new Promise(function(resolve, reject) {
+         reject(new Error('error'))
+      })
+
+      const mockSelectedFormAPI = jest.fn()
+      mockSelectedFormAPI.mockReturnValue(mockFailurePromise)
+      selectedFormAPI.getSelectedFormAPI = mockSelectedFormAPI
+
+      await selectedFormStore.getSelectedFormData()
+      expect(selectedFormStore.getSelectedFormAPIStatus).toBe(API_FAILED)
+      expect(selectedFormStore.getSelectedFormAPIError).toBe('error')
+   })
+   
     
     
     

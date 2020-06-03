@@ -15,6 +15,7 @@ import {
 
 @observer
 class SelectedFormFooter extends React.Component {
+   
    render() {
       const {
          ItemsAdded,
@@ -24,25 +25,27 @@ class SelectedFormFooter extends React.Component {
       } = DataStrings.seletedFormFooter
       
       
-      const { apiStatus, selectedFormData } = this.props
+      const { apiStatus,selectedFormData} = this.props
+      let totalCost ;
       if(apiStatus === API_SUCCESS){
-         console.log(selectedFormData.totalItems, "footer")
+         console.log("fooooooooooooooooter", selectedFormData.userSelectedQuantityAndCost)
+         let total = selectedFormData.userSelectedQuantityAndCost
+         totalCost = total.totalCost
       }
-      else{
-         console.log("not reachable")
-      }
+      console.log("totaaaaaaaaaaaaaaaaaaaaaaaaal", totalCost)
       
       return (
          <Footer>
             <ValuationRow>
                <Typo14WhiteHKGroteskSemiBold>
                {
-                  apiStatus===API_SUCCESS ? ` ${ItemsAdded} : ${selectedFormData.totalItems} ` : `${ItemsAdded}`
+                  apiStatus===API_SUCCESS ? ` ${ItemsAdded} : ${selectedFormData.userSelectedQuantityAndCost.itemsAdded} ` : `${ItemsAdded}`
                }
-                  
                </Typo14WhiteHKGroteskSemiBold>
                <Typo14WhiteHKGroteskSemiBold>
-                  {TotalCost} :
+               {
+                  apiStatus===API_SUCCESS ? ` ${TotalCost} : ${selectedFormData.userSelectedQuantityAndCost.totalCost} ` : `${ItemsAdded}`
+               }
                </Typo14WhiteHKGroteskSemiBold>
             </ValuationRow>
             <UpdateBlock>
@@ -56,3 +59,4 @@ class SelectedFormFooter extends React.Component {
 
 
 export default SelectedFormFooter
+//

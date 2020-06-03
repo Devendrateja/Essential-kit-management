@@ -22,13 +22,13 @@ from './styledComponents'
 @observer
 class SelectedFormTableRow extends React.Component {
    @observable selectedBrand = null
-   @observable selectedQuantity = null
+   @observable selectedQuantity = 0
    @observable pricePerItem = 0
    @observable totalPriceOfAnItem = 0
    @observable quantityOptions = []
 
    componentDidMount() {
-      const { item } = this.props
+      const { item,selectedFormData } = this.props
       let defaultBrand = item.userSelectedBrandWithQuantity
       console.log(defaultBrand, "componentDidMoun defaultBrand")
 
@@ -42,7 +42,7 @@ class SelectedFormTableRow extends React.Component {
          for (let i = 0; i <= defaultBrand.maxQuantity; i++) {
             const obj = {
                value: i,
-               label: i.toString()
+               label: i
             }
             this.quantityOptions.push(obj)
          }
@@ -52,10 +52,13 @@ class SelectedFormTableRow extends React.Component {
             value: defaultBrand.count,
             label: defaultBrand.count
          }
-
+         
          this.totalPriceOfAnItem = defaultBrand.count * defaultBrand.pricePerItem
          this.pricePerItem = defaultBrand.pricePerItem
+         item.setUserSelectedBrandWithQuantity(this.selectedBrand.id, this.selectedQuantity.value, this.totalPriceOfAnItem)
       }
+      
+      console.log("this.selectedQuantity", this.selectedQuantity)
    }
 
 
@@ -76,13 +79,26 @@ class SelectedFormTableRow extends React.Component {
          }
          this.quantityOptions.push(eachQuantityOption)
       }
+
+      if (this.selectedQuantity.value > max) {
+         console.log(max, "max")
+         this.selectedQuantity = {
+            value: 0,
+            label: 0
+         }
+         
+      }
+      (this.selectedQuantity !== 0 ) ? this.totalPriceOfAnItem = this.selectedQuantity.value  * this.pricePerItem : this.totalPriceOfAnItem = 0
+      item.setUserSelectedBrandWithQuantity(this.selectedBrand.id, this.selectedQuantity.value, this.totalPriceOfAnItem)
    }
 
    handleQuantity = qty => {
-      const { item } = this.props
+      const { item , selectedFormData} = this.props
+      selectedFormData.isSelected = !selectedFormData.isSelected
       this.selectedQuantity = qty
-      item.setUserSelectedBrandWithQuantity(this.selectedBrand.id, qty.value)
       this.totalPriceOfAnItem = qty.value * this.pricePerItem
+      item.setUserSelectedBrandWithQuantity(this.selectedBrand.id, qty.value,this.totalPriceOfAnItem)
+      
    }
 
 
@@ -155,7 +171,7 @@ class SelectedFormTableRow extends React.Component {
                <AlignCenter>{quantity}</AlignCenter>
             </Span>
             <LastCol>
-               <AlignRight>{this.totalPriceOfAnItem}</AlignRight>
+               <AlignRight> ₹ {this.totalPriceOfAnItem} /-</AlignRight>
             </LastCol>
          </Container>
       )

@@ -5,9 +5,11 @@ import { API_FETCHING, API_SUCCESS, API_FAILED } from '@ib/api-constants'
 import { Redirect } from 'react-router-dom'
 import { withRouter } from 'react-router-dom'
 
-import SelectedForm from '../../components/SelectedForm'
+
+import { clearUserSession } from '../../../utils/StorageUtils.js'
 import NoDataView from '../../../components/common/NoDataView'
 
+import SelectedForm from '../../components/SelectedForm'
 import SelectedFormSectionBar from '../../components/SelectedForm/SelectedFormSectionBar'
 
 
@@ -86,6 +88,19 @@ class SelectedFormRoute extends React.Component {
       const formId = this.props.match.params.id
       getSelectedFormData(formId);
    }
+   
+   
+   signOut=()=>{
+      clearUserSession()
+      this.redirectToSignInPage()
+   }
+   
+   
+   redirectToSignInPage = () => {
+      const { history } = this.props
+      const signin = history.push('/essential-kit-management/signin')
+      return <div>{signin}</div>
+   }
 
 
    render() {
@@ -95,6 +110,7 @@ class SelectedFormRoute extends React.Component {
          getSelectedFormAPIError,
          changeSection,
       } = this.props.selectedFormStore
+      console.log("dude............................")
       return (
          <SelectedForm
             selectedFormSuccessUi={this.selectedFormSuccessUi}
@@ -103,6 +119,7 @@ class SelectedFormRoute extends React.Component {
             getSelectedFormAPIError={getSelectedFormAPIError}
             selectedFormData={selectedFormData}
             changeSection={changeSection}
+            signOut={this.signOut}
          />
       )
    }
