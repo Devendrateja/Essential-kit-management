@@ -8,9 +8,8 @@ import {
    TextStyle7
 } from '../../../../styleGuide/Typos'
 
-
-import { USER_HOME_PATH } from "../../../constants/RouteConstants"
-import NavigationButton from "../../../../components/common/NavigationButton"
+import { USER_HOME_PATH } from '../../../constants/RouteConstants'
+import NavigationButton from '../../../../components/common/NavigationButton'
 
 import { Container } from './styledComponents'
 
@@ -20,7 +19,7 @@ class SelectedFormTitleBar extends React.Component {
       const { selectedFormData } = this.props
       return (
          <Container>
-            <NavigationButton  path={USER_HOME_PATH}/>
+            <NavigationButton path={USER_HOME_PATH} />
             {selectedFormData !== undefined && (
                <Typo32DarkBlueGreyHKGroteskRegular>
                   {selectedFormData.formName}

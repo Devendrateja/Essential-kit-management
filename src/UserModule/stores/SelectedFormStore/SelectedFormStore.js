@@ -60,10 +60,6 @@ class SelectedFormStore {
          .to(this.setGetSelectedFormAPIStatus, this.setSelectedFormAPIResponse)
          .catch(this.setGetSelectedFormAPIError)
    }
-
-  
-
-  
 }
 
 export default SelectedFormStore

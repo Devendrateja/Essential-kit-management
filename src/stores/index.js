@@ -12,23 +12,36 @@ import SelectedFormStore from '../UserModule/stores/SelectedFormStore'
 import SelectedFormAPI from '../UserModule/services/SelectedFormServices/index.api.js'
 import SelectedFormFixtures from '../UserModule/services/SelectedFormServices/index.fixtures.js'
 
+import ClosedFormFixturesService from '../UserModule/services/ClosedFormServices/index.fixtures.js'
+import ClosedFormAPI from '../UserModule/services/ClosedFormServices/index.api.js'
+import ClosedFormStore from "../UserModule/stores/ClosedFormStore"
+
+
 const counterStore = new CounterStore()
 
 const authFixturesService = new AuthFixturesService()
 const authAPI = new AuthAPI()
-const authStore = new AuthStore(authFixturesService)
+const authStore = new AuthStore(authAPI)
+
+const closedFormFixturesService = new ClosedFormFixturesService()
+const closedFormAPI = new ClosedFormAPI()
+const closedFormStore = new ClosedFormStore(closedFormFixturesService)
+
 
 const formFixturesService = new FormFixturesService()
 const formAPI = new FormAPI()
-const formStore = new FormStore(formFixturesService)
+const formStore = new FormStore(formAPI)
 
 const selectedFormFixtures = new SelectedFormFixtures()
 const selectedFormAPI = new SelectedFormAPI()
 const selectedFormStore = new SelectedFormStore(selectedFormFixtures)
 
+
+
 export default {
    counterStore,
    authStore,
    formStore,
-   selectedFormStore
+   selectedFormStore,
+   closedFormStore
 }

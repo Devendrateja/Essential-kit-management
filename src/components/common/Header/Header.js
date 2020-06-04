@@ -3,21 +3,25 @@ import { observer } from 'mobx-react'
 import { observable } from 'mobx'
 
 import { ibhubsLogo2 } from '../../../styleGuide/images'
-import UserProfileIcon from '../../../components/common/UserProfileIcon'
 
-import { HeaderContainer, SideBlocks, Text, Span } from './styledComponents'
-import DataStrings from '../../../i18n/strings.json'
+import UserProfileIcon from '../UserProfileIcon'
+
+import dataStrings from '../../../i18n/strings.json'
+
 import { Typo12DarkBlueGreyHKGroteskSemiBold } from '../../../styleGuide/Typos'
+
+import {
+   HeaderContainer,
+   SideBlocks,
+   Text,
+   Span,
+   SignOutButton
+} from './styledComponents'
 
 @observer
 class Header extends React.Component {
-   @observable customize = true
-
-   changeTextColor = () => {
-      this.customize = false
-   }
    render() {
-      const { HOME, PAYREQUEST, MYWALLET } = DataStrings.UserModule.Header
+      const { HOME, PAYREQUEST, MYWALLET } = dataStrings.UserModule.Header
       const { signOut } = this.props
 
       return (
@@ -29,12 +33,7 @@ class Header extends React.Component {
             <SideBlocks>
                <Text>
                   <Typo12DarkBlueGreyHKGroteskSemiBold>
-                     <Span
-                        onMouseDown={this.changeTextColor}
-                        customize={this.customize}
-                     >
-                        {HOME}
-                     </Span>
+                     <Span>{HOME}</Span>
                   </Typo12DarkBlueGreyHKGroteskSemiBold>
                </Text>
                <Text>
@@ -47,9 +46,9 @@ class Header extends React.Component {
                      <Span>{MYWALLET}</Span>
                   </Typo12DarkBlueGreyHKGroteskSemiBold>
                </Text>
-               <div className='px-8' onClick={signOut}>
-                  signOut
-               </div>
+               <SignOutButton onClick={signOut}>
+                  {dataStrings.SignOut}
+               </SignOutButton>
                <UserProfileIcon />
             </SideBlocks>
          </HeaderContainer>

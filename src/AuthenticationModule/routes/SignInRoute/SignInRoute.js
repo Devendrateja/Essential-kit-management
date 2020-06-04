@@ -69,8 +69,6 @@ class SignInRoute extends React.Component {
             this.onSignInFailure
          )
 
-         this.username = ''
-         this.password = ''
       }
    }
 
@@ -82,6 +80,7 @@ class SignInRoute extends React.Component {
    render() {
       const { getUserSignInAPIStatus } = this.props.authStore
       const AccessToken = getAccessToken()
+      console.log("errrrrrrrrrrrrrrrrrroer", this.errorMessage)
       if (AccessToken) {
          return this.renderUserHome()
       }

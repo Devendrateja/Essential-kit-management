@@ -7,6 +7,7 @@
     "placeholderTextPassword" : "password",
     "labelTextUsername" : "USERNAME",
     "labelTextPassword" : "PASSWORD",
+    "SignOut" : "Sign Out",
     "BackToList" : "Back To List",
     "UserModule" : {
         "Header" : {
@@ -33,6 +34,14 @@
         "Save":"Save",
         "ProceedToPay" : "Proceed To Pay",
         "ItemsAdded" : "Items Added",
-        "TotalCost" : "Total Cost"
-    }
+        "TotalCost" : "Total Cost",
+        "ItemsRecieved" : "Items Recieved",
+        "CostIncurred" : "Cost Incurred"
+    },
+    "sno":"S.no",
+    "name":"NAME",
+    "detailsOfItems" : "Details Of Items",
+    "itemsAdded":"ITEMS ADDED",
+    "itemsRecieved" : "ITEMS RECIEVED",
+    "costIncurred" : "COST INCURRED"
 }

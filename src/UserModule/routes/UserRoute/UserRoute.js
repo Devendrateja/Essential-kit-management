@@ -8,7 +8,10 @@ import { withRouter } from 'react-router-dom'
 import UserDashBoard from '../../components'
 import { clearUserSession } from '../../../utils/StorageUtils.js'
 import NoDataView from '../../../components/common/NoDataView'
-import { SELECTED_FORM_PATH } from '../../constants/RouteConstants'
+import {
+   SELECTED_FORM_PATH,
+   CLOSED_FORM_PATH
+} from '../../constants/RouteConstants'
 
 import ListOfForms from '../../components/ListOfForms'
 
@@ -22,19 +25,21 @@ import {
 @inject('formStore')
 @observer
 class UserRoute extends React.Component {
-   limit = 1
+   limit = 2
    @observable currentPage = 0
    @observable offset = 0
 
    componentDidMount() {
-      const { getFormsList } = this.props.formStore
+      const { getFormsList,listOfForms } = this.props.formStore
+      
+      console.log("user route cdm",listOfForms )
+      
       getFormsList(this.limit, this.offset)
    }
 
    onEnterPageNumber = event => {
       console.log('event on key down', this.currentPage)
    }
-
 
    goToNextPage = () => {
       const { getFormsList } = this.props.formStore
@@ -50,11 +55,15 @@ class UserRoute extends React.Component {
       getFormsList(this.limit, this.offset)
    }
 
-   onSelectForm = id => {
-      console.log('selected', id)
+   onSelectForm = (formId, formStatus) => {
+      console.log('selected', formId, formStatus)
       const { history } = this.props
-      const renderSelectedForm = history.push(`${SELECTED_FORM_PATH}/:${id}`)
-      return <div>{renderSelectedForm}</div>
+
+      const renderForm =
+         formStatus === 'Live'
+            ? history.push(`${SELECTED_FORM_PATH}/${formId}/v1`)
+            : history.push(`${CLOSED_FORM_PATH}/${formId}/v1`)
+      return <div>{renderForm}</div>
    }
 
    onRetryClick = () => {
@@ -68,7 +77,7 @@ class UserRoute extends React.Component {
       let date
 
       switch (newForm.formStatus) {
-         case 'Online':
+         case 'Live':
             statusIcon = <img src={OnlineIcon.src} alt={newForm.formStatus} />
             date = `Closed on ${newForm.ClosingDate}`
             break
@@ -125,7 +134,7 @@ class UserRoute extends React.Component {
          createFormComponent,
          totalNoOfForms
       } = this.props.formStore
-
+      console.log("user route ", listOfForms)
       return (
          <UserDashBoard
             redirectToSignInPage={this.redirectToSignInPage}

@@ -18,9 +18,10 @@ class FormComponent extends React.Component {
       const { sno, newForm, getStatusOfForm, onSelectForm } = this.props
 
       let status = getStatusOfForm(newForm)
-
       return (
-         <Container onClick={() => onSelectForm(newForm.formId)}>
+         <Container
+            onClick={() => onSelectForm(newForm.formId, newForm.formStatus)}
+         >
             <S_no>
                <AlignLeft>{sno}</AlignLeft>
             </S_no>

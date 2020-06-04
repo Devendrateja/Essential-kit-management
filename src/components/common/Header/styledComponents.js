@@ -16,3 +16,7 @@ export const Text = styled.div`
 
 export const Span = styled.span`${tw``}
                     color:${props => (props.customize ? 'gray' : 'black')}`
+
+export const SignOutButton = styled.button`
+   ${tw`mx-8 p-1 border border-blue-400  rounded text-xs`}
+`

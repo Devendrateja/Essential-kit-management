@@ -8,7 +8,6 @@ class SectionModel {
    @observable description
    @observable itemDetails
    @observable selectedItemId
-   
 
    constructor(section) {
       this.id = section.section_id
@@ -19,19 +18,13 @@ class SectionModel {
          return newItem
       })
    }
-   
-   
-   
-   
+
    // @computed
    // get slectedItemData(){
    //    return this.itemDetails.find(eachItem => {
    //       return eachItem.id === this.selectedItemId
    //    })
    // }
-   
-   
-   
 }
 
 export default SectionModel

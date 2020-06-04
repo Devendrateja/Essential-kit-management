@@ -2,8 +2,6 @@
 /*global expect*/
 /*global mockSetCookie*/
 
-
-
 import React from 'react'
 import { render, fireEvent, waitFor } from '@testing-library/react'
 
@@ -11,28 +9,24 @@ import { Router, Route, withRouter } from 'react-router-dom'
 import { Provider } from 'mobx-react'
 import { createMemoryHistory } from 'history'
 
-import SelectedFormRoute from "../../../routes/SelectedFormRoute"
-
+import SelectedFormRoute from '../../../routes/SelectedFormRoute'
 
 import {
-    API_SUCCESS,
-    API_FAILED,
-    API_FETCHING,
-    API_INITIAL
-}
-from '@ib/api-constants'
+   API_SUCCESS,
+   API_FAILED,
+   API_FETCHING,
+   API_INITIAL
+} from '@ib/api-constants'
 
-import getSelectedFormResponse from "../../../fixtures/getSelectedFormResponse.json"
-import SelectedFormAPI from "../../../services/SelectedFormServices/index.api.js"
-import SelectedFormFixtures from "../../../services/SelectedFormServices/index.fixtures.js"
-import SelectedFormStore from "../../SelectedFormStore"
+import getSelectedFormResponse from '../../../fixtures/getSelectedFormResponse.json'
+import SelectedFormAPI from '../../../services/SelectedFormServices/index.api.js'
+import SelectedFormFixtures from '../../../services/SelectedFormServices/index.fixtures.js'
+import SelectedFormStore from '../../SelectedFormStore'
 
-
-import SelectedFormModel from "."
-import SectionModel from "./"
-import ItemModel from "./"
-import BrandModel from "./"
-
+import SelectedFormModel from '.'
+import SectionModel from './'
+import ItemModel from './'
+import BrandModel from './'
 
 import '@testing-library/jest-dom/extend-expect'
 
@@ -50,194 +44,190 @@ global.mockSetCookie = mockSetCookie
 global.mockRemoveCookie = mockRemoveCookie
 global.mockGetCookie = mockGetCookie
 
+describe('selctedFormModel tests', () => {
+   let selectedFormAPI
+   let selectedFormStore
 
-
-
-
-
-
-describe("selctedFormModel tests", () => {
-    let selectedFormAPI 
-    let selectedFormStore
-
-    let formData = {
-        form_id: 1,
-        form_name: "snacksform",
-        close_date: "1-2-3",
-        form_description: "",
-        total_items: 0,
-        total_cost: 0,
-        sections_details: [{
+   let formData = {
+      form_id: 1,
+      form_name: 'snacksform',
+      close_date: '1-2-3',
+      form_description: '',
+      total_items: 0,
+      total_cost: 0,
+      sections_details: [
+         {
             section_id: 10,
-            section_name: "snack items",
-            description: "description",
-            item_details: [{
-                description: "description",
-                item_id: 101,
-                Item_name: "nut crackers",
-                brands: [{
+            section_name: 'snack items',
+            description: 'description',
+            item_details: [
+               {
+                  description: 'description',
+                  item_id: 101,
+                  Item_name: 'nut crackers',
+                  brands: [
+                     {
                         brand_id: 1010,
-                        brand: "dabour",
+                        brand: 'dabour',
                         max_min_quantity: 2,
                         price_per_item: 10,
                         count: 1
-                    },
-                    {
+                     },
+                     {
                         brand_id: 1011,
-                        brand: "nestle",
+                        brand: 'nestle',
                         max_min_quantity: 4,
                         price_per_item: 20,
                         count: 0
-                    }
-                ]
-            }, {
-                description: "description",
-                item_id: 102,
-                Item_name: "nut crackers",
-                brands: [{
+                     }
+                  ]
+               },
+               {
+                  description: 'description',
+                  item_id: 102,
+                  Item_name: 'nut crackers',
+                  brands: [
+                     {
                         brand_id: 1012,
-                        brand: "dabour",
+                        brand: 'dabour',
                         max_min_quantity: 2,
                         price_per_item: 10,
                         count: 0
-                    },
-                    {
+                     },
+                     {
                         brand_id: 1013,
-                        brand: "nestle",
+                        brand: 'nestle',
                         max_min_quantity: 4,
                         price_per_item: 20,
                         count: 0
-                    }
-                ]
-            }]
-        }, {
+                     }
+                  ]
+               }
+            ]
+         },
+         {
             section_id: 11,
-            section_name: "biscuits",
-            description: "description",
-            item_details: [{
-                description: "description",
-                item_id: 103,
-                Item_name: "nut crackers",
-                brands: [{
+            section_name: 'biscuits',
+            description: 'description',
+            item_details: [
+               {
+                  description: 'description',
+                  item_id: 103,
+                  Item_name: 'nut crackers',
+                  brands: [
+                     {
                         brand_id: 1014,
-                        brand: "dabour",
+                        brand: 'dabour',
                         max_min_quantity: 2,
                         price_per_item: 10,
                         count: 0
-                    },
-                    {
+                     },
+                     {
                         brand_id: 1015,
-                        brand: "nestle",
+                        brand: 'nestle',
                         max_min_quantity: 4,
                         price_per_item: 20,
                         count: 0
-                    }
-                ]
-            }, {
-                description: "description",
-                item_id: 104,
-                Item_name: "nut crackers",
-                brands: [{
+                     }
+                  ]
+               },
+               {
+                  description: 'description',
+                  item_id: 104,
+                  Item_name: 'nut crackers',
+                  brands: [
+                     {
                         brand_id: 1016,
-                        brand: "dabour",
+                        brand: 'dabour',
                         max_min_quantity: 2,
                         price_per_item: 10,
                         count: 0
-                    },
-                    {
+                     },
+                     {
                         brand_id: 1017,
-                        brand: "nestle",
+                        brand: 'nestle',
                         max_min_quantity: 4,
                         price_per_item: 20,
                         count: 0
-                    }
-                ]
-            }]
-        }]
-    }
-    
-    let newForm ;
+                     }
+                  ]
+               }
+            ]
+         }
+      ]
+   }
 
-    beforeEach(()=>{
-        newForm = new SelectedFormModel(formData)
-        selectedFormAPI = new SelectedFormFixtures();
-        selectedFormStore = new SelectedFormStore(selectedFormAPI)
-    })
+   let newForm
 
+   beforeEach(() => {
+      newForm = new SelectedFormModel(formData)
+      selectedFormAPI = new SelectedFormFixtures()
+      selectedFormStore = new SelectedFormStore(selectedFormAPI)
+   })
 
-    it("should create a new model with the given data", () => {
+   it('should create a new model with the given data', () => {
+      expect(newForm.sectionDetails.length).toEqual(2)
+      expect(newForm.sectionDetails[0].itemDetails.length).toBe(2)
+      expect(newForm.sectionDetails[1].itemDetails[1].brands.length).toBe(2)
+      expect(newForm.sectionDetails[1].itemDetails[1].brands[1].brandName).toBe(
+         'nestle'
+      )
+   })
 
+   it('shoud test the computed varible is returning the selectedSection ', () => {
+      newForm.selectedSectionId = 10
+      const newSection = newForm.selectedSectionData
+      expect(newSection.name).toBe('snack items')
+      expect(newSection.itemDetails[0].id).toBe(101)
+   })
 
-        expect(newForm.sectionDetails.length).toEqual(2)
-        expect(newForm.sectionDetails[0].itemDetails.length).toBe(2)
-        expect(newForm.sectionDetails[1].itemDetails[1].brands.length).toBe(2)
-        expect(newForm.sectionDetails[1].itemDetails[1].brands[1].brandName).toBe("nestle")
+   it('should test the computed variable selectedBrandData returning bselected brand', () => {
+      newForm.sectionDetails[0].itemDetails[0].selectedBrandId = 1011
+      const brand = newForm.sectionDetails[0].itemDetails[0].selectedBrandData
+      expect(brand.brandName).toBe('nestle')
+      expect(brand.maxQuantity).toBe(4)
+   })
 
+   it('should test is coumputed variable is  setUserSelectedBrandWithQuantity ', () => {
+      newForm.sectionDetails[0].itemDetails[0].setUserSelectedBrandWithQuantity(
+         1011,
+         1,
+         40
+      )
+      expect(newForm.sectionDetails[0].itemDetails[0].brands[1].count).toBe(1)
+      expect(newForm.sectionDetails[0].itemDetails[0].brands[0].count).toBe(0)
+      expect(newForm.sectionDetails[0].itemDetails[0].totalPriceOfAnItem).toBe(
+         40
+      )
+      expect(
+         newForm.sectionDetails[0].itemDetails[0].selectedQuantityPerItem
+      ).toBe(1)
+   })
 
+   it('should computed variable  get the userSelectedBrandWith Quantity', () => {
+      const defaultBrand =
+         newForm.sectionDetails[0].itemDetails[0].userSelectedBrandWithQuantity
+      expect(defaultBrand.brandName).toBe('dabour')
+      expect(defaultBrand.count).toBe(1)
+   })
 
-    })
+   it('should test the computed variable userSelectedQuantityAndCost is returning the previously selected brand', () => {
+      newForm.sectionDetails[0].itemDetails[0].brands[0].count = 3
+      newForm.sectionDetails[0].itemDetails[0].brands[1].count = 2
+      const totalCostAndQty = newForm.userSelectedQuantityAndCost
 
-    it("shoud test the computed varible is returning the selectedSection ", () => {
-        
-        newForm.selectedSectionId = 10
-        const newSection = newForm.selectedSectionData
-        expect(newSection.name).toBe("snack items")
-        expect(newSection.itemDetails[0].id).toBe(101)
-    })
-    
-    it("should test the computed variable selectedBrandData returning bselected brand", () => {
-        newForm.sectionDetails[0].itemDetails[0].selectedBrandId = 1011
-        const brand = newForm.sectionDetails[0].itemDetails[0].selectedBrandData 
-        expect(brand.brandName).toBe("nestle")
-        expect(brand.maxQuantity).toBe(4)
-    })
-    
-    
-    
-    
-    it("should test is coumputed variable is  setUserSelectedBrandWithQuantity ", () => {
-        newForm.sectionDetails[0].itemDetails[0].setUserSelectedBrandWithQuantity(1011,1,40)
-        expect(newForm.sectionDetails[0].itemDetails[0].brands[1].count).toBe(1)
-        expect(newForm.sectionDetails[0].itemDetails[0].brands[0].count).toBe(0)
-        expect(newForm.sectionDetails[0].itemDetails[0].totalPriceOfAnItem).toBe(40)
-        expect(newForm.sectionDetails[0].itemDetails[0].selectedQuantityPerItem).toBe(1)
-    } )
-    
-    
-    it("should computed variable  get the userSelectedBrandWith Quantity", () => {
-        const defaultBrand = newForm.sectionDetails[0].itemDetails[0].userSelectedBrandWithQuantity
-        expect(defaultBrand.brandName).toBe("dabour")
-        expect(defaultBrand.count).toBe(1)
-    })
-    
-    
-    
-    
-    
-    
-    
-    
-    it("should test the computed variable userSelectedQuantityAndCost is returning the previously selected brand",()=>{
-        
-        newForm.sectionDetails[0].itemDetails[0].brands[0].count = 3
-        newForm.sectionDetails[0].itemDetails[0].brands[1].count = 2
-        const totalCostAndQty = newForm.userSelectedQuantityAndCost
-        
-        // expect(newForm.sectionDetails[0].itemDetails[0].brands[0].count).toBe(3)
-        // expect(newForm.sectionDetails[0].itemDetails[0].brands[1].count).toBe(2)
-        // expect(newForm.userSelectedQuantityAndCost).toEqual(1)
-        // expect(totalCostAndQty).toBe(5)
-        const { getByRole, getByText, debug } = render(
+      // expect(newForm.sectionDetails[0].itemDetails[0].brands[0].count).toBe(3)
+      // expect(newForm.sectionDetails[0].itemDetails[0].brands[1].count).toBe(2)
+      // expect(newForm.userSelectedQuantityAndCost).toEqual(1)
+      // expect(totalCostAndQty).toBe(5)
+      const { getByRole, getByText, debug } = render(
          <Router history={createMemoryHistory()}>
             <SelectedFormRoute selectedFormStore={selectedFormStore} />
          </Router>
       )
-        debug()
-    })
-    
+      debug()
+   })
 })
-
-
 
 //     const expectedForm = {
 //             fromId: 1,

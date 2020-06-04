@@ -8,18 +8,18 @@ class AuthAPI {
    api
    constructor() {
       this.api = create({
-         baseURL: 'https://5ea1a14db9f5ca00166c1f27.mockapi.io/api/'
+         baseURL: 'https://87f6106585e7.ngrok.io/api/essentials_kit_management/'
       })
    }
 
-   async signInAPI(request) {
-      await networkCallWithApisauce(
+   signInAPI(request) {
+      return networkCallWithApisauce(
          this.api,
-         'v1/signin/',
+         'Loginform/v1/',
          request,
-         apiMethods.get
+         apiMethods.post
       )
-      return getUserSignInResponse
+      
    }
 }
 

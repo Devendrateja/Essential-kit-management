@@ -7,7 +7,7 @@ import { withRouter } from 'react-router-dom'
 import NavigationButton from '../../components/common/NavigationButton'
 import LoadingWrapperWithFailure from '../../components/common/LoadingWrapperWithFailure'
 
-import Header from './Header'
+import Header from '../../components/common/Header'
 import TitleBar from './TitleBar'
 import TableHeader from './TableHeader'
 import ListOfForms from './ListOfForms'

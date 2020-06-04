@@ -16,8 +16,7 @@ import {
    S_no,
    LastCol,
    DescEl
-}
-from './styledComponents'
+} from './styledComponents'
 
 @observer
 class SelectedFormTableRow extends React.Component {
@@ -28,17 +27,16 @@ class SelectedFormTableRow extends React.Component {
    @observable quantityOptions = []
 
    componentDidMount() {
-      const { item,selectedFormData } = this.props
+      const { item, selectedFormData } = this.props
       let defaultBrand = item.userSelectedBrandWithQuantity
-      console.log(defaultBrand, "componentDidMoun defaultBrand")
+      console.log(defaultBrand, 'componentDidMoun defaultBrand')
 
       if (defaultBrand !== undefined) {
          this.selectedBrand = {
             value: defaultBrand.brandName,
             label: defaultBrand.brandName,
-            id:defaultBrand.id
+            id: defaultBrand.id
          }
-
 
          for (let i = 0; i <= defaultBrand.maxQuantity; i++) {
             const obj = {
@@ -48,21 +46,23 @@ class SelectedFormTableRow extends React.Component {
             this.quantityOptions.push(obj)
          }
 
-
          this.selectedQuantity = {
             value: defaultBrand.count,
             label: defaultBrand.count
          }
-         
-         this.totalPriceOfAnItem = defaultBrand.count * defaultBrand.pricePerItem
+
+         this.totalPriceOfAnItem =
+            defaultBrand.count * defaultBrand.pricePerItem
          this.pricePerItem = defaultBrand.pricePerItem
-         item.setUserSelectedBrandWithQuantity(this.selectedBrand.id, this.selectedQuantity.value, this.totalPriceOfAnItem)
+         item.setUserSelectedBrandWithQuantity(
+            this.selectedBrand.id,
+            this.selectedQuantity.value,
+            this.totalPriceOfAnItem
+         )
       }
-      
-      console.log("this.selectedQuantity", this.selectedQuantity)
+
+      console.log('this.selectedQuantity', this.selectedQuantity)
    }
-
-
 
    handleChangeBrands = selectedOption => {
       const { item } = this.props
@@ -82,28 +82,34 @@ class SelectedFormTableRow extends React.Component {
       }
 
       if (this.selectedQuantity.value > max) {
-         console.log(max, "max")
+         console.log(max, 'max')
          this.selectedQuantity = {
             value: 0,
             label: 0
          }
-         
       }
-      (this.selectedQuantity !== 0 ) ? this.totalPriceOfAnItem = this.selectedQuantity.value  * this.pricePerItem : this.totalPriceOfAnItem = 0
-      item.setUserSelectedBrandWithQuantity(this.selectedBrand.id, this.selectedQuantity.value, this.totalPriceOfAnItem)
-      
+      this.selectedQuantity !== 0
+         ? (this.totalPriceOfAnItem =
+              this.selectedQuantity.value * this.pricePerItem)
+         : (this.totalPriceOfAnItem = 0)
+      item.setUserSelectedBrandWithQuantity(
+         this.selectedBrand.id,
+         this.selectedQuantity.value,
+         this.totalPriceOfAnItem
+      )
    }
 
    handleQuantity = qty => {
-      const { item , selectedFormData} = this.props
+      const { item, selectedFormData } = this.props
       selectedFormData.isSelected = !selectedFormData.isSelected
       this.selectedQuantity = qty
       this.totalPriceOfAnItem = qty.value * this.pricePerItem
-      item.setUserSelectedBrandWithQuantity(this.selectedBrand.id, qty.value,this.totalPriceOfAnItem)
-      
+      item.setUserSelectedBrandWithQuantity(
+         this.selectedBrand.id,
+         qty.value,
+         this.totalPriceOfAnItem
+      )
    }
-
-
 
    setItemDetails = () => {
       const { item } = this.props

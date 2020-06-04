@@ -4,7 +4,7 @@
     {
       "form_id": 1,
       "form_name": "snacks",
-      "form_status": "Online",
+      "form_status": "Live",
       "close_date": "20-7-8",
       "expected_delivery_date": "2020-05-20",
       "items_count": 10,
@@ -36,7 +36,7 @@
     },{
       "form_id": 4,
       "form_name": "snacks",
-      "form_status": "Online",
+      "form_status": "Live",
       "close_date": "20-7-8",
       "expected_delivery_date": "2020-05-20",
       "items_count": 10,
@@ -68,7 +68,7 @@
     },{
       "form_id": 7,
       "form_name": "snacks",
-      "form_status": "Online",
+      "form_status": "Live",
       "close_date": "20-7-8",
       "expected_delivery_date": "2020-05-20",
       "items_count": 10,

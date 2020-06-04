@@ -67,6 +67,7 @@ export const Typo14WhiteHKGroteskSemiBold = styled.span`
    color: ${Colors.white};
 `
 
+
 export const Typo12SteelHKGroteskSemiBold = styled.span`
    font-family: HKGrotesk;
    font-size: 12px;
@@ -110,6 +111,19 @@ export const Typo12SteelHKGroteskRegular = styled.span`
    color: ${Colors.steel};
 `
 
+export const Typo12BrightBlueRubikRegular = styled.span`
+   font-family: Rubik;
+  font-size: 12px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.33;
+  letter-spacing: normal;
+  color: ${Colors.brightBlue};
+
+`
+
+
 export const TextStyle7 = styled.span`
    font-family: HKGrotesk;
    font-size: 16px;
@@ -130,4 +144,16 @@ export const TextStyle8 = styled.span`
    line-height: 1.5;
    letter-spacing: normal;
    color: ${Colors.neonRed};
+`
+
+export const TextStyle4 = styled.span`
+    font-family: HKGrotesk;
+   font-size: 18px;
+   font-weight: 500;
+   font-stretch: normal;
+   font-style: normal;
+   line-height: 1.5;
+   letter-spacing: normal;
+   color: ${Colors.white};
+   
 `

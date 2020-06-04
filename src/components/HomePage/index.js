@@ -4,7 +4,8 @@ import logo from '../../logo.svg'
 import { SIGN_IN_PATH } from '../../AuthenticationModule/constants/RouteConstants'
 import {
    USER_HOME_PATH,
-   SELECTED_FORM_PATH
+   SELECTED_FORM_PATH,
+   CLOSED_FORM_PATH
 } from '../../UserModule/constants/RouteConstants'
 
 function App() {
@@ -20,6 +21,9 @@ function App() {
             </div>
             <div>
                <Link to={SELECTED_FORM_PATH}>Selected Form</Link>
+            </div>
+            <div>
+               <Link to={CLOSED_FORM_PATH}>Closed Form</Link>
             </div>
          </nav>
       </div>

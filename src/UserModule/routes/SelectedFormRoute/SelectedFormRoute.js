@@ -5,21 +5,17 @@ import { API_FETCHING, API_SUCCESS, API_FAILED } from '@ib/api-constants'
 import { Redirect } from 'react-router-dom'
 import { withRouter } from 'react-router-dom'
 
-
 import { clearUserSession } from '../../../utils/StorageUtils.js'
 import NoDataView from '../../../components/common/NoDataView'
 
 import SelectedForm from '../../components/SelectedForm'
 import SelectedFormSectionBar from '../../components/SelectedForm/SelectedFormSectionBar'
 
-
-
 import {
    Typo18DarkBlueGreyHKGroteskBold,
    Typo16DarkBlueGreyHKGroteskRegular,
    Typo12DarkBlueGreyHKGroteskSemiBold
-}
-from '../../../styleGuide/Typos'
+} from '../../../styleGuide/Typos'
 
 import {
    Container,
@@ -29,21 +25,20 @@ import {
    BlackText,
    Note,
    Table
-}
-from '../../components/SelectedForm/styledComponents'
-
+} from '../../components/SelectedForm/styledComponents'
 
 @inject('selectedFormStore')
 @observer
 class SelectedFormRoute extends React.Component {
-
    componentDidMount() {
-      console.log('component did mount selectedForm route', this.props.match.params.id)
+      console.log(
+         'component did mount selectedForm route',
+         this.props.match.params.id
+      )
       const formId = this.props.match.params.id
       const { getSelectedFormData } = this.props.selectedFormStore
       getSelectedFormData(formId)
    }
-
 
    selectedFormSuccessUi = () => {
       const {
@@ -60,57 +55,53 @@ class SelectedFormRoute extends React.Component {
 
       return (
          <div>
-               <InstructionsBar>
-                  <Typo18DarkBlueGreyHKGroteskBold>
-                     INSTRUCTIONS
-                  </Typo18DarkBlueGreyHKGroteskBold>
-                  <Typo16DarkBlueGreyHKGroteskRegular>
-                     1. Only one set of nacks will be given to one individual .
-                     Your snacks will not be given to another person . So
-                     ,please collect them directly
-                     <br />
-                     2. If you want to make any changes after submitting the
-                     form (Snacks form and payment confirmation form),you can
-                     edit the submitted form using the link that is send to your
-                     email.
-                  </Typo16DarkBlueGreyHKGroteskRegular>
-               </InstructionsBar>
-               
-               <SelectedFormSectionBar
-                  selectedFormData={selectedFormData}
-                  listOfSections={sectionDetails}
-               />
+            <InstructionsBar>
+               <Typo18DarkBlueGreyHKGroteskBold>
+                  INSTRUCTIONS
+               </Typo18DarkBlueGreyHKGroteskBold>
+               <Typo16DarkBlueGreyHKGroteskRegular>
+                  1. Only one set of nacks will be given to one individual .
+                  Your snacks will not be given to another person . So ,please
+                  collect them directly
+                  <br />
+                  2. If you want to make any changes after submitting the form
+                  (Snacks form and payment confirmation form),you can edit the
+                  submitted form using the link that is send to your email.
+               </Typo16DarkBlueGreyHKGroteskRegular>
+            </InstructionsBar>
+
+            <SelectedFormSectionBar
+               selectedFormData={selectedFormData}
+               listOfSections={sectionDetails}
+            />
          </div>
       )
    }
    onClickRetry = () => {
       const { getSelectedFormData } = this.props
       const formId = this.props.match.params.id
-      getSelectedFormData(formId);
+      getSelectedFormData(formId)
    }
-   
-   
-   signOut=()=>{
+
+   signOut = () => {
       clearUserSession()
       this.redirectToSignInPage()
    }
-   
-   
+
    redirectToSignInPage = () => {
       const { history } = this.props
       const signin = history.push('/essential-kit-management/signin')
       return <div>{signin}</div>
    }
 
-
    render() {
       const {
          selectedFormData,
          getSelectedFormAPIStatus,
          getSelectedFormAPIError,
-         changeSection,
+         changeSection
       } = this.props.selectedFormStore
-      console.log("dude............................")
+      console.log('dude............................')
       return (
          <SelectedForm
             selectedFormSuccessUi={this.selectedFormSuccessUi}

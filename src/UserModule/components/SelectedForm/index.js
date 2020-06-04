@@ -5,7 +5,7 @@ import { Redirect } from 'react-router-dom'
 import { withRouter } from 'react-router-dom'
 import { API_FETCHING, API_SUCCESS, API_FAILED } from '@ib/api-constants'
 
-import Header from '../Header'
+import Header from '../../../components/common/Header'
 import SelectedFormTitleBar from './SelectedFormTitleBar'
 
 import SelectedFormFooter from './SelectedFormFooter'
@@ -21,13 +21,10 @@ import {
    BlackText,
    Note,
    Table
-}
-from './styledComponents'
+} from './styledComponents'
 
 @observer
 class SelectedForm extends React.Component {
-
-
    render() {
       const {
          selectedFormSuccessUi,
@@ -45,16 +42,15 @@ class SelectedForm extends React.Component {
                <SelectedFormTitleBar selectedFormData={selectedFormData} />
                <LoadingWrapperWithFailure
                   renderSuccessUI={selectedFormSuccessUi}
-                  onRetryClick = {onClickRetry}
+                  onRetryClick={onClickRetry}
                   apiStatus={apiStatus}
                />
             </Body>
             <SelectedFormFooter
-                     apiStatus={apiStatus}
-                     selectedFormData={selectedFormData}
+               apiStatus={apiStatus}
+               selectedFormData={selectedFormData}
             />
             }
-            
          </Container>
       )
    }

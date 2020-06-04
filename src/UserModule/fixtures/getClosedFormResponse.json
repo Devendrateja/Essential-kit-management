@@ -1,0 +1,58 @@
+[
+  {
+    "item_id": 1,
+    "item_name": "string",
+    "items_added": 8,
+    "items_recieved": 2,
+    "cost_incurred": 250
+  },
+  {
+    "item_id": 2,
+    "item_name": "string",
+    "items_added": 6,
+    "items_recieved": 4,
+    "cost_incurred": 100
+  },
+  {
+    "item_id": 3,
+    "item_name": "string",
+    "items_added": 2,
+    "items_recieved": 2,
+    "cost_incurred": 0
+  },
+  {
+    "item_id": 4,
+    "item_name": "string",
+    "items_added": 0,
+    "items_recieved": 0,
+    "cost_incurred": 0
+  },
+  {
+    "item_id": 5,
+    "item_name": "string",
+    "items_added": 0,
+    "items_recieved": 0,
+    "cost_incurred": 0
+  },
+  {
+    "item_id": 6,
+    "item_name": "string",
+    "items_added": 0,
+    "items_recieved": 0,
+    "cost_incurred": 0
+  },
+  {
+    "item_id": 7,
+    "item_name": "string",
+    "items_added": 0,
+    "items_recieved": 0,
+    "cost_incurred": 0
+  },
+  {
+    "item_id": 8,
+    "item_name": "string",
+    "items_added": 0,
+    "items_recieved": 0,
+    "cost_incurred": 0
+  }
+]

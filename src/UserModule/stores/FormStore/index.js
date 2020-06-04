@@ -8,7 +8,9 @@ import {
 import { bindPromiseWithOnSuccess } from '@ib/mobx-promise'
 
 import getUserResponse from '../../fixtures/getUserResponse.json'
+
 import Form from '../models/FormModel'
+
 import { setAccessToken, clearUserSession } from '../../../utils/StorageUtils'
 
 class FormStore {
@@ -32,7 +34,6 @@ class FormStore {
 
    @action.bound
    setGetFormsAPIStatus(status) {
-      console.log('status', status)
       this.getFormsAPIStatus = status
    }
 
@@ -43,7 +44,6 @@ class FormStore {
 
    @action.bound
    setFormsAPIResponse(response) {
-      console.log('response from fixtures', response)
       this.listOfForms = response.formsList
       this.totalNoOfForms = response.totalForms
    }
@@ -61,6 +61,7 @@ class FormStore {
       let newForm = new Form(form)
       return newForm
    }
+
 }
 
 export default FormStore
