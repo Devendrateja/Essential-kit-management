@@ -9,11 +9,15 @@ class SelectedFormAPI {
 
    constructor() {
       this.api = create({
-         baseURL: ''
+         baseURL: 'https://cf152d619551.ngrok.io/api/essentials_kit_management/'
       })
    }
-   getSelectedFormAPI() {
-      return networkCallWithApisauce(this.api, '', {}, apiMethods.get)
+   getSelectedFormAPI(id) {
+      return networkCallWithApisauce(this.api, `form/${id}/v1`, {}, apiMethods.get)
+   }
+   
+   setSelectedFormAPI(id,data) {
+      return networkCallWithApisauce(this.api, `form/${id}/v1`, data, apiMethods.post)
    }
 }
 

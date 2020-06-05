@@ -44,8 +44,8 @@ class ClosedFormStore {
 
    @action.bound
    setClosedFormAPIResponse(response) {
-      let listOfClosedItems = response
-      this.closedFormList = listOfClosedItems.map(eachItem => {
+      
+      this.closedFormList = response.list_of_items.map(eachItem => {
          const item = new ClosedFormModel(eachItem)
          return item
       })
@@ -54,8 +54,8 @@ class ClosedFormStore {
    
 
    @action.bound
-   getClosedFormData(){
-      const promise = this.closedFormAPIService.getClosedFormAPI()
+   getClosedFormData(id){
+      const promise = this.closedFormAPIService.getClosedFormAPI(id)
       return bindPromiseWithOnSuccess(promise)
          .to(this.setGetClosedFormAPIStatus, this.setClosedFormAPIResponse)
          .catch(this.setGetClosedFormAPIError)

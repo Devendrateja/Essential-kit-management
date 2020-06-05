@@ -20,7 +20,9 @@ class ClosedFormRoute extends React.Component {
     
     componentDidMount(){
         const {getClosedFormData} = this.props.closedFormStore
-        getClosedFormData()
+        let id = this.props.match.params.id
+        console.log("component did mount id ", id, this.props)
+        getClosedFormData(id)
     }
     
      signOut = () => {
@@ -36,7 +38,9 @@ class ClosedFormRoute extends React.Component {
    
    onClickRetry=()=>{
        const {getClosedFormData} = this.props.closedFormStore
-        getClosedFormData()
+       let id = this.props.match.params.id
+       console.log("on retry click closed form id",id, this.props)
+        getClosedFormData(id)
    }
    
 

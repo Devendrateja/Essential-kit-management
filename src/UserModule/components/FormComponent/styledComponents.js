@@ -5,7 +5,7 @@ import { Colors } from '../../../themes/Colors.js'
 export const Container = styled.div`${tw`flex justify-between items-center mx-16 border bg-white`}
                             border:solid 1px ${Colors.lightBlueGrey};
                             overflow:auto;
-                            height:60px;`
+                            height:80px;`
 
 export const Span = styled.span`
    ${tw`flex justify-center items-center  p-1 mx-2 whitespace-normal`}

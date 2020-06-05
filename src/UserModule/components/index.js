@@ -47,17 +47,17 @@ class UserDashBoard extends React.Component {
             <MiniContainer>
                <TitleBar />
                <TableHeader />
-               <LoadingWrapperWithFailure
-                  renderSuccessUI={renderSuccessUI}
-                  getFormsList={getFormsList}
-                  getStatusOfForm={getStatusOfForm}
-                  listOfForms={listOfForms}
-                  onSelectForm={onSelectForm}
-                  apiStatus={getFormsAPIStatus}
-                  apiError={getFormsAPIError}
-                  onRetryClick={onRetryClick}
-                  createFormComponent={createFormComponent}
-               />
+                  <LoadingWrapperWithFailure
+                     renderSuccessUI={renderSuccessUI}
+                     getFormsList={getFormsList}
+                     getStatusOfForm={getStatusOfForm}
+                     listOfForms={listOfForms}
+                     onSelectForm={onSelectForm}
+                     apiStatus={getFormsAPIStatus}
+                     apiError={getFormsAPIError}
+                     onRetryClick={onRetryClick}
+                     createFormComponent={createFormComponent}
+                  />
                <Pagination
                   goToNextPage={goToNextPage}
                   currentPage={currentPage}

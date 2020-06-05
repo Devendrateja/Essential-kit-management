@@ -1,6 +1,6 @@
 {
-  "totalForms" : 10,
-  "formsList":[
+  "total_forms" : 10,
+  "list_of_forms":[
     {
       "form_id": 1,
       "form_name": "snacks",

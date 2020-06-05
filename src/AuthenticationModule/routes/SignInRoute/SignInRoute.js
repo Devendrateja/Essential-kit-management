@@ -8,7 +8,7 @@ import { withRouter } from 'react-router-dom'
 import SignInPage from '../../components'
 import DataStrings from '../../../i18n/strings.json'
 import { USER_HOME_PATH } from '../../../UserModule/constants/RouteConstants'
-import { getAccessToken } from '../../../utils/StorageUtils.js'
+import { getAccessToken,setAccessToken } from '../../../utils/StorageUtils.js'
 
 @inject('authStore')
 @observer
@@ -80,7 +80,6 @@ class SignInRoute extends React.Component {
    render() {
       const { getUserSignInAPIStatus } = this.props.authStore
       const AccessToken = getAccessToken()
-      console.log("errrrrrrrrrrrrrrrrrroer", this.errorMessage)
       if (AccessToken) {
          return this.renderUserHome()
       }

@@ -44,8 +44,8 @@ class FormStore {
 
    @action.bound
    setFormsAPIResponse(response) {
-      this.listOfForms = response.formsList
-      this.totalNoOfForms = response.totalForms
+      this.listOfForms = response.list_of_forms
+      this.totalNoOfForms = response.total_forms
    }
 
    @action.bound

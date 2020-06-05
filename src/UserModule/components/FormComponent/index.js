@@ -18,6 +18,7 @@ class FormComponent extends React.Component {
       const { sno, newForm, getStatusOfForm, onSelectForm } = this.props
 
       let status = getStatusOfForm(newForm)
+      console.log("stats o date", status)
       return (
          <Container
             onClick={() => onSelectForm(newForm.formId, newForm.formStatus)}

@@ -25,6 +25,7 @@ class ClosedForm extends React.Component {
    
    renderSuccessUI=()=>{
       const { closedFormList } = this.props
+      console.log("closed form list ", closedFormList)
       if(closedFormList.length ===0 ){
          return <NoDataView/>
       }

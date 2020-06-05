@@ -95,13 +95,19 @@ class SelectedFormRoute extends React.Component {
    }
 
    render() {
+      let selectedFormId = this.props.match.params.id
+      
       const {
          selectedFormData,
          getSelectedFormAPIStatus,
          getSelectedFormAPIError,
-         changeSection
+         changeSection,
+         updateUserSelectedFormData,
+         getUserSavedDataAPIError,
+         getUserSavedDataAPIStatus
       } = this.props.selectedFormStore
-      console.log('dude............................')
+      
+      
       return (
          <SelectedForm
             selectedFormSuccessUi={this.selectedFormSuccessUi}
@@ -111,6 +117,10 @@ class SelectedFormRoute extends React.Component {
             selectedFormData={selectedFormData}
             changeSection={changeSection}
             signOut={this.signOut}
+            selectedFormId={selectedFormId}
+            updateUserSelectedFormData={updateUserSelectedFormData}
+            getUserSavedDataAPIError={getUserSavedDataAPIError}
+            getUserSavedDataAPIError={getUserSavedDataAPIError}
          />
       )
    }

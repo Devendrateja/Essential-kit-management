@@ -7,12 +7,12 @@ class ClosedFormAPI {
 
    constructor() {
       this.api = create({
-         baseURL: ''
+         baseURL: 'https://cf152d619551.ngrok.io/api/essentials_kit_management/'
       })
    }
 
-   getClosedFormAPI() {
-      return networkCallWithApisauce(this.api, '', {}, apiMethods.get)
+   getClosedFormAPI(id) {
+      return networkCallWithApisauce(this.api, `closed/form/${id}/v1/`, {}, apiMethods.get)
    }
 }
 

@@ -6,13 +6,13 @@ class FormFixturesService {
          resolve(getUserResponse)
       })
 
-      const formsData = promise.formsList.slice(offset, limit + offset)
+      const formsData = promise.list_of_forms.slice(offset, limit + offset)
 
       const response = {
-         formsList: formsData,
-         totalForms: promise.totalForms
+         list_of_forms: formsData,
+         total_forms: promise.total_forms
       }
-
+      console.log('response in fixtures', response)
       return response
    }
 }

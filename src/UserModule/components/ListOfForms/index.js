@@ -25,7 +25,7 @@ class ListOfForms extends React.Component {
                   const newForm = createFormComponent(eachForm)
                   return (
                      <FormComponent
-                        key={newForm.formName}
+                        key={newForm.formId}
                         onSelectForm={onSelectForm}
                         sno={count}
                         newForm={newForm}

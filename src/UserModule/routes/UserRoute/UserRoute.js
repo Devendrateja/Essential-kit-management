@@ -68,7 +68,7 @@ class UserRoute extends React.Component {
 
    onRetryClick = () => {
       const { getFormsList } = this.props.formStore
-      console.log('retry clicked')
+      console.log('retry clicked',getFormsList)
       getFormsList(this.limit, this.offset)
    }
 
@@ -101,6 +101,7 @@ class UserRoute extends React.Component {
 
    renderSuccessUI = () => {
       const { listOfForms, createFormComponent } = this.props.formStore
+      console.log("listofFormsShouldnotbeundefined", listOfForms)
       if (listOfForms.length <= 0) {
          return <NoDataView />
       }
