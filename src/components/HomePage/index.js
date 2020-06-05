@@ -5,7 +5,8 @@ import { SIGN_IN_PATH } from '../../AuthenticationModule/constants/RouteConstant
 import {
    USER_HOME_PATH,
    SELECTED_FORM_PATH,
-   CLOSED_FORM_PATH
+   CLOSED_FORM_PATH,
+   PAY_REQUEST_PATH
 } from '../../UserModule/constants/RouteConstants'
 
 function App() {
@@ -24,6 +25,9 @@ function App() {
             </div>
             <div>
                <Link to={CLOSED_FORM_PATH}>Closed Form</Link>
+            </div>
+            <div>
+               <Link to={PAY_REQUEST_PATH}>pay request path</Link>
             </div>
          </nav>
       </div>

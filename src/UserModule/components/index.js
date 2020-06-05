@@ -12,7 +12,7 @@ import TitleBar from './TitleBar'
 import TableHeader from './TableHeader'
 import ListOfForms from './ListOfForms'
 import Pagination from './Pagination'
-import { Container, MiniContainer } from './styledComponents'
+import { Container, MiniContainer,LoadingWrapperContainer } from './styledComponents'
 
 @observer
 class UserDashBoard extends React.Component {
@@ -35,18 +35,21 @@ class UserDashBoard extends React.Component {
          offset,
          limitedNoOfFormsPerPage,
          totalNoOfForms,
-         onSelectForm
+         onSelectForm,
+         goToPayRequestPage
       } = this.props
 
       return (
          <Container>
             <Header
+               goToPayRequestPage={goToPayRequestPage}
                redirectToSignInPage={redirectToSignInPage}
                signOut={signOut}
             />
             <MiniContainer>
                <TitleBar />
                <TableHeader />
+               <LoadingWrapperContainer>
                   <LoadingWrapperWithFailure
                      renderSuccessUI={renderSuccessUI}
                      getFormsList={getFormsList}
@@ -58,6 +61,7 @@ class UserDashBoard extends React.Component {
                      onRetryClick={onRetryClick}
                      createFormComponent={createFormComponent}
                   />
+               </LoadingWrapperContainer>
                <Pagination
                   goToNextPage={goToNextPage}
                   currentPage={currentPage}

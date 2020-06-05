@@ -38,7 +38,8 @@ class SignInForm extends React.Component {
          errorMessagePasswordField,
          errorMessageUsernameField,
          onChangeUsername,
-         onChangePassword
+         onChangePassword,
+         responseError
       } = this.props
       const {
          inputTypeText,
@@ -108,7 +109,7 @@ class SignInForm extends React.Component {
                      errorMessage={errorMessagePasswordField}
                   />
                </div>
-
+               
                <Button
                   onClickButton={onClickButton}
                   buttonValue={
@@ -117,7 +118,10 @@ class SignInForm extends React.Component {
                   apiStatus={apiStatus}
                   buttonCSS={buttonCSS}
                />
-
+                <DisplayErrorMessage
+                     errorMessage={responseError}
+                  />
+               
                <p>
                   Don't have an account ? <a>signUp</a>
                </p>

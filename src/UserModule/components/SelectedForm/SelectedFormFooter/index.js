@@ -30,21 +30,21 @@ class SelectedFormFooter extends React.Component {
             break;
             
          case API_FETCHING :
-            buttonText = 
+            buttonText = "Saving..."
+            break;
       }
+      return buttonText
       
    }
    
    
-   
-   
-   
-   
-   
    saveUserData = () => {
-      const { selectedFormData } = this.props
+      const { selectedFormData ,updateUserSelectedFormData} = this.props
       const data = selectedFormData.updateUserData()
-      console.log('updated userData', data)
+      const id = selectedFormData.fromId
+      console.log("saved response",id, data)
+      updateUserSelectedFormData(id,data)
+      
    }
 
    render() {
@@ -55,34 +55,34 @@ class SelectedFormFooter extends React.Component {
          Save
       } = DataStrings.seletedFormFooter
 
-      const { apiStatus, selectedFormData } = this.props
-      let savedButtonText = this.getButtonText(apiStatus)
+      const { getUserSavedDataAPIStatus:apiStatusOfSavedData, apiStatusOfSelectedFormData:apiStatusOfSelectedForm , selectedFormData,updateUserSelectedFormData } = this.props
+      let saveButtonText = this.getButtonText(apiStatusOfSavedData)
       
       
       return (
          <Footer>
             <ValuationRow>
                <Typo14WhiteHKGroteskSemiBold>
-                  {apiStatus === API_SUCCESS
+                  {apiStatusOfSelectedForm === API_SUCCESS
                      ? ` ${ItemsAdded} : ${selectedFormData.userSelectedQuantityAndCost.itemsAdded} `
                      : `${ItemsAdded}`}
                </Typo14WhiteHKGroteskSemiBold>
                <Typo14WhiteHKGroteskSemiBold>
-                  {apiStatus === API_SUCCESS
+                  {apiStatusOfSelectedForm === API_SUCCESS
                      ? ` ${TotalCost} : ${selectedFormData.userSelectedQuantityAndCost.totalCost} `
                      : `${ItemsAdded}`}
                </Typo14WhiteHKGroteskSemiBold>
             </ValuationRow>
             <UpdateBlock>
                <SaveButton
-                  disabled={apiStatus !== API_SUCCESS ? true : false}
+                  
                   onClick={this.saveUserData}
                >
                   {
-                     
+                    Save
                   }
                </SaveButton>
-               <Button disabled={apiStatus !== API_SUCCESS ? true : false}>
+               <Button disabled={apiStatusOfSavedData !== API_SUCCESS ? true : false}>
                   {ProceedToPay}
                </Button>
             </UpdateBlock>
@@ -92,9 +92,4 @@ class SelectedFormFooter extends React.Component {
 }
 
 export default SelectedFormFooter
-// //
-// let totalCost
-//       if (apiStatus === API_SUCCESS) {
-//          let total = selectedFormData.userSelectedQuantityAndCost
-//          totalCost = total.totalCost
-//       }
+//disabled={(apiStatusOfSelectedForm === API_SUCCESS) || (apiStatusOfSelectedForm === API_INITIAL) ? false : true}

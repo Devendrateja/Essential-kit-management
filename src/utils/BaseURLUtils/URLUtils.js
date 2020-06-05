@@ -1,0 +1,1 @@
+export const BaseURL = 'https://56f9b307f004.ngrok.io/api/essentials_kit_management/'

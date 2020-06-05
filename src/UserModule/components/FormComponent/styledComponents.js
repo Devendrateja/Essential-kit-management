@@ -2,7 +2,7 @@ import tw from 'tailwind.macro'
 import styled from '@emotion/styled'
 import { Colors } from '../../../themes/Colors.js'
 
-export const Container = styled.div`${tw`flex justify-between items-center mx-16 border bg-white`}
+export const Container = styled.div`${tw`flex justify-between items-center border bg-white`}
                             border:solid 1px ${Colors.lightBlueGrey};
                             overflow:auto;
                             height:80px;`

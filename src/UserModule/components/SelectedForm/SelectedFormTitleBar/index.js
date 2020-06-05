@@ -26,7 +26,7 @@ class SelectedFormTitleBar extends React.Component {
                </Typo32DarkBlueGreyHKGroteskRegular>
             )}
             {selectedFormData !== undefined && (
-               <TextStyle7>Close on : 26 may 8pm</TextStyle7>
+               <TextStyle7>Close On : {selectedFormData.closeDate}</TextStyle7>
             )}
          </Container>
       )

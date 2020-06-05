@@ -16,7 +16,8 @@ class SignInPage extends React.Component {
          errorMessageUsernameField,
          errorMessagePasswordField,
          onChangeUsername,
-         onChangePassword
+         onChangePassword,
+         responseError
       } = this.props
 
       return (
@@ -29,6 +30,7 @@ class SignInPage extends React.Component {
             errorMessagePasswordField={errorMessagePasswordField}
             onChangeUsername={onChangeUsername}
             onChangePassword={onChangePassword}
+            responseError={responseError}
          />
       )
    }

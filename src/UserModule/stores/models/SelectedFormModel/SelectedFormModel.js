@@ -25,6 +25,9 @@ class SelectedFormModel {
       })
    }
 
+
+
+
    @computed
    get selectedSectionData() {
       return this.sectionDetails.find(eachSection => {
@@ -51,8 +54,10 @@ class SelectedFormModel {
          itemsAdded: totalItems
       }
    }
-
-   updateUserData = () => {
+   
+   
+   @action.bound
+   updateUserData(){
       let userData = []
 
       this.sectionDetails.forEach(eachSection => {

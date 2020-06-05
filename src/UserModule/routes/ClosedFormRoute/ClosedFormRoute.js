@@ -65,4 +65,4 @@ class ClosedFormRoute extends React.Component {
 
 
 
-export default ClosedFormRoute;
+export default withRouter(ClosedFormRoute);

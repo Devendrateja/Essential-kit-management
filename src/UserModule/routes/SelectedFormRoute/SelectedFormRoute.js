@@ -31,14 +31,17 @@ import {
 @observer
 class SelectedFormRoute extends React.Component {
    componentDidMount() {
-      console.log(
-         'component did mount selectedForm route',
-         this.props.match.params.id
-      )
       const formId = this.props.match.params.id
       const { getSelectedFormData } = this.props.selectedFormStore
       getSelectedFormData(formId)
    }
+   
+   setIstructions=(instructions)=>{
+      return instructions
+      //.replace(/(?:\ r\n|\r|\n)/g, <br/>);
+   }
+   
+   
 
    selectedFormSuccessUi = () => {
       const {
@@ -60,13 +63,7 @@ class SelectedFormRoute extends React.Component {
                   INSTRUCTIONS
                </Typo18DarkBlueGreyHKGroteskBold>
                <Typo16DarkBlueGreyHKGroteskRegular>
-                  1. Only one set of nacks will be given to one individual .
-                  Your snacks will not be given to another person . So ,please
-                  collect them directly
-                  <br />
-                  2. If you want to make any changes after submitting the form
-                  (Snacks form and payment confirmation form),you can edit the
-                  submitted form using the link that is send to your email.
+                {this.setIstructions( selectedFormData.formDescription)}
                </Typo16DarkBlueGreyHKGroteskRegular>
             </InstructionsBar>
 
@@ -120,10 +117,17 @@ class SelectedFormRoute extends React.Component {
             selectedFormId={selectedFormId}
             updateUserSelectedFormData={updateUserSelectedFormData}
             getUserSavedDataAPIError={getUserSavedDataAPIError}
-            getUserSavedDataAPIError={getUserSavedDataAPIError}
+            getUserSavedDataAPIStatus={getUserSavedDataAPIStatus}
          />
       )
    }
 }
 
 export default SelectedFormRoute
+//  1. Only one set of nacks will be given to one individual .
+//                   Your snacks will not be given to another person . So ,please
+//                   collect them directly
+//                   <br />
+//                   2. If you want to make any changes after submitting the form
+//                   (Snacks form and payment confirmation form),you can edit the
+//                   submitted form using the link that is send to your email.

@@ -34,10 +34,9 @@ class SelectedForm extends React.Component {
          changeSection,
          onClickRetry,
          signOut,
-         selectedFormId,
          updateUserSelectedFormData,
-         getUserSavedDataAPIError,
-         getUserSavedDataAPIStatus
+         getUserSavedDataAPIStatus,
+         getUserSavedDataAPIError
       } = this.props
       return (
          <Container>
@@ -49,12 +48,13 @@ class SelectedForm extends React.Component {
                   onRetryClick={onClickRetry}
                   apiStatus={apiStatus}
                />
+               
             </Body>
             <SelectedFormFooter
-               apiStatus={getUserSavedDataAPIStatus}
                selectedFormData={selectedFormData}
-               selectedFormId={selectedFormId}
                updateUserSelectedFormData={updateUserSelectedFormData}
+               apiStatusOfSelectedFormData = {apiStatus}
+               getUserSavedDataAPIStatus={getUserSavedDataAPIStatus}
                getUserSavedDataAPIError={getUserSavedDataAPIError}
             />
             }

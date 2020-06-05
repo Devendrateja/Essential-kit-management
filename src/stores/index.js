@@ -29,37 +29,30 @@ import ClosedFormStore from "../UserModule/stores/ClosedFormStore"
 
 
 
+let isFixtures = true 
+
 
 
 const counterStore = new CounterStore()
 
 
-
-const authFixturesService = new AuthFixturesService()
-const authAPI = new AuthAPI()
-const authStore = new AuthStore(authFixturesService)
+const authAPI = (isFixtures) ? new AuthFixturesService() : new AuthAPI()
+const authStore = new AuthStore(authAPI)
 
 
 
-
-
-const formFixturesService = new FormFixturesService()
-const formAPI = new FormAPI()
-const formStore = new FormStore(formFixturesService)
+const formAPI = (isFixtures) ? new FormFixturesService() : new FormAPI()
+const formStore = new FormStore(formAPI)
 
 
 
-
-const selectedFormFixtures = new SelectedFormFixtures()
-const selectedFormAPI = new SelectedFormAPI()
-const selectedFormStore = new SelectedFormStore(selectedFormFixtures)
+const selectedFormAPI = (isFixtures) ? new SelectedFormFixtures() : new SelectedFormAPI()
+const selectedFormStore = new SelectedFormStore(selectedFormAPI)
 
 
 
-
-const closedFormFixturesService = new ClosedFormFixturesService()
-const closedFormAPI = new ClosedFormAPI()
-const closedFormStore = new ClosedFormStore(closedFormFixturesService)
+const closedFormAPI = (isFixtures) ?  new ClosedFormFixturesService() : new ClosedFormAPI()
+const closedFormStore = new ClosedFormStore(closedFormAPI)
 
 
 

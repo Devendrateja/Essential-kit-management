@@ -8,3 +8,5 @@ export const Container = styled.div`${tw`flex flex-col h-screen`}
 
 export const MiniContainer = styled.div`${tw`flex flex-col`}
                                 background-color:${Colors.whiteTwo}`
+
+export const LoadingWrapperContainer = styled.div`${tw`mx-16`}`

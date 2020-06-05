@@ -10,7 +10,8 @@ import { clearUserSession } from '../../../utils/StorageUtils.js'
 import NoDataView from '../../../components/common/NoDataView'
 import {
    SELECTED_FORM_PATH,
-   CLOSED_FORM_PATH
+   CLOSED_FORM_PATH,
+   PAY_REQUEST_PATH
 } from '../../constants/RouteConstants'
 
 import ListOfForms from '../../components/ListOfForms'
@@ -25,7 +26,7 @@ import {
 @inject('formStore')
 @observer
 class UserRoute extends React.Component {
-   limit = 2
+   limit = 8
    @observable currentPage = 0
    @observable offset = 0
 
@@ -125,6 +126,16 @@ class UserRoute extends React.Component {
       const signin = history.push('/essential-kit-management/signin')
       return <div>{signin}</div>
    }
+   
+   
+   goToPayRequestPage=()=>{
+      const { history } = this.props
+      const signin = history.push(PAY_REQUEST_PATH)
+      return <div>{signin}</div>
+   }
+   
+   
+   
 
    render() {
       const {
@@ -156,6 +167,7 @@ class UserRoute extends React.Component {
             currentPage={this.currentPage}
             onSelectForm={this.onSelectForm}
             signOut={this.signOut}
+            goToPayRequestPage={this.goToPayRequestPage}
          />
       )
    }

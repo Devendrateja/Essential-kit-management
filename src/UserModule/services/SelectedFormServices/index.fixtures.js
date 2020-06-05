@@ -16,12 +16,9 @@ class SelectedFormFixtures {
          resolve(data)
       })
       return promise
-      
    }
    
-   
-   
-   
+
 }
 
 export default SelectedFormFixtures

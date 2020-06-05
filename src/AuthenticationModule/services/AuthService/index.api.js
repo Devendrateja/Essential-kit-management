@@ -1,18 +1,19 @@
 import { create } from 'apisauce'
 import { apiMethods } from '../../../constants/APIConstants'
 import { networkCallWithApisauce } from '../../../utils/APIUtils'
-
+import { BaseURL } from "../../../utils/BaseURLUtils/URLUtils.js"
 import getUserSignInResponse from '../../fixtures/getUserSignInResponse.json'
 
 class AuthAPI {
    api
    constructor() {
       this.api = create({
-         baseURL: 'https://cf152d619551.ngrok.io/api/essentials_kit_management/'
+         baseURL: `${BaseURL}`
       })
    }
 
    signInAPI(request) {
+      console.log("request", request)
       return networkCallWithApisauce(
          this.api,
          'Loginform/v1/',

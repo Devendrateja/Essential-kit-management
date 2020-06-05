@@ -76,7 +76,7 @@ class SelectedFormStore {
    @action.bound
    setUserSavedDataAPIStatus(status){
       console.log("response of saved data status", status)
-      this.userUpdationAPIStatus = status
+      this.getUserSavedDataAPIStatus = status
    }
    
    
@@ -85,7 +85,7 @@ class SelectedFormStore {
    @action.bound
    setUserSavedDataAPIError(error){
       console.log("response of saved data error", error)
-      this.userUpdationAPIError = error
+      this.getUserSavedDataAPIError = error
    }
    
    
