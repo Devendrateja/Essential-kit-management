@@ -43,5 +43,15 @@
     "detailsOfItems" : "Details Of Items",
     "itemsAdded":"ITEMS ADDED",
     "itemsRecieved" : "ITEMS RECIEVED",
-    "costIncurred" : "COST INCURRED"
+    "costIncurred" : "COST INCURRED",
+     "payThrough" : "Pay Through",
+     "upiId" : "upi_id",
+     "verificationDetails" : "Verification Details",
+     "amount" : "AMOUNT",
+     "enterAmount" : "Enter Amount",
+     "transactionIdText" : "TRANSACTION  ID",
+     "transactionPlaceHolder" : "enter transsction id",
+     "transactionTypeText" : "TRANSACTION TYPE",
+     "uploadScreenShot" : "UPLOAD SCREENSHOT",
+     "DragnDropSentence" : "Drag and drop files or click to upload"
 }

@@ -11,27 +11,24 @@ import ClosedFormModel from '../models/ClosedFormModel'
 
 import { setAccessToken, clearUserSession } from '../../../utils/StorageUtils'
 
-
 class ClosedFormStore {
    closedFormAPIService
    @observable closedFormList
    @observable getClosedFormAPIStaus
    @observable getClosedFormAPIError
-   
-   constructor(closedFormAPI){
+
+   constructor(closedFormAPI) {
       this.closedFormAPIService = closedFormAPI
       this.init()
-      
    }
-   
+
    @action.bound
-   init(){
+   init() {
       this.getClosedFormAPIStaus = API_INITIAL
       this.getClosedFormAPIError = null
       this.closedFormList = []
    }
-   
-   
+
    @action.bound
    setGetClosedFormAPIStatus(status) {
       this.getClosedFormAPIStaus = status
@@ -44,24 +41,19 @@ class ClosedFormStore {
 
    @action.bound
    setClosedFormAPIResponse(response) {
-      
       this.closedFormList = response.list_of_items.map(eachItem => {
          const item = new ClosedFormModel(eachItem)
          return item
       })
    }
-   
-   
 
    @action.bound
-   getClosedFormData(id){
+   getClosedFormData(id) {
       const promise = this.closedFormAPIService.getClosedFormAPI(id)
       return bindPromiseWithOnSuccess(promise)
          .to(this.setGetClosedFormAPIStatus, this.setClosedFormAPIResponse)
          .catch(this.setGetClosedFormAPIError)
    }
-   
-   
 
    @computed
    get totalItemsDetailsWithCostIncurred() {
@@ -77,11 +69,8 @@ class ClosedFormStore {
          totalData.costIncurred += eachItem.costIncurred
       })
 
-      return totalData;
+      return totalData
    }
-   
 }
 
-
-
-export default ClosedFormStore;
+export default ClosedFormStore

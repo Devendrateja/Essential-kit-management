@@ -24,6 +24,33 @@ export const Typo32DarkBlueGreyHKGroteskRegular = styled.span`
    color: ${Colors.darkBlueGrey};
 `
 
+export const Typo24DarkBlueGreyHKGroteskBold = styled.span`
+font-family: HKGrotesk;
+  font-size: 24px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.33;
+  letter-spacing: normal;
+  color: ${Colors.darkBlueGrey};
+`
+
+export const Typo24DarkBlueGreyHKGroteskRegular = styled.span`
+font-family: HKGrotesk;
+  font-size: 24px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.33;
+  letter-spacing: normal;
+  color: ${Colors.darkBlueGrey};
+`
+
+
+
+
+
+ 
 export const Typo18DarkBlueGreyHKGroteskBold = styled.span`
    font-family: HKGrotesk;
    font-size: 18px;
@@ -46,6 +73,31 @@ export const Typo16DarkBlueGreyHKGroteskRegular = styled.span`
    color: ${Colors.darkBlueGrey};
 `
 
+export const Typo16DarkBlueGreyHKGroteskMedium = styled.span`
+   font-family: HKGrotesk;
+  font-size: 16px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.5;
+  letter-spacing: normal;
+  color: ${Colors.darkBlueGrey};
+
+`
+
+export const Typo16BrightBlueHKGroteskBold = styled.span`
+   font-family: HKGrotesk;
+  font-size: 12px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.33;
+  letter-spacing: normal;
+  color: ${Colors.brightBlue};
+`
+
+
+
 export const Typo14SteelHKGroteskRegular = styled.span`
    font-family: HKGrotesk;
    font-size: 14px;
@@ -66,7 +118,6 @@ export const Typo14WhiteHKGroteskSemiBold = styled.span`
    letter-spacing: normal;
    color: ${Colors.white};
 `
-
 
 export const Typo12SteelHKGroteskSemiBold = styled.span`
    font-family: HKGrotesk;
@@ -113,14 +164,24 @@ export const Typo12SteelHKGroteskRegular = styled.span`
 
 export const Typo12BrightBlueRubikRegular = styled.span`
    font-family: Rubik;
-  font-size: 12px;
+   font-size: 12px;
+   font-weight: normal;
+   font-stretch: normal;
+   font-style: normal;
+   line-height: 1.33;
+   letter-spacing: normal;
+   color: ${Colors.brightBlue};
+`
+
+export const TextStyle11 = styled.span`
+   font-family: HKGrotesk;
+  font-size: 14px;
   font-weight: normal;
   font-stretch: normal;
   font-style: normal;
-  line-height: 1.33;
+  line-height: 1.71;
   letter-spacing: normal;
-  color: ${Colors.brightBlue};
-
+  color: ${Colors.jade};
 `
 
 
@@ -146,8 +207,20 @@ export const TextStyle8 = styled.span`
    color: ${Colors.neonRed};
 `
 
+export const TextStyle5 = styled.span`
+
+font-family: HKGrotesk;
+  font-size: 10px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.6;
+  letter-spacing: normal;
+  color: ${Colors.darkBlueGrey};
+`
+
 export const TextStyle4 = styled.span`
-    font-family: HKGrotesk;
+   font-family: HKGrotesk;
    font-size: 18px;
    font-weight: 500;
    font-stretch: normal;
@@ -155,5 +228,28 @@ export const TextStyle4 = styled.span`
    line-height: 1.5;
    letter-spacing: normal;
    color: ${Colors.white};
-   
+`
+
+
+export const TextStyle10 = styled.span`
+   font-family: Rubik;
+  font-size: 12px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.33;
+  letter-spacing: normal;
+  color: ${Colors.steel};
+`
+
+
+export const TextStyle2 = styled.span`
+   font-family: HKGrotesk;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.71;
+  letter-spacing: normal;
+  color: ${Colors.cherry};
 `

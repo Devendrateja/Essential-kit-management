@@ -7,5 +7,7 @@ export const Colors = {
    neonRed: '#ff0b37',
    lightBlueGrey: '#d7dfe9',
    whiteTwo: '#fbfbfb',
-   yellowOrangeTwo: '#eaa800'
+   yellowOrangeTwo: '#eaa800',
+   cherry : '#d7042a',
+   jade: '#1db05f'
 }

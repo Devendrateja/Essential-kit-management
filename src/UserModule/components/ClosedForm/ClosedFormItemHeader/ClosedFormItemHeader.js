@@ -1,4 +1,3 @@
-
 import React from 'react'
 import { observer } from 'mobx-react'
 import { observable } from 'mobx'
@@ -10,21 +9,12 @@ import {
    AlignLeft,
    AlignRight,
    Sno,
-   ItemName,
-   
-
+   ItemName
 } from './styledComponents'
 
-
-class ClosedFormItemHeader extends React.Component{
+class ClosedFormItemHeader extends React.Component {
    render() {
-      const {
-         sno,
-         name,
-         itemsAdded,
-         itemsRecieved,
-         costIncurred
-      } = DataStrings
+      const { sno, name, itemsAdded, itemsRecieved, costIncurred } = DataStrings
       return (
          <Container>
             <Sno>
@@ -42,11 +32,9 @@ class ClosedFormItemHeader extends React.Component{
             <ItemTitle>
                <AlignRight>{costIncurred}</AlignRight>
             </ItemTitle>
-
          </Container>
       )
    }
 }
 
-
-export default ClosedFormItemHeader;
+export default ClosedFormItemHeader

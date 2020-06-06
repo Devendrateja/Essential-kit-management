@@ -6,7 +6,8 @@ import {
    USER_HOME_PATH,
    SELECTED_FORM_PATH,
    CLOSED_FORM_PATH,
-   PAY_REQUEST_PATH
+   PAY_REQUEST_PATH,
+   MY_WALLET_PATH
 } from '../../UserModule/constants/RouteConstants'
 
 function App() {
@@ -27,7 +28,10 @@ function App() {
                <Link to={CLOSED_FORM_PATH}>Closed Form</Link>
             </div>
             <div>
-               <Link to={PAY_REQUEST_PATH}>pay request path</Link>
+               <Link to={PAY_REQUEST_PATH}>pay request</Link>
+            </div>
+            <div>
+               <Link to={MY_WALLET_PATH}>my wallet</Link>
             </div>
          </nav>
       </div>

@@ -6,14 +6,15 @@ import {
    USER_HOME_PATH,
    SELECTED_FORM_PATH,
    CLOSED_FORM_PATH,
-   PAY_REQUEST_PATH
+   PAY_REQUEST_PATH,
+   MY_WALLET_PATH
 } from '../constants/RouteConstants'
 
 import { UserRoute } from './UserRoute'
 import { SelectedFormRoute } from './SelectedFormRoute'
 import { ClosedFormRoute } from './ClosedFormRoute'
 import { PayRequestRoute } from './PayRequestRoute'
-
+import { WalletRoute } from "./WalletRoute"
 
 
 const EssentialKitUserHomeRoute = [
@@ -36,6 +37,11 @@ const EssentialKitUserHomeRoute = [
       key={PAY_REQUEST_PATH}
       path={PAY_REQUEST_PATH}
       component={PayRequestRoute}
+   />,
+   <ProtectedRoute
+      key={MY_WALLET_PATH}
+      path={MY_WALLET_PATH}
+      component={WalletRoute}
    />
    
 ]

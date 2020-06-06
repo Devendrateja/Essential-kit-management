@@ -25,9 +25,6 @@ class SelectedFormModel {
       })
    }
 
-
-
-
    @computed
    get selectedSectionData() {
       return this.sectionDetails.find(eachSection => {
@@ -35,29 +32,33 @@ class SelectedFormModel {
       })
    }
 
+
    @computed
    get userSelectedQuantityAndCost() {
       let totalCost = 0
       let totalItems = 0
       this.sectionDetails.forEach(section => {
          section.itemDetails.forEach(eachItem => {
-            totalCost = isNaN(eachItem.totalPriceOfAnItem)
-               ? totalCost
-               : totalCost + eachItem.totalPriceOfAnItem
-            totalItems = isNaN(eachItem.selectedQuantityPerItem)
-               ? totalItems
-               : totalItems + eachItem.selectedQuantityPerItem
+           eachItem.brands.forEach(eachBrand=> {
+              
+              const totalItemCost = eachBrand.pricePerItem * eachBrand.count
+              
+              totalCost = isNaN(totalItemCost) ? totalCost : (totalCost+totalItemCost) 
+              
+              totalItems = isNaN(eachBrand.count) ? totalItems : (totalItems+eachBrand.count) 
+           })
          })
       })
+      console.log("userSelectedQuantityAndCost", totalCost, totalItems)
       return {
          totalCost: totalCost,
          itemsAdded: totalItems
       }
    }
-   
-   
+
+
    @action.bound
-   updateUserData(){
+   updateUserData() {
       let userData = []
 
       this.sectionDetails.forEach(eachSection => {
@@ -89,4 +90,3 @@ class SelectedFormModel {
 }
 
 export default SelectedFormModel
-

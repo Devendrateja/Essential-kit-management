@@ -1,7 +1,12 @@
 import React from 'react'
 import { observer } from 'mobx-react'
 import { observable } from 'mobx'
-import { API_FETCHING, API_SUCCESS, API_FAILED ,API_INITIAL} from '@ib/api-constants'
+import {
+   API_FETCHING,
+   API_SUCCESS,
+   API_FAILED,
+   API_INITIAL
+} from '@ib/api-constants'
 import { Typo14WhiteHKGroteskSemiBold } from '../../../../styleGuide/Typos'
 import DataStrings from '../../../../i18n/strings.json'
 
@@ -17,35 +22,49 @@ import {
 class SelectedFormFooter extends React.Component {
    
    
-   getButtonText = (apiStatus) => {
-      let buttonText ;
-      switch(apiStatus){
-         
-         case API_SUCCESS :
-            buttonText = "Saved";
+   getButtonText = apiStatus => {
+      let buttonText= {
+         saveButtonText:"",
+         proceedButtonText:"Proceed To Pay"
+      }
+      
+      
+      switch (apiStatus) {
+         case API_SUCCESS:
+            buttonText.saveButtonText = 'Saved'
             break;
-            
+
          case API_INITIAL:
-            buttonText = "Save"
+            buttonText.saveButtonText = 'Save'
+            break;
+
+         case API_FETCHING:
+            buttonText.saveButtonText = 'Saving...'
+            buttonText.proceedButtonText = "proceeding..."
             break;
             
-         case API_FETCHING :
-            buttonText = "Saving..."
-            break;
+         case API_FAILED:
+            buttonText.saveButtonText = "Try Again" 
+            buttonText.proceedButtonText ="Proceed To Pay"
       }
       return buttonText
-      
    }
-   
-   
+
    saveUserData = () => {
-      const { selectedFormData ,updateUserSelectedFormData} = this.props
+      const { selectedFormData, updateUserSelectedFormData } = this.props
       const data = selectedFormData.updateUserData()
       const id = selectedFormData.fromId
-      console.log("saved response",id, data)
-      updateUserSelectedFormData(id,data)
-      
+      console.log('saved response', id, data)
+      updateUserSelectedFormData(id, data)
    }
+   
+   updateUserDataBeforeProceedToPay = () => {
+      this.saveUserData()
+      const {goToPayRequestPage} = this.props
+      goToPayRequestPage();
+   }
+   
+   
 
    render() {
       const {
@@ -55,10 +74,15 @@ class SelectedFormFooter extends React.Component {
          Save
       } = DataStrings.seletedFormFooter
 
-      const { getUserSavedDataAPIStatus:apiStatusOfSavedData, apiStatusOfSelectedFormData:apiStatusOfSelectedForm , selectedFormData,updateUserSelectedFormData } = this.props
-      let saveButtonText = this.getButtonText(apiStatusOfSavedData)
-      
-      
+      const {
+         getUserSavedDataAPIStatus: apiStatusOfSavedData,
+         apiStatusOfSelectedFormData: apiStatusOfSelectedForm,
+         selectedFormData,
+         updateUserSelectedFormData,
+         goToPayRequestPage
+      } = this.props
+      let buttonText = this.getButtonText(apiStatusOfSavedData)
+
       return (
          <Footer>
             <ValuationRow>
@@ -74,16 +98,11 @@ class SelectedFormFooter extends React.Component {
                </Typo14WhiteHKGroteskSemiBold>
             </ValuationRow>
             <UpdateBlock>
-               <SaveButton
-                  
-                  onClick={this.saveUserData}
+               <SaveButton  onClick={this.saveUserData}>{buttonText.saveButtonText}</SaveButton>
+               <Button
+                 onClick={this.updateUserDataBeforeProceedToPay}
                >
-                  {
-                    Save
-                  }
-               </SaveButton>
-               <Button disabled={apiStatusOfSavedData !== API_SUCCESS ? true : false}>
-                  {ProceedToPay}
+                  {buttonText.proceedButtonText}
                </Button>
             </UpdateBlock>
          </Footer>
@@ -92,4 +111,3 @@ class SelectedFormFooter extends React.Component {
 }
 
 export default SelectedFormFooter
-//disabled={(apiStatusOfSelectedForm === API_SUCCESS) || (apiStatusOfSelectedForm === API_INITIAL) ? false : true}

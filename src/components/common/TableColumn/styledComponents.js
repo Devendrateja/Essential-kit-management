@@ -17,33 +17,7 @@ export const S_no = styled.span`
 `
 
 export const Span = styled.span`
-   ${tw`flex justify-start border mx-4 items-center `}
+   ${tw`flex justify-center  mx-4 items-center `}
    flex-grow:1;
    flex-wrap: wrap;
 `
-
-// export const Span = styled.span`${tw`flex justify-center items-center p-1 mx-2 whitespace-normal`}
-//                     width:10%;
-//                     items-center
-//                     flex-wrap:wrap;
-//                     font-family: HKGrotesk;
-//                   font-size: 12px;
-//                   font-weight: 600;
-//                   font-stretch: normal;
-//                   font-style: normal;
-//                   line-height: 1.33;
-//                   letter-spacing: normal;
-//                   color: ${Colors.darkBlueGrey};`
-
-// export const S_no = styled.span`${tw`flex justify-center items-center p-1 mx-2 whitespace-normal`}
-//                     width:5%;
-//                     items-center
-//                     flex-wrap:wrap;
-//                     font-family: HKGrotesk;
-//                   font-size: 12px;
-//                   font-weight: 600;
-//                   font-stretch: normal;
-//                   font-style: normal;
-//                   line-height: 1.33;
-//                   letter-spacing: normal;
-//                   color: ${Colors.darkBlueGrey};`

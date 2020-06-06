@@ -11,7 +11,8 @@ import NoDataView from '../../../components/common/NoDataView'
 import {
    SELECTED_FORM_PATH,
    CLOSED_FORM_PATH,
-   PAY_REQUEST_PATH
+   PAY_REQUEST_PATH,
+   MY_WALLET_PATH
 } from '../../constants/RouteConstants'
 
 import ListOfForms from '../../components/ListOfForms'
@@ -31,10 +32,10 @@ class UserRoute extends React.Component {
    @observable offset = 0
 
    componentDidMount() {
-      const { getFormsList,listOfForms } = this.props.formStore
-      
-      console.log("user route cdm",listOfForms )
-      
+      const { getFormsList, listOfForms } = this.props.formStore
+
+      console.log('user route cdm', listOfForms)
+
       getFormsList(this.limit, this.offset)
    }
 
@@ -69,7 +70,7 @@ class UserRoute extends React.Component {
 
    onRetryClick = () => {
       const { getFormsList } = this.props.formStore
-      console.log('retry clicked',getFormsList)
+      console.log('retry clicked', getFormsList)
       getFormsList(this.limit, this.offset)
    }
 
@@ -102,7 +103,7 @@ class UserRoute extends React.Component {
 
    renderSuccessUI = () => {
       const { listOfForms, createFormComponent } = this.props.formStore
-      console.log("listofFormsShouldnotbeundefined", listOfForms)
+      console.log('listofFormsShouldnotbeundefined', listOfForms)
       if (listOfForms.length <= 0) {
          return <NoDataView />
       }
@@ -126,14 +127,18 @@ class UserRoute extends React.Component {
       const signin = history.push('/essential-kit-management/signin')
       return <div>{signin}</div>
    }
-   
-   
-   goToPayRequestPage=()=>{
+
+   goToPayRequestPage = () => {
       const { history } = this.props
-      const signin = history.push(PAY_REQUEST_PATH)
-      return <div>{signin}</div>
+      const payRequestPage = history.push(PAY_REQUEST_PATH)
+      return <div>{payRequestPage}</div>
    }
    
+   goToWalletPage = () => {
+      const { history } = this.props
+      const walletPage = history.push(MY_WALLET_PATH)
+      return <div>{walletPage}</div>
+   }
    
    
 
@@ -146,7 +151,7 @@ class UserRoute extends React.Component {
          createFormComponent,
          totalNoOfForms
       } = this.props.formStore
-      console.log("user route ", listOfForms)
+      console.log('user route ', listOfForms)
       return (
          <UserDashBoard
             redirectToSignInPage={this.redirectToSignInPage}
@@ -168,6 +173,7 @@ class UserRoute extends React.Component {
             onSelectForm={this.onSelectForm}
             signOut={this.signOut}
             goToPayRequestPage={this.goToPayRequestPage}
+            goToWalletPage={this.goToWalletPage}
          />
       )
    }

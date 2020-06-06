@@ -8,7 +8,7 @@ import { withRouter } from 'react-router-dom'
 import SignInPage from '../../components'
 import DataStrings from '../../../i18n/strings.json'
 import { USER_HOME_PATH } from '../../../UserModule/constants/RouteConstants'
-import { getAccessToken,setAccessToken } from '../../../utils/StorageUtils.js'
+import { getAccessToken, setAccessToken } from '../../../utils/StorageUtils.js'
 
 @inject('authStore')
 @observer
@@ -34,11 +34,11 @@ class SignInRoute extends React.Component {
       history.push(USER_HOME_PATH)
    }
 
-   onSignInFailure = (error) => {
+   onSignInFailure = error => {
       const { getUserSignInAPIError: apiError } = this.props.authStore
       if (apiError !== null && apiError !== undefined) {
          let signinError = JSON.parse(error)
-         console.log("qqqqqqqqq", signinError.data.response)
+         console.log('qqqqqqqqq', signinError.data.response)
          this.responseError = signinError.data.response
       }
    }
@@ -70,7 +70,6 @@ class SignInRoute extends React.Component {
             this.onSignInSuccess,
             this.onSignInFailure
          )
-
       }
    }
 
@@ -96,7 +95,7 @@ class SignInRoute extends React.Component {
             password={this.password}
             errorMessageUsernameField={this.errorMessageUsernameField}
             errorMessagePasswordField={this.errorMessagePasswordField}
-            responseError = {this.responseError}
+            responseError={this.responseError}
          />
       )
    }

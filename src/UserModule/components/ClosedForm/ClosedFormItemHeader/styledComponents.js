@@ -2,8 +2,6 @@ import tw from 'tailwind.macro'
 import styled from '@emotion/styled'
 import { Colors } from '../../../../themes/Colors'
 
-
-
 export const Container = styled.div`${tw`px-4 flex justify-between items-center  text-gray-700 border border-black bg-white`}
                             border:solid 1px ${Colors.lightBlueGrey};
                             overflow:auto;
@@ -22,8 +20,6 @@ export const ItemName = styled.span`
    letter-spacing: normal;
    color: ${Colors.steel};
 `
-
-
 
 export const ItemTitle = styled.span`
    ${tw`flex justify-center items-center p-1 mx-2 whitespace-normal`}

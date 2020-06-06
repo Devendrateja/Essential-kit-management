@@ -1,8 +1,7 @@
 import { create } from 'apisauce'
 import { apiMethods } from '../../../constants/APIConstants'
 import { networkCallWithApisauce } from '../../../utils/APIUtils'
-import { BaseURL } from "../../../utils/BaseURLUtils/URLUtils.js"
-
+import { BaseURL } from '../../../utils/BaseURLUtils/URLUtils.js'
 
 class FormAPI {
    api
@@ -13,19 +12,28 @@ class FormAPI {
       })
    }
 
+   getFormsAPI(limit, offset) {
+      return networkCallWithApisauce(
+         this.api,
+         `homepage/v1/?offset=${offset}&limit=${limit}`,
+         {},
+         apiMethods.get
+      )
+   }
 
-
-
-   getFormsAPI(limit,offset) {
-      return networkCallWithApisauce(this.api, `homepage/v1/?offset=${offset}&limit=${limit}`, {}, apiMethods.get)
+   getTransactionUPI() {
+      return networkCallWithApisauce(this.api, 'getbankdetails/v1/', {}, apiMethods.get)
+   }
+   
+   sendTransactionDetails(data){
+      return networkCallWithApisauce(this.api, 'payrequest/v1/', data, apiMethods.post)
    }
    
    
-   
-   
-   getTransactionUPI(){
-      return networkCallWithApisauce(this.api, "", {}, apiMethods.get)
+   getUserTransactionList(){
+      return networkCallWithApisauce(this.api, 'transactions/v1/', {}, apiMethods.get)
    }
+   
    
    
 }

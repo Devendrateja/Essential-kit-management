@@ -45,3 +45,11 @@ export const NavBack = {
       'https://cdn.zeplin.io/5d0afc9102b7fa56760995cc/assets/6127e8d9-6945-4c29-a9ed-9122cd42a767.svg',
    alt: 'back'
 }
+
+
+
+export const DebitIcon = {
+   src: 
+      'https://cdn.zeplin.io/5d0afc9102b7fa56760995cc/assets/0fb428a2-a666-4077-9191-a2cc008c517d.svg',
+   alt: 'debit'
+}

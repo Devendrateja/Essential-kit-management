@@ -47,12 +47,7 @@ class Pagination extends React.Component {
             <span>&nbsp;..&nbsp;</span>
             {currentPageNo !== 1 && currentPageNo !== totalNoOfPages && (
                <span>
-                  <Input
-                     border={true}
-                     value={this.pageChanged ? currentPageNo : currentPage}
-                     onKeyDown={onEnterPageNumber}
-                     onChange={this.onChangeInput}
-                  />
+                  <Span border={true}>{currentPageNo}</Span>
                   <span>&nbsp;..&nbsp;</span>
                </span>
             )}
@@ -71,3 +66,9 @@ class Pagination extends React.Component {
 }
 
 export default Pagination
+// <Input
+//                      border={true}
+//                      value={this.pageChanged ? currentPageNo : currentPage}
+//                      onKeyDown={onEnterPageNumber}
+//                      onChange={this.onChangeInput}
+//                   />

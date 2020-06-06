@@ -1,4 +1,4 @@
-import React from "react"
+import React from 'react'
 import { observable, action, computed } from 'mobx'
 import {
    API_INITIAL,
@@ -13,10 +13,9 @@ import { Redirect } from 'react-router-dom'
 import getUserResponse from '../../fixtures/getUserResponse.json'
 
 import Form from '../models/FormModel'
+import TransactionModel from "../models/TransactionModel"
 
 import { setAccessToken, clearUserSession } from '../../../utils/StorageUtils'
-
-
 
 class FormStore {
    formsAPIService
@@ -28,14 +27,17 @@ class FormStore {
    @observable upiStatus
    @observable upiError
    @observable upi
-   @observable transactionAmount
-   @observable transactionId
-   @observable transactionType
-   @observable screenshotURL
-
-
-
-
+   
+   
+   
+   
+   @observable listOfTransactions
+   @observable totalAmount
+   @observable totalTransactions
+   
+   
+   
+   
    constructor(formAPI) {
       this.formsAPIService = formAPI
       this.init()
@@ -46,16 +48,14 @@ class FormStore {
       this.getFormsAPIStatus = API_INITIAL
       this.getFormsAPIError = null
       this.listOfForms = []
-
-
-      this.transactionAmount = 0;
-      this.transactionId = ""
-      this.transactionType = null
-      this.screenshotURL = ""
-
+      
+      
+      
+      this.listOfTransactions = []
+      this.totalAmount = 0
+      this.totalTransactions = 0
 
    }
-
 
 
 
@@ -90,33 +90,34 @@ class FormStore {
       let newForm = new Form(form)
       return newForm
    }
-
-
-
-
-
-
-
-
-
-
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
 
    @action.bound
    setUPIStatus(status) {
       this.upiStatus = status
    }
 
-
    @action.bound
    setUPIError(error) {
       this.upiError = error
    }
 
-
    @action.bound
    setUPIResponse(response) {
+      console.log("upi_id",response)
       this.upi = response.upi_id
    }
+
 
 
    @action.bound
@@ -125,7 +126,90 @@ class FormStore {
       return bindPromiseWithOnSuccess(promise)
          .to(this.setUPIStatus, this.setUPIResponse)
          .catch(this.setUPIError)
-}
+   }
+
+
+
+
+
+
+
+
+   @action.bound
+   setPaymentStatus(status) {
+      console.log(status)
+   }
+
+
+   @action.bound
+   setPaymentResponse(response) {
+      console.log("rdtfghgfdsdfghfd",response)
+   }
+
+
+   @action.bound
+   setPaymentError(error) {
+      console.log(error)
+   }
+
+
+   @action.bound
+   sendPaymentData(data) {
+      console.log(data)
+      const promise = this.formsAPIService.sendTransactionDetails(data)
+      return bindPromiseWithOnSuccess(promise)
+         .to(this.setPaymentStatus, this.setPaymentResponse)
+         .catch(this.setPaymentError)
+   }
+
+   
+   
+   @action.bound
+   setTransactionsListAPIStatus(status){
+      console.log(status)
+   }
+   
+   
+   @action.bound
+   setTransactionsListAPIError(error){
+      
+      console.log(error)
+   }
+   
+   
+   
+   
+   @action.bound
+   setTransactionsListAPIResponse(response){
+       
+      this.totalTransactions = response.total_transaction
+      this.totalAmount = response.total_amount
+      response.transactions.forEach(eachTransaction => {
+         const newTransaction = new TransactionModel(eachTransaction)
+         this.listOfTransactions.push(newTransaction)  
+      })
+      
+   }
+   
+   
+
+   
+
+   @action.bound
+   getUserTransactions(){
+      const promise = this.formsAPIService.getUserTransactionList()
+      return bindPromiseWithOnSuccess(promise)
+         .to(this.setTransactionsListAPIStatus, this.setTransactionsListAPIResponse)
+         .catch(this.setTransactionsListAPIError)
+   }
+
+
+
+
+
+
+
+
 
 }
 

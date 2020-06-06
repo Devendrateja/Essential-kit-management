@@ -36,12 +36,6 @@ class ItemModel {
    get userSelectedBrandWithQuantity() {
       let defaultBrand = this.brands.find(brand => {
          if (brand.count >= 1) {
-            console.log(
-               'userSelectedBrandWithQuantity in item model',
-               this.brands,
-               brand.count,
-               brand
-            )
             return brand
          }
       })

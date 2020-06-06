@@ -2,13 +2,10 @@ import tw from 'tailwind.macro'
 import styled from '@emotion/styled'
 import { Colors } from '../../../../themes/Colors'
 
-
-
 export const Container = styled.div`${tw`px-4 flex justify-between items-center  text-gray-700 bg-white`}
                             border:solid 1px ${Colors.lightBlueGrey};
                             overflow:auto;
                             height:60px;`
-
 
 export const ItemName = styled.span`
    ${tw`flex justify-center items-center p-1 mx-2  whitespace-normal`}
@@ -24,15 +21,11 @@ export const ItemName = styled.span`
    color: ${Colors.steel};
 `
 
-export const OutOfStackTag = styled.span`${tw``}
-                              background-color:rgba(11, 105, 255, 0.1);
-                              margin-left:13%;`
-
-
-
-
-
-
+export const OutOfStackTag = styled.span`
+   ${tw``}
+   background-color:rgba(11, 105, 255, 0.1);
+   margin-left: 13%;
+`
 
 export const Span = styled.span`
    ${tw`flex justify-center items-center p-1 mx-2  whitespace-normal`}
@@ -47,7 +40,6 @@ export const Span = styled.span`
    letter-spacing: normal;
    color: ${Colors.steel};
 `
-
 
 export const AlignLeft = styled.span`
    ${tw`flex w-full text-left `}

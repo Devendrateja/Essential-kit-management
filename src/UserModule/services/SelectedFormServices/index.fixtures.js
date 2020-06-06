@@ -7,18 +7,13 @@ class SelectedFormFixtures {
       })
       return promise
    }
-   
-   
-   
-   
-   setSelectedFormAPI(id,data){
+
+   setSelectedFormAPI(id, data) {
       const promise = new Promise(function(resolve, reject) {
          resolve(data)
       })
       return promise
    }
-   
-
 }
 
 export default SelectedFormFixtures

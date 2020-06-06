@@ -8,7 +8,7 @@ import UserProfileIcon from '../UserProfileIcon'
 
 import dataStrings from '../../../i18n/strings.json'
 
-import { PAY_REQUEST_PATH } from "../../../UserModule/constants/RouteConstants"
+import { PAY_REQUEST_PATH } from '../../../UserModule/constants/RouteConstants'
 
 import { Typo12DarkBlueGreyHKGroteskSemiBold } from '../../../styleGuide/Typos'
 
@@ -24,7 +24,7 @@ import {
 class Header extends React.Component {
    render() {
       const { HOME, PAYREQUEST, MYWALLET } = dataStrings.UserModule.Header
-      const { signOut, goToPayRequestPage } = this.props
+      const { signOut, goToPayRequestPage , goToHomePage, goToWalletPage} = this.props
 
       return (
          <HeaderContainer>
@@ -35,7 +35,7 @@ class Header extends React.Component {
             <SideBlocks>
                <Text>
                   <Typo12DarkBlueGreyHKGroteskSemiBold>
-                     <Span>{HOME}</Span>
+                     <Span onClick={goToHomePage}>{HOME}</Span>
                   </Typo12DarkBlueGreyHKGroteskSemiBold>
                </Text>
                <Text>
@@ -45,7 +45,7 @@ class Header extends React.Component {
                </Text>
                <Text>
                   <Typo12DarkBlueGreyHKGroteskSemiBold>
-                     <Span>{MYWALLET}</Span>
+                     <Span onClick={goToWalletPage}>{MYWALLET}</Span>
                   </Typo12DarkBlueGreyHKGroteskSemiBold>
                </Text>
                <SignOutButton onClick={signOut}>

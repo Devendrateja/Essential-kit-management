@@ -1,4 +1,3 @@
-import PayRequestPage from "./PayRequestPage"
+import PayRequestPage from './PayRequestPage'
 
-
-export default PayRequestPage;
+export default PayRequestPage

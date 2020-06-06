@@ -1,4 +1,3 @@
-import ClosedFormFooter from "./ClosedFormFooter"
-
+import ClosedFormFooter from './ClosedFormFooter'
 
 export default ClosedFormFooter

@@ -1,3 +1,3 @@
-import ClosedFormItemHeader from "./ClosedFormItemHeader"
+import ClosedFormItemHeader from './ClosedFormItemHeader'
 
-export default ClosedFormItemHeader;
+export default ClosedFormItemHeader

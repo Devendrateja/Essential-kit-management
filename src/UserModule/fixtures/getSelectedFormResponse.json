@@ -21,7 +21,7 @@
               "brand": "dabour",
               "max_min_quantity": 4,
               "price_per_item": 20,
-              "count": 0
+              "count": 1
             },
             {
               "brand_id": 1011,
@@ -70,7 +70,7 @@
               "brand": "nestle",
               "max_min_quantity": 8,
               "price_per_item": 10,
-              "count": 0
+              "count": 2
             },
             {
               "brand_id": 1017,
@@ -118,7 +118,7 @@
               "brand": "darkgrain",
               "max_min_quantity": 2,
               "price_per_item": 30,
-              "count": 0
+              "count": 3
             },
             {
               "brand_id": 1013,
@@ -166,7 +166,7 @@
               "brand": "horlicks",
               "max_min_quantity": 3,
               "price_per_item": 40,
-              "count": 0
+              "count": 4
             },
             {
               "brand_id": 1019,
@@ -713,7 +713,7 @@
               "brand": "dabour",
               "max_min_quantity": 4,
               "price_per_item": 20,
-              "count": 0
+              "count": 1
             },
             {
               "brand_id": 1081,
@@ -865,7 +865,7 @@
               "brand": "boost",
               "max_min_quantity": 10,
               "price_per_item": 50,
-              "count": 0
+              "count": 5
             }
           ]
         }

@@ -1,9 +1,7 @@
 import { create } from 'apisauce'
 import { apiMethods } from '../../../constants/APIConstants'
 import { networkCallWithApisauce } from '../../../utils/APIUtils'
-import { BaseURL } from "../../../utils/BaseURLUtils/URLUtils.js"
-
-
+import { BaseURL } from '../../../utils/BaseURLUtils/URLUtils.js'
 
 class SelectedFormAPI {
    api
@@ -14,11 +12,22 @@ class SelectedFormAPI {
       })
    }
    getSelectedFormAPI(id) {
-      return networkCallWithApisauce(this.api, `form/${id}/v1/`, {}, apiMethods.get)
+      return networkCallWithApisauce(
+         this.api,
+         `form/${id}/v1/`,
+         {},
+         apiMethods.get
+      )
    }
-   
-   setSelectedFormAPI(id,data) {
-      return networkCallWithApisauce(this.api, `form/${id}/v1/`, data, apiMethods.post)
+
+   setSelectedFormAPI(id, data) {
+      console.log(data,id)
+      return networkCallWithApisauce(
+         this.api,
+         `form/${id}/v1/`,
+         data,
+         apiMethods.post
+      )
    }
 }
 

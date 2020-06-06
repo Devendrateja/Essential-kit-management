@@ -3,7 +3,7 @@ import { observer } from 'mobx-react'
 import { observable } from 'mobx'
 
 import dataStrings from '../../../../i18n/strings.json'
-import { Typo12BrightBlueRubikRegular } from "../../../../styleGuide/Typos"
+import { Typo12BrightBlueRubikRegular } from '../../../../styleGuide/Typos'
 
 import {
    Container,
@@ -13,35 +13,27 @@ import {
    Sno,
    ItemName,
    OutOfStackTag
-
 } from './styledComponents'
 
-
-class ClosedFormItemBar extends React.Component{
+class ClosedFormItemBar extends React.Component {
    render() {
-      
-      const { index , item } = this.props
-      const {
-         sno,
-         name,
-         itemsAdded,
-         itemsRecieved,
-         costIncurred,
-         
-      } = dataStrings
+      const { index, item } = this.props
+      const { sno, name, itemsAdded, itemsRecieved, costIncurred } = dataStrings
       return (
          <Container>
             <Sno>
                <AlignLeft>{index}</AlignLeft>
             </Sno>
             <ItemName>
-               <AlignLeft>{item.itemName}
-               <OutOfStackTag>
-               {
-                  item.itemsAdded !== item.itemsRecieved && 
-                  <Typo12BrightBlueRubikRegular>out of stock</Typo12BrightBlueRubikRegular>
-               }
-               </OutOfStackTag>
+               <AlignLeft>
+                  {item.itemName}
+                  <OutOfStackTag>
+                     {item.itemsAdded !== item.itemsRecieved && (
+                        <Typo12BrightBlueRubikRegular>
+                           out of stock
+                        </Typo12BrightBlueRubikRegular>
+                     )}
+                  </OutOfStackTag>
                </AlignLeft>
             </ItemName>
             <Span>
@@ -53,53 +45,9 @@ class ClosedFormItemBar extends React.Component{
             <Span>
                <AlignRight>{item.costIncurred}</AlignRight>
             </Span>
-
          </Container>
       )
    }
 }
 
-
-export default ClosedFormItemBar;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+export default ClosedFormItemBar
