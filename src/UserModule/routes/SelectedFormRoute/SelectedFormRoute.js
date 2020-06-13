@@ -15,6 +15,7 @@ import {PAY_REQUEST_PATH, USER_HOME_PATH} from "../../constants/RouteConstants"
 import SelectedForm from '../../components/SelectedForm'
 import SelectedFormSectionBar from '../../components/SelectedForm/SelectedFormSectionBar'
 
+import withNavigation from "../../hocs/withNavigation"
 
 
 import {
@@ -85,33 +86,18 @@ class SelectedFormRoute extends React.Component {
    }
 
    signOut = () => {
+      const { goToSignInPage } = this.props
       clearUserSession()
-      this.redirectToSignInPage()
+      goToSignInPage();
    }
 
-   redirectToSignInPage = () => {
-      const { history } = this.props
-      const signin = history.push('/essential-kit-management/signin')
-      return <div>{signin}</div>
-   }
-   
-   goToPayRequestPage = () => {
-      const { history } = this.props
-      const payRequestPage = history.push(PAY_REQUEST_PATH)
-      return <div>{payRequestPage}</div>
-   }
-   
-   
-   goToHomePage = () => {
-      const { history } = this.props
-      const homePage = history.push(USER_HOME_PATH)
-      return <div>{homePage}</div>
-   }
-   
 
    render() {
       let selectedFormId = this.props.match.params.id
-
+      
+      const { goToPayRequestPage, goToHomePage,goToWalletPage } = this.props
+      
+      
       const {
          selectedFormData,
          getSelectedFormAPIStatus,
@@ -135,11 +121,12 @@ class SelectedFormRoute extends React.Component {
             updateUserSelectedFormData={updateUserSelectedFormData}
             getUserSavedDataAPIError={getUserSavedDataAPIError}
             getUserSavedDataAPIStatus={getUserSavedDataAPIStatus}
-            goToPayRequestPage={this.goToPayRequestPage}
-            goToHomePage={this.goToHomePage}
+            goToPayRequestPage={goToPayRequestPage}
+            goToHomePage={goToHomePage}
+            goToWalletPage={goToWalletPage}
          />
       )
    }
 }
 
-export default SelectedFormRoute
+export default withNavigation(SelectedFormRoute)

@@ -38,11 +38,16 @@ class SelectedForm extends React.Component {
          getUserSavedDataAPIStatus,
          getUserSavedDataAPIError,
          goToPayRequestPage,
-         goToHomePage
+         goToHomePage,
+         goToWalletPage
       } = this.props
       return (
          <Container>
-            <Header signOut={signOut} goToPayRequestPage={goToPayRequestPage} goToHomePage={goToHomePage}/>
+            <Header signOut={signOut}
+                     goToPayRequestPage={goToPayRequestPage} 
+                     goToHomePage={goToHomePage} 
+                     goToWalletPage = {goToWalletPage}
+            />
             <Body>
                <SelectedFormTitleBar selectedFormData={selectedFormData} />
                <LoadingWrapperWithFailure

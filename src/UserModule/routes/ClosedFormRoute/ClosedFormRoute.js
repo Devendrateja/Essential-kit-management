@@ -10,6 +10,10 @@ import NoDataView from '../../../components/common/NoDataView'
 import {USER_HOME_PATH, PAY_REQUEST_PATH} from "../../constants/RouteConstants"
 import ClosedForm from '../../components/ClosedForm'
 
+
+import withNavigation from "../../hocs/withNavigation"
+
+
 @inject('closedFormStore')
 @observer
 class ClosedFormRoute extends React.Component {
@@ -21,15 +25,12 @@ class ClosedFormRoute extends React.Component {
    }
 
    signOut = () => {
+      const { goToSignInPage } = this.props
       clearUserSession()
-      this.redirectToSignInPage()
+      goToSignInPage()
    }
 
-   redirectToSignInPage = () => {
-      const { history } = this.props
-      const signin = history.push('/essential-kit-management/signin')
-      return <div>{signin}</div>
-   }
+
 
    onClickRetry = () => {
       const { getClosedFormData } = this.props.closedFormStore
@@ -37,22 +38,11 @@ class ClosedFormRoute extends React.Component {
       console.log('on retry click closed form id', id, this.props)
       getClosedFormData(id)
    }
-   
-   
-   goToHomePage = () => {
-      const { history } = this.props
-      const homePage = history.push(USER_HOME_PATH)
-      return homePage
-   }
-   
-   goToPayRequestPage = () => {
-      const { history } = this.props
-      const payRequestPage = history.push(PAY_REQUEST_PATH)
-      return <div>{payRequestPage}</div>
-   }
-   
 
    render() {
+      
+      const { goToHomePage, goToPayRequestPage,goToWalletPage } = this.props
+      
       const {
          closedFormList,
          totalItemsDetailsWithCostIncurred,
@@ -68,11 +58,12 @@ class ClosedFormRoute extends React.Component {
             apiStatus={getClosedFormAPIStaus}
             apiError={getClosedFormAPIError}
             onClickRetry={this.onClickRetry}
-            goToHomePage={this.goToHomePage}
-            goToPayRequestPage={this.goToPayRequestPage}
+            goToHomePage={goToHomePage}
+            goToPayRequestPage={goToPayRequestPage}
+            goToWalletPage = {goToWalletPage}
          />
       )
    }
 }
 
-export default withRouter(ClosedFormRoute)
+export default withNavigation(ClosedFormRoute)

@@ -24,6 +24,8 @@ class FormStore {
    @observable listOfForms
    @observable totalNoOfForms
 
+
+
    @observable upiStatus
    @observable upiError
    @observable upi
@@ -162,6 +164,14 @@ class FormStore {
          .catch(this.setPaymentError)
    }
 
+   
+   
+   
+   
+   
+   
+   
+   
    
    
    @action.bound

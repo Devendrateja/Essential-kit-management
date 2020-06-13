@@ -10,7 +10,7 @@ import { Typo32DarkBlueGreyHKGroteskRegular, Typo24DarkBlueGreyHKGroteskBold, Ty
 import { DebitIcon } from '../../../styleGuide/images'
 import { USER_HOME_PATH } from "../../constants/RouteConstants"
 
-import TransactionColumn from "./TransactionColumn"
+//import TransactionColumn from "./TransactionColumn"
 
 // import dataStrings from "../../../"
 
@@ -77,7 +77,7 @@ class WalletPage extends React.Component {
                         <TableColumn 
                             listOfCells={listOfHeaders}
                         />
-                       <TransactionColumn />
+                       
                     </TransactionsContainer>
                     
                 </Body>

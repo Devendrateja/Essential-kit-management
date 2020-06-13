@@ -24,6 +24,10 @@ import {
    NavDown
 } from '../../../styleGuide/images'
 
+import  withNavigation  from "../../hocs/withNavigation.js"
+import { goToPayRequestPage } from "../../utils/NavigationUtils/NavigationUtils.js"
+
+
 @inject('formStore')
 @observer
 class UserRoute extends React.Component {
@@ -118,31 +122,18 @@ class UserRoute extends React.Component {
    }
 
    signOut = () => {
+      const { goToSignInPage } = this.props
       clearUserSession()
-      this.redirectToSignInPage()
+      goToSignInPage()
    }
 
-   redirectToSignInPage = () => {
-      const { history } = this.props
-      const signin = history.push('/essential-kit-management/signin')
-      return <div>{signin}</div>
-   }
-
-   goToPayRequestPage = () => {
-      const { history } = this.props
-      const payRequestPage = history.push(PAY_REQUEST_PATH)
-      return <div>{payRequestPage}</div>
-   }
-   
-   goToWalletPage = () => {
-      const { history } = this.props
-      const walletPage = history.push(MY_WALLET_PATH)
-      return <div>{walletPage}</div>
-   }
    
    
 
    render() {
+      const {goToPayRequestPage,goToWalletPage} = this.props
+      
+      
       const {
          getFormsList,
          listOfForms,
@@ -172,11 +163,11 @@ class UserRoute extends React.Component {
             currentPage={this.currentPage}
             onSelectForm={this.onSelectForm}
             signOut={this.signOut}
-            goToPayRequestPage={this.goToPayRequestPage}
-            goToWalletPage={this.goToWalletPage}
+            goToPayRequestPage={this.props.goToPayRequestPage}
+            goToWalletPage={this.props.goToWalletPage}
          />
       )
    }
 }
 
-export default withRouter(UserRoute)
+export default withNavigation(UserRoute)

@@ -51,12 +51,17 @@ class ClosedForm extends React.Component {
          apiError,
          onClickRetry,
          goToHomePage,
-         goToPayRequestPage
+         goToPayRequestPage,
+         goToWalletPage
       } = this.props
 
       return (
          <ClosedFormContainer>
-            <Header signOut={signOut} goToHomePage={goToHomePage} goToPayRequestPage={goToPayRequestPage}/>
+            <Header signOut={signOut} 
+                     goToHomePage={goToHomePage} 
+                     goToPayRequestPage={goToPayRequestPage}
+                     goToWalletPage={goToWalletPage}
+            />
             <Body>
                <NavButton>
                   <NavigationButton path={USER_HOME_PATH} />

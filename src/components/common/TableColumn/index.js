@@ -11,7 +11,7 @@ class TableColumn extends React.Component {
       return (
          <Container>
             {listOfCells.map(eachelement => {
-               return <Span key={eachelement}><Typo12SteelHKGroteskSemiBold>{eachelement}</Typo12SteelHKGroteskSemiBold></Span>
+               return <Span key={eachelement}>{eachelement}</Span>
             })}
          </Container>
       )

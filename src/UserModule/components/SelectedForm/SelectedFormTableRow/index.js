@@ -26,6 +26,9 @@ class SelectedFormTableRow extends React.Component {
    @observable totalPriceOfAnItem = 0
    @observable quantityOptions = []
 
+
+
+
    componentDidMount() {
       const { item, selectedFormData } = this.props
       let defaultBrand = item.userSelectedBrandWithQuantity
@@ -64,6 +67,10 @@ class SelectedFormTableRow extends React.Component {
       console.log('this.selectedQuantity', this.selectedQuantity)
    }
 
+
+
+
+
    handleChangeBrands = selectedOption => {
       const { item } = this.props
       this.selectedBrand = selectedOption
@@ -88,6 +95,7 @@ class SelectedFormTableRow extends React.Component {
             label: 0
          }
       }
+      
       this.selectedQuantity !== 0
          ? (this.totalPriceOfAnItem =
               this.selectedQuantity.value * this.pricePerItem)
@@ -110,6 +118,9 @@ class SelectedFormTableRow extends React.Component {
          this.totalPriceOfAnItem
       )
    }
+   
+   
+   
 
    setItemDetails = () => {
       const { item } = this.props
@@ -127,6 +138,9 @@ class SelectedFormTableRow extends React.Component {
 
       return listOfBrandOptions
    }
+
+
+
 
    render() {
       const { sno, item } = this.props
