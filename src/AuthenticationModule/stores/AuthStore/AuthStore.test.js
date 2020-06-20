@@ -10,7 +10,7 @@ import {
 } from '@ib/api-constants'
 
 import AuthAPI from '../../services/AuthService/index.api.js'
-//import getUserSignInResponse from "../../fixtures/getUserSignInResponse.json";
+import getUserSignInResponse from "../../fixtures/getUserSignInResponse.json";
 
 import AuthStore from '.'
 
@@ -63,6 +63,7 @@ describe('AuthStore Tests', () => {
       expect(onSuccess).not.toBeCalled()
       expect(onFailure).not.toBeCalled()
    })
+
    it('should test userSigninAPI data success state', async () => {
       const onSuccess = jest.fn()
       const onFailure = jest.fn()
@@ -73,7 +74,7 @@ describe('AuthStore Tests', () => {
       }
 
       const mockSuccessPromise = new Promise(function(resolve, reject) {
-         resolve('success')
+         resolve(getUserSignInResponse)
       })
 
       const mockSignInAPI = jest.fn()

@@ -2,6 +2,8 @@ import React from 'react'
 import { observable, action, computed } from 'mobx'
 import SectionModel from './SectionModel'
 
+
+
 class SelectedFormModel {
    fromId
    @observable formName
@@ -11,8 +13,15 @@ class SelectedFormModel {
    @observable totalCost
    @observable sectionDetails
    @observable selectedSectionId
-
+   
+   
    constructor(form) {
+      this.init(form)
+   }
+   
+   
+   @action.bound
+   init(form){
       this.fromId = form.form_id
       this.formName = form.form_name
       this.closeDate = form.close_date
@@ -23,7 +32,15 @@ class SelectedFormModel {
          const newSection = new SectionModel(eachSection)
          return newSection
       })
+      
+      
    }
+   
+   
+   
+   
+   
+   
 
    @computed
    get selectedSectionData() {

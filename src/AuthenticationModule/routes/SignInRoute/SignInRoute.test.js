@@ -14,7 +14,7 @@ import AuthStore from '../../stores/AuthStore'
 import { SIGN_IN_PATH } from '../../constants/RouteConstants'
 import { USER_HOME_PATH } from '../../../UserModule/constants/RouteConstants'
 
-//import getUserSignInResponse from "../../fixtures/getUserSignInResponse.json"
+import getUserSignInResponse from "../../fixtures/getUserSignInResponse.json"
 
 import SignInRoute from './SignInRoute'
 
@@ -51,7 +51,7 @@ describe('sign in route tests', () => {
       jest.resetAllMocks()
    })
 
-   it('should render username an empty error message', () => {
+   it('should render username and password an empty error message', () => {
       const { getByText, getByRole } = render(
          <Router history={createMemoryHistory()}>
             <SignInRoute authStore={authStore} />
@@ -63,7 +63,27 @@ describe('sign in route tests', () => {
       fireEvent.click(signInButton)
 
       getByText(/please enter username/i)
+      getByText(/please enter password/i)
    })
+   
+   
+   it('should render username an empty username error message', () => {
+      const {getByText, getByPlaceholderText, getByRole } = render (
+         <Router history={createMemoryHistory()}>
+            <SignInRoute authStore={authStore} />
+         </Router>
+         )
+         
+         const password = "test-passowrd"
+         const passwordField = getByPlaceholderText('password')
+         const signInButton = getByRole('button', { name: 'Login' })
+         
+         fireEvent.change(passwordField, { target: { value: password} })
+         fireEvent.click(signInButton)
+         getByText(/please enter username/i)
+   })
+   
+   
 
    it('should render password an empty password error message', () => {
       const { getByText, getByPlaceholderText, getByRole } = render(
@@ -174,7 +194,7 @@ describe('sign in route tests', () => {
       const signInButton = getByRole('button', { name: 'Login' })
 
       const mockSuccessPromise = new Promise(function(resolve, reject) {
-         resolve('success')
+         resolve(getUserSignInResponse)
       })
 
       const mockSigninAPI = jest.fn()
@@ -186,9 +206,9 @@ describe('sign in route tests', () => {
       fireEvent.change(passwordField, { target: { value: password } })
       fireEvent.click(signInButton)
 
-      waitFor(() => {
-         //   debug()
-         expect(queryByRole('button', { name: 'Login' })).not.toBeInThDocument()
+      await waitFor(() => {
+        debug() 
+         expect(queryByRole('button', { name: 'Login' })).not.toBeInTheDocument()
          expect(getByTestId('location-display')).toHaveTextContent(
             USER_HOME_PATH
          )
@@ -209,8 +229,10 @@ describe('sign in route tests', () => {
       const SignInButton = getByRole('button', { name: 'Login' })
 
       const mockFailurePromise = new Promise(function(resolve, reject) {
-         reject(new Error('error'))
-      }).catch(() => {})
+         //reject(new Error('error'))
+         reject("error")
+      })
+      .catch(() => {})
 
       const mockSigninAPI = jest.fn()
 

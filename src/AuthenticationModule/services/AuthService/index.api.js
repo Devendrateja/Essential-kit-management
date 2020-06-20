@@ -1,6 +1,6 @@
 import { create } from 'apisauce'
 import { apiMethods } from '../../../constants/APIConstants'
-import { networkCallWithApisauce } from '../../../utils/APIUtils'
+import { networkCallWithApisauceWithoutAccessToken } from '../../../utils/AuthUtils/AuthUtils'
 import { BaseURL } from '../../../utils/BaseURLUtils/URLUtils.js'
 import getUserSignInResponse from '../../fixtures/getUserSignInResponse.json'
 
@@ -14,7 +14,7 @@ class AuthAPI {
 
    signInAPI(request) {
       console.log('request', request)
-      return networkCallWithApisauce(
+      return networkCallWithApisauceWithAccessToken(
          this.api,
          'Loginform/v1/',
          request,

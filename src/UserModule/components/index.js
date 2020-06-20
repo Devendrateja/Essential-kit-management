@@ -18,32 +18,35 @@ import {
    LoadingWrapperContainer
 } from './styledComponents'
 
+import { getLoadingStatus } from "@ib/api-utils"
+
 @observer
 class UserDashBoard extends React.Component {
+   
+   
+   
    render() {
       const {
          redirectToSignInPage,
          signOut,
-         getFormsList,
-         listOfForms,
-         getFormsAPIStatus,
-         getFormsAPIError,
+         apiStatus,
+         apiError,
          onRetryClick,
          createFormComponent,
-         getStatusOfForm,
          renderSuccessUI,
          goToNextPage,
          goToPreviousPage,
-         onEnterPageNumber,
-         currentPage,
          offset,
          limitedNoOfFormsPerPage,
-         totalNoOfForms,
-         onSelectForm,
+         initialisePaginationStore,
          goToPayRequestPage,
-         goToWalletPage
+         goToWalletPage,
+         currentPageAndTotalPages
       } = this.props
-
+      
+      const newAPIStatus = getLoadingStatus(apiStatus)
+      console.log("api statuses", newAPIStatus,apiStatus)
+      
       return (
          <Container>
             <Header
@@ -58,24 +61,16 @@ class UserDashBoard extends React.Component {
                <LoadingWrapperContainer>
                   <LoadingWrapperWithFailure
                      renderSuccessUI={renderSuccessUI}
-                     getFormsList={getFormsList}
-                     getStatusOfForm={getStatusOfForm}
-                     listOfForms={listOfForms}
-                     onSelectForm={onSelectForm}
-                     apiStatus={getFormsAPIStatus}
-                     apiError={getFormsAPIError}
+                     apiStatus={newAPIStatus}
+                     apiError={apiError}
                      onRetryClick={onRetryClick}
-                     createFormComponent={createFormComponent}
                   />
                </LoadingWrapperContainer>
                <Pagination
                   goToNextPage={goToNextPage}
-                  currentPage={currentPage}
                   goToPreviousPage={goToPreviousPage}
-                  onEnterPageNumber={onEnterPageNumber}
-                  offset={offset}
-                  limitedNoOfFormsPerPage={limitedNoOfFormsPerPage}
-                  totalNoOfForms={totalNoOfForms}
+                  currentPageAndTotalPages={currentPageAndTotalPages}
+                  initialisePaginationStore={initialisePaginationStore}
                />
             </MiniContainer>
          </Container>

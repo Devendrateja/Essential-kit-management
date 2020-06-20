@@ -10,6 +10,9 @@ import {
 import { Typo14WhiteHKGroteskSemiBold } from '../../../../styleGuide/Typos'
 import DataStrings from '../../../../i18n/strings.json'
 
+import { getLoadingStatus } from "@ib/api-utils"
+
+
 import {
    Footer,
    Button,

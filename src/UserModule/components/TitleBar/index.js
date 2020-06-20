@@ -5,13 +5,13 @@ import { observable } from 'mobx'
 import SearchBar from '../../../components/common/SearchBar'
 import { Typo32DarkBlueGreyHKGroteskRegular } from '../../../styleGuide/Typos'
 
-import { Container, Text } from './styledComponents'
+import { Container } from './styledComponents'
 
 @observer
 class TitleBar extends React.Component {
    render() {
       return (
-         <Container>
+         <Container data-testid={"title-form"}>
             <Typo32DarkBlueGreyHKGroteskRegular>
                Forms
             </Typo32DarkBlueGreyHKGroteskRegular>

@@ -16,6 +16,7 @@ import {
 } from '../../constants/RouteConstants'
 
 import ListOfForms from '../../components/ListOfForms'
+import Pagination from "../../components/Pagination"
 
 import {
    OnlineIcon,
@@ -31,35 +32,7 @@ import { goToPayRequestPage } from "../../utils/NavigationUtils/NavigationUtils.
 @inject('formStore')
 @observer
 class UserRoute extends React.Component {
-   limit = 8
-   @observable currentPage = 0
-   @observable offset = 0
-
-   componentDidMount() {
-      const { getFormsList, listOfForms } = this.props.formStore
-
-      console.log('user route cdm', listOfForms)
-
-      getFormsList(this.limit, this.offset)
-   }
-
-   onEnterPageNumber = event => {
-      console.log('event on key down', this.currentPage)
-   }
-
-   goToNextPage = () => {
-      const { getFormsList } = this.props.formStore
-      this.currentPage += 1
-      this.offset += this.limit
-      getFormsList(this.limit, this.offset)
-   }
-
-   goToPreviousPage = () => {
-      this.currentPage -= 1
-      const { getFormsList } = this.props.formStore
-      this.offset -= this.limit
-      getFormsList(this.limit, this.offset)
-   }
+   
 
    onSelectForm = (formId, formStatus) => {
       console.log('selected', formId, formStatus)
@@ -73,9 +46,9 @@ class UserRoute extends React.Component {
    }
 
    onRetryClick = () => {
-      const { getFormsList } = this.props.formStore
-      console.log('retry clicked', getFormsList)
-      getFormsList(this.limit, this.offset)
+      const { getPageEntities } = this.props.formStore.paginationStore
+     
+      getPageEntities(this.limit, this.offset)
    }
 
    getStatusOfForm(newForm) {
@@ -105,21 +78,26 @@ class UserRoute extends React.Component {
       }
    }
 
-   renderSuccessUI = () => {
-      const { listOfForms, createFormComponent } = this.props.formStore
-      console.log('listofFormsShouldnotbeundefined', listOfForms)
+   renderSuccessUI = observer(() => {
+      
+     
+      const {currentPageAndTotalPages, listOfForms} = this.props.formStore.paginationStore
+      
+      
+      
       if (listOfForms.length <= 0) {
          return <NoDataView />
       }
+      
       return (
          <ListOfForms
             onSelectForm={this.onSelectForm}
             getStatusOfForm={this.getStatusOfForm}
             listOfForms={listOfForms}
-            createFormComponent={createFormComponent}
          />
+         
       )
-   }
+   })
 
    signOut = () => {
       const { goToSignInPage } = this.props
@@ -132,39 +110,35 @@ class UserRoute extends React.Component {
 
    render() {
       const {goToPayRequestPage,goToWalletPage} = this.props
+        const { paginationStatus,listOfForms, paginationError ,currentPageAndTotalPages,
+           goToNextPage,goToPreviousPage
+        } = this.props.formStore.paginationStore
+        const { initialisePaginationStore } = this.props.formStore
+      
+      console.log("userRoute", paginationStatus)
       
       
-      const {
-         getFormsList,
-         listOfForms,
-         getFormsAPIStatus,
-         getFormsAPIError,
-         createFormComponent,
-         totalNoOfForms
-      } = this.props.formStore
-      console.log('user route ', listOfForms)
       return (
          <UserDashBoard
             redirectToSignInPage={this.redirectToSignInPage}
             renderSuccessUI={this.renderSuccessUI}
-            getFormsList={getFormsList}
-            listOfForms={listOfForms}
-            getFormsAPIStatus={getFormsAPIStatus}
-            getFormsAPIError={getFormsAPIError}
+            initialisePaginationStore={initialisePaginationStore}
+            apiStatus={paginationStatus}
+            apiError={paginationError}
+            currentPageAndTotalPages={currentPageAndTotalPages}
             onRetryClick={this.onRetryClick}
-            createFormComponent={createFormComponent}
             getStatusOfForm={this.getStatusOfForm}
             offset={this.offset}
             limitedNoOfFormsPerPage={this.limit}
-            totalNoOfForms={totalNoOfForms}
-            goToNextPage={this.goToNextPage}
-            goToPreviousPage={this.goToPreviousPage}
-            onEnterPageNumber={this.onEnterPageNumber}
-            currentPage={this.currentPage}
-            onSelectForm={this.onSelectForm}
+         
+            goToNextPage={goToNextPage}
+            goToPreviousPage={goToPreviousPage}
+            
+            
             signOut={this.signOut}
             goToPayRequestPage={this.props.goToPayRequestPage}
             goToWalletPage={this.props.goToWalletPage}
+            
          />
       )
    }

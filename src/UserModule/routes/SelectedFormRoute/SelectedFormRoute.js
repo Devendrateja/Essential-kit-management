@@ -34,14 +34,27 @@ import {
    Table
 } from '../../components/SelectedForm/styledComponents'
 
-@inject('selectedFormStore')
+@inject('formStore')
 @observer
 class SelectedFormRoute extends React.Component {
+   @observable liveForm = {}
+   
+   
    componentDidMount() {
-      const formId = this.props.match.params.id
-      const { getSelectedFormData } = this.props.selectedFormStore
-      getSelectedFormData(formId)
+      const liveFormId = this.props.match.params.id
+      
+      const { listOfForms } = this.props.formStore.paginationStore
+      
+      listOfForms.forEach(eachForm => {
+         
+         if(eachForm.formId.toString() === liveFormId){
+            this.liveForm = eachForm
+            this.liveForm.getSelectedFormData(liveFormId)
+            console.log("live form tracking",this.liveForm, eachForm)
+         }
+      })
    }
+
 
    setIstructions = instructions => {
       return instructions
@@ -53,7 +66,7 @@ class SelectedFormRoute extends React.Component {
          selectedFormData,
          changeSection,
          filterSectionDetails
-      } = this.props.selectedFormStore
+      } = this.liveForm
 
       let sectionDetails = selectedFormData.sectionDetails
 
@@ -102,11 +115,10 @@ class SelectedFormRoute extends React.Component {
          selectedFormData,
          getSelectedFormAPIStatus,
          getSelectedFormAPIError,
-         changeSection,
          updateUserSelectedFormData,
          getUserSavedDataAPIError,
          getUserSavedDataAPIStatus
-      } = this.props.selectedFormStore
+      } = this.liveForm
 
       return (
          <SelectedForm
@@ -115,7 +127,6 @@ class SelectedFormRoute extends React.Component {
             onClickRetry={this.onClickRetry}
             getSelectedFormAPIError={getSelectedFormAPIError}
             selectedFormData={selectedFormData}
-            changeSection={changeSection}
             signOut={this.signOut}
             selectedFormId={selectedFormId}
             updateUserSelectedFormData={updateUserSelectedFormData}

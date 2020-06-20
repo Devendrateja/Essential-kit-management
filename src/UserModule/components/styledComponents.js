@@ -10,5 +10,5 @@ export const MiniContainer = styled.div`${tw`flex flex-col`}
                                 background-color:${Colors.whiteTwo}`
 
 export const LoadingWrapperContainer = styled.div`
-   ${tw`mx-16`}
+  ${tw`mx-16 `}
 `

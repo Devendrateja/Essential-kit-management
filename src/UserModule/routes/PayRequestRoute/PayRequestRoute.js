@@ -10,6 +10,7 @@ import {USER_HOME_PATH} from "../../constants/RouteConstants"
 import { clearUserSession } from '../../../utils/StorageUtils.js'
 
 import PayRequestPage from '../../components/PayRequestPage'
+import withNavigation from "../../hocs/withNavigation"
 
 
 @inject("formStore")
@@ -22,31 +23,24 @@ class PayRequestRoute extends React.Component {
    }
    
    signOut = () => {
+      const {goToSignInPage} = this.props
       clearUserSession()
-      this.redirectToSignInPage()
+      goToSignInPage();
+      
    }
 
-   redirectToSignInPage = () => {
-      const { history } = this.props
-      const signin = history.push('/essential-kit-management/signin')
-      return <div>{signin}</div>
-   }
-   
-   goToHomePage = () => {
-      const { history } = this.props
-      const homePage = history.push(USER_HOME_PATH)
-      return homePage
-   }
-   
    render() {
        const { sendPaymentData, upi } = this.props.formStore
+       const { goToHomePage,goToWalletPage } = this.props
+       
        
       return (
          <div>
             <PayRequestPage 
             sendPaymentData={sendPaymentData}
             signOut={this.signOut}
-            goToHomePage={this.goToHomePage}
+            goToHomePage={goToHomePage}
+            goToWalletPage={goToWalletPage}
             upi={upi}
             />
          </div>
@@ -54,4 +48,4 @@ class PayRequestRoute extends React.Component {
    }
 }
 
-export default withRouter(PayRequestRoute)
+export default withNavigation(PayRequestRoute)

@@ -31,7 +31,7 @@ class SelectedForm extends React.Component {
          selectedFormData,
          apiStatus,
          getSelectedFormAPIError,
-         changeSection,
+         
          onClickRetry,
          signOut,
          updateUserSelectedFormData,

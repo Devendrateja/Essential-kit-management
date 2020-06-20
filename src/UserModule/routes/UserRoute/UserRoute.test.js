@@ -38,6 +38,8 @@ const LocationDisplay = withRouter(({ location }) => (
    <div data-testid='location-display'>{location.pathname}</div>
 ))
 
+
+
 describe('UserRoute tests', () => {
    let formAPI
    let formStore
@@ -45,40 +47,72 @@ describe('UserRoute tests', () => {
    beforeEach(() => {
       formAPI = new FormAPI()
       formStore = new FormStore(formAPI)
-   })
+   });
 
    afterEach(() => {
-      jest.resetAllMocks()
-   })
+      jest.resetAllMocks();
+   });
 
-   it('should go to next page and previous page', async () => {
-      const { getByRole } = render(
+   it('should go to next page and prev page', async () => {
+      
+      formStore.initialisePaginationStore(4,0)
+      
+      const mockSuccessPromise = new Promise(function(resolve, reject) {
+         resolve(getUserResponse)
+      })
+      // await formStore.getFormsList()
+      
+      // const { debug,getByRole, getByText } = render(
+      //    <Router history={createMemoryHistory()}>
+      //       <UserRoute formStore={formStore}/>
+      //    </Router>
+      // )
+
+      // const nextNavButton = getByRole('button', { name: '>' })
+      // const prevNavButton = getByRole('button', { name: '<' })
+      // expect(prevNavButton.disabled).toBe(true)
+      // fireEvent.click(nextNavButton)
+      // expect(prevNavButton.disabled).toBe(false)
+      // fireEvent.click(prevNavButton)
+      // expect(prevNavButton.disabled).toBe(true)
+      // debug()
+   })
+   
+   
+   it("should test that form is live or close using data testid", async () => {
+
+      const mockSuccessPromise = new Promise(function(resolve, reject) {
+         resolve(getUserResponse)
+      })
+
+      const mockFormAPI = jest.fn()
+      mockFormAPI.mockReturnValue(mockSuccessPromise)
+      formAPI.getFormsAPI = mockFormAPI
+      formStore.getFormsList()
+      
+      
+      const { debug,getByRole, getAllByRole,getAllByText , getByTestId, getAllByTestId} = await render(
          <Router history={createMemoryHistory()}>
-            <UserRoute formStore={formStore} />
+            <UserRoute formStore={formStore}/>
          </Router>
       )
-
-      const nextNavButton = getByRole('button', { name: '>' })
-      const prevNavButton = getByRole('button', { name: '<' })
-      await expect(prevNavButton.disabled).toBe(true)
-      fireEvent.click(nextNavButton)
-      await expect(prevNavButton.disabled).toBe(false)
+      
+      const formTitle  = getByTestId("title-form")
+      await waitFor(() =>{
+         console.log("...rrrrr......", formTitle)
+      })
+      const form = getAllByTestId("testidform-1")
+      
+      console.log("list of formms while testing", form)
+      
+      
+      
+      
+      // const selectedForm = getAllByRole("form", { name : "individual-form" })
+      
    })
+   
+   
 
-   it('should test the status and date from the formComponent', () => {
-      const { getByRole, getByText, debug } = render(
-         <Router history={createMemoryHistory()}>
-            <UserRoute formStore={formStore} />
-         </Router>
-      )
-      const form = {
-         formStatus: 'Online',
-         ClosingDate: '1-1-1'
-      }
-
-      const mockgetStatus = jest.fn()
-      mockgetStatus.mockReturnValue(form)
-      UserRoute.getStatusOfForm = mockgetStatus
-      console.log(mockgetStatus)
-   })
+   
 })

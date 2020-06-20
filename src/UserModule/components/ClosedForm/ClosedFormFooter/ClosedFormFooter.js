@@ -17,17 +17,23 @@ class ClosedFormFooter extends React.Component {
          CostIncurred
       } = dataStrings.seletedFormFooter
       const { footerData } = this.props
+      
+      
+      if(footerData !== undefined){
+      
       return (
-         <FooterContainer>
-            <FooterColumn>
-               <Typo14WhiteHKGroteskSemiBold>{`${ItemsAdded} : ${footerData.itemsAdded}`}</Typo14WhiteHKGroteskSemiBold>
-               <Typo14WhiteHKGroteskSemiBold>{`${ItemsRecieved} : ${footerData.itemsRecieved}`}</Typo14WhiteHKGroteskSemiBold>
-            </FooterColumn>
-            <FooterColumn>
-               <TextStyle4>{`${CostIncurred} : ${footerData.costIncurred}`}</TextStyle4>
-            </FooterColumn>
-         </FooterContainer>
-      )
+            <FooterContainer>
+               <FooterColumn>
+                  <Typo14WhiteHKGroteskSemiBold>{`${ItemsAdded} : ${footerData.itemsAdded}`}</Typo14WhiteHKGroteskSemiBold>
+                  <Typo14WhiteHKGroteskSemiBold>{`${ItemsRecieved} : ${footerData.itemsRecieved}`}</Typo14WhiteHKGroteskSemiBold>
+               </FooterColumn>
+               <FooterColumn>
+                  <TextStyle4>{`${CostIncurred} : ${footerData.costIncurred}`}</TextStyle4>
+               </FooterColumn>
+            </FooterContainer>
+         )
+      }
+      return null
    }
 }
 

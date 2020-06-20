@@ -17,6 +17,7 @@ class LoadingWrapperWithFailure extends React.Component {
          onRetryClick,
          apiError
       } = this.props
+      
       const errorMessage = getUserDisplayableErrorMessage(apiError)
 
       switch (apiStatus) {

@@ -20,6 +20,41 @@ class FormAPI {
          apiMethods.get
       )
    }
+   
+   
+   
+   getSelectedFormAPI(id) {
+      return networkCallWithApisauce(
+         this.api,
+         `form/${id}/v1/`,
+         {},
+         apiMethods.get
+      )
+   }
+
+   setSelectedFormAPI(id, data) {
+      console.log(data,id)
+      return networkCallWithApisauce(
+         this.api,
+         `form/${id}/v1/`,
+         data,
+         apiMethods.post
+      )
+   }
+   
+   
+   
+   getClosedFormAPI(id) {
+      return networkCallWithApisauce(
+         this.api,
+         `closed/form/${id}/v1/`,
+         {},
+         apiMethods.get
+      )
+   }
+   
+   
+   
 
    getTransactionUPI() {
       return networkCallWithApisauce(this.api, 'getbankdetails/v1/', {}, apiMethods.get)

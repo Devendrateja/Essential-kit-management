@@ -14,14 +14,19 @@ import ClosedForm from '../../components/ClosedForm'
 import withNavigation from "../../hocs/withNavigation"
 
 
-@inject('closedFormStore')
+@inject('formStore')
 @observer
 class ClosedFormRoute extends React.Component {
+   @observable closedForm = {}
+   
    componentDidMount() {
-      const { getClosedFormData } = this.props.closedFormStore
+      const { listOfForms } = this.props.formStore.paginationStore
       let id = this.props.match.params.id
-      console.log('component did mount id ', id, this.props)
-      getClosedFormData(id)
+      
+      this.closedForm = listOfForms.find(form => {
+         return form.formId.toString() === id
+      })
+      this.closedForm.getClosedFormData(id)
    }
 
    signOut = () => {
@@ -33,9 +38,8 @@ class ClosedFormRoute extends React.Component {
 
 
    onClickRetry = () => {
-      const { getClosedFormData } = this.props.closedFormStore
+      const { getClosedFormData } = this.closedForm
       let id = this.props.match.params.id
-      console.log('on retry click closed form id', id, this.props)
       getClosedFormData(id)
    }
 
@@ -48,8 +52,9 @@ class ClosedFormRoute extends React.Component {
          totalItemsDetailsWithCostIncurred,
          getClosedFormAPIStaus,
          getClosedFormAPIError
-      } = this.props.closedFormStore
+      } = this.closedForm
 
+      console.log("closed form aftr combined in form store", this.closedForm.totalItemsDetailsWithCostIncurred)
       return (
          <ClosedForm
             closedFormList={closedFormList}

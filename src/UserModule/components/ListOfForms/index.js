@@ -8,6 +8,8 @@ import FormComponent from '../FormComponent'
 
 @observer
 class ListOfForms extends React.Component {
+   
+   
    render() {
       let count = 0
       const {
@@ -16,23 +18,23 @@ class ListOfForms extends React.Component {
          getStatusOfForm,
          onSelectForm
       } = this.props
-      console.log(listOfForms, 'listOfForms')
+   
       return (
          <div>
-            {listOfForms.length !== 0 &&
-               listOfForms.map(eachForm => {
-                  count += 1
-                  const newForm = createFormComponent(eachForm)
-                  return (
-                     <FormComponent
-                        key={newForm.formId}
-                        onSelectForm={onSelectForm}
-                        sno={count}
-                        newForm={newForm}
-                        getStatusOfForm={getStatusOfForm}
-                     />
-                  )
-               })}
+            {
+               listOfForms.length !== 0 &&
+                  listOfForms.map((eachForm, index) => {
+                     return (
+                        <FormComponent
+                           key={eachForm.formId}
+                           onSelectForm={onSelectForm}
+                           sno={index + 1}
+                           newForm={eachForm}
+                           getStatusOfForm={getStatusOfForm}
+                        />
+                     )
+                  })
+            }
          </div>
       )
    }

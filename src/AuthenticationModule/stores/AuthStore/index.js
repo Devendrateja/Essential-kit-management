@@ -3,12 +3,14 @@ import { observable, action } from 'mobx'
 import { API_INITIAL } from '@ib/api-constants'
 import { bindPromiseWithOnSuccess } from '@ib/mobx-promise'
 
-import { setAccessToken, clearUserSession } from '../../../utils/StorageUtils'
+import { setAccessToken, clearUserSession, getAccessToken } from '../../../utils/StorageUtils'
+
 
 class AuthStore {
    authAPIService
    @observable getUserSignInAPIStatus
    @observable getUserSignInAPIError
+   
 
    constructor(authAPIService) {
       this.authAPIService = authAPIService
@@ -41,12 +43,12 @@ class AuthStore {
       const userSignInAPIPromise = this.authAPIService.signInAPI(request)
       return bindPromiseWithOnSuccess(userSignInAPIPromise)
          .to(this.setUserSignInAPIStatus, response => {
-            this.setUserSignInAPIResponse(response)
+            this.setUserSignInAPIResponse(response);
             onSuccess()
          })
          .catch(error => {
             this.setUserSignInAPIError(error)
-            onFailure(error)
+            onFailure()
          })
    }
 
@@ -55,6 +57,14 @@ class AuthStore {
       clearUserSession()
       this.init()
    }
+   
+   
+   @action.bound
+   isLoggedIn(){
+      const access_token = getAccessToken()
+      return access_token !== undefined || access_token !== undefined ? true : false
+   }
+   
 }
 
 export default AuthStore

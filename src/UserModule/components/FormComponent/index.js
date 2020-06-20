@@ -16,18 +16,18 @@ import {
 class FormComponent extends React.Component {
    render() {
       const { sno, newForm, getStatusOfForm, onSelectForm } = this.props
-
       let status = getStatusOfForm(newForm)
-      console.log('stats o date', status)
+     
       return (
          <Container
             onClick={() => onSelectForm(newForm.formId, newForm.formStatus)}
+            data-testid={`testidform-${sno}`}
          >
             <S_no>
                <AlignLeft>{sno}</AlignLeft>
             </S_no>
             <Span>
-               <AlignLeft>{newForm.formName}</AlignLeft>
+               <AlignLeft >{newForm.formName}</AlignLeft>
             </Span>
             <Span>
                <AlignLeft>

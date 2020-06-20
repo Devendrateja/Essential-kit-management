@@ -71,7 +71,7 @@ class PayRequestPage extends React.Component {
 
 
     render() {
-        const { onClickSend, signOut, goToHomePage , upi } = this.props
+        const { onClickSend, signOut, goToHomePage , upi,goToWalletPage } = this.props
         let PaymentOptions = this.getPaymentOptions()
 
         const {
@@ -89,7 +89,7 @@ class PayRequestPage extends React.Component {
 
         return (
             <PageContainer>
-                <Header signOut={signOut} goToHomePage={goToHomePage}/>
+                <Header signOut={signOut} goToHomePage={goToHomePage} goToWalletPage={goToWalletPage}/>
                 <NavButton><NavigationButton path={USER_HOME_PATH}/></NavButton>
                 <Body>
                     <PayRequestContainer>

@@ -16,7 +16,7 @@ import {
    USER_HOME_PATH
 } from '../../constants/RouteConstants'
 
-
+import withNavigation from "../../hocs/withNavigation"
 
 
 @inject('formStore')
@@ -26,39 +26,21 @@ class WalletRoute extends React.Component{
     
     
    signOut = () => {
+      const { goToSignInPage } = this.props
       clearUserSession()
-      this.redirectToSignInPage()
+      goToSignInPage();
    }
-
-   redirectToSignInPage = () => {
-      const { history } = this.props
-      const signin = history.push('/essential-kit-management/signin')
-      return <div>{signin}</div>
-   }
-
-   goToPayRequestPage = () => {
-      const { history } = this.props
-      const payRequestPage = history.push(PAY_REQUEST_PATH)
-      return <div>{payRequestPage}</div>
-   }
-   
-   goToHomePage = () => {
-      const { history } = this.props
-      const homePage = history.push(USER_HOME_PATH)
-      return <div>{homePage}</div>
-   }
-   
     
     
     render(){
-       
+       const { goToPayRequestPage, goToHomePage } = this.props
        const {listOfTransactions} = this.props.formStore
        
         return(
             <WalletPage
                signOut={this.signOut}
-               goToPayRequestPage={this.goToPayRequestPage}
-               goToHomePage={this.goToHomePage}
+               goToPayRequestPage={goToPayRequestPage}
+               goToHomePage={goToHomePage}
                NavButtonPath={USER_HOME_PATH}
                listOfTransactions={listOfTransactions}
             />
@@ -67,4 +49,4 @@ class WalletRoute extends React.Component{
 }
 
 
-export default WalletRoute;
+export default withNavigation(WalletRoute);

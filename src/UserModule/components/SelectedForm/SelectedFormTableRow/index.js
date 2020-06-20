@@ -32,7 +32,6 @@ class SelectedFormTableRow extends React.Component {
    componentDidMount() {
       const { item, selectedFormData } = this.props
       let defaultBrand = item.userSelectedBrandWithQuantity
-      console.log(defaultBrand, 'componentDidMoun defaultBrand')
 
       if (defaultBrand !== undefined) {
          this.selectedBrand = {
@@ -64,7 +63,7 @@ class SelectedFormTableRow extends React.Component {
          )
       }
 
-      console.log('this.selectedQuantity', this.selectedQuantity)
+      
    }
 
 
@@ -89,7 +88,7 @@ class SelectedFormTableRow extends React.Component {
       }
 
       if (this.selectedQuantity.value > max) {
-         console.log(max, 'max')
+         
          this.selectedQuantity = {
             value: 0,
             label: 0
