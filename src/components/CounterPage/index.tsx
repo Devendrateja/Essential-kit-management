@@ -10,7 +10,7 @@ type Props = {
 
 @observer
 class CounterPage extends Component<Props> {
-   functionCalling
+   functionCalling:any
 
    handleIncrement = () => {
       counterStore.incrementCounter()

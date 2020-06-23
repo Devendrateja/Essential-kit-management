@@ -17,18 +17,20 @@ import { ibhubsLogo } from '../../../styleGuide/images'
 
 import { SigninContainer, Form } from './styledComponents'
 
-// export const LoginButton = styled(Button)`
-
-//     background
-//     width
-//     height
-// `
-// const {className} = this.props
-
-// <button className={className} />
+type SignInFormProps = {
+   apiStatus: number
+   username: string
+   password: string
+   errorMessageUsernameField: string
+   errorMessagePasswordField: string
+   responseError: string | number
+   onClickButton: (event: { preventDefault: () => void }) => void
+   onChangeUsername: (event: { target: { value: string } }) => void
+   onChangePassword: (event: { target: { value: string } }) => void
+}
 
 @observer
-class SignInForm extends React.Component {
+class SignInForm extends React.Component<SignInFormProps> {
    render() {
       const {
          onClickButton,

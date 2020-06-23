@@ -1,7 +1,8 @@
 import { observable, action } from 'mobx'
 
+
 class CounterStore {
-   @observable count = 0
+   @observable count:number = 0
 
    @action.bound
    incrementCounter() {

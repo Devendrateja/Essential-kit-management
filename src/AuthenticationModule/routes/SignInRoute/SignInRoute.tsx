@@ -2,30 +2,35 @@ import React from 'react'
 import { observable, action } from 'mobx'
 import { observer, inject } from 'mobx-react'
 import { API_FETCHING, API_SUCCESS, API_FAILED } from '@ib/api-constants'
-import { Redirect } from 'react-router-dom'
-import { withRouter } from 'react-router-dom'
-
+import { withRouter, Redirect } from 'react-router-dom'
+import { History } from 'history'
 import SignInPage from '../../components'
 import DataStrings from '../../../i18n/strings.json'
 import { USER_HOME_PATH } from '../../../UserModule/constants/RouteConstants'
 import { getAccessToken, setAccessToken } from '../../../utils/StorageUtils.js'
 import { getUserDisplayableErrorMessage } from '../../../utils/APIUtils.js'
+import AuthStore from '../../stores/AuthStore'
+
+type SignInRouteProps = {
+   history: History
+   authStore: AuthStore
+}
 
 @inject('authStore')
 @observer
-class SignInRoute extends React.Component {
+class SignInRoute extends React.Component<SignInRouteProps> {
    @observable username = ''
    @observable password = ''
    @observable errorMessageUsernameField = ''
    @observable errorMessagePasswordField = ''
    @observable responseError = ''
 
-   onChangeUsername = event => {
+   onChangeUsername = (event: { target: { value: string } }) => {
       this.username = event.target.value
       this.errorMessageUsernameField = ''
    }
 
-   onChangePassword = event => {
+   onChangePassword = (event: { target: { value: string } }) => {
       this.password = event.target.value
       this.errorMessagePasswordField = ''
    }
@@ -39,12 +44,12 @@ class SignInRoute extends React.Component {
       const { getUserSignInAPIError: apiError } = this.props.authStore
       if (apiError !== null && apiError !== undefined) {
          let signinError = getUserDisplayableErrorMessage(apiError)
-         
+
          this.responseError = signinError
       }
    }
 
-   onClickButton = event => {
+   onClickButton = (event: { preventDefault: () => void }) => {
       event.preventDefault()
 
       const { usernameFieldError, passwordFieldError } = DataStrings
@@ -76,7 +81,7 @@ class SignInRoute extends React.Component {
 
    renderUserHome = () => {
       const { history } = this.props
-      return <Redirect to={USER_HOME_PATH} />
+      return <Redirect to={{ pathname: USER_HOME_PATH }} />
    }
 
    render() {

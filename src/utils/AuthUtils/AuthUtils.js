@@ -9,7 +9,7 @@ import {
 
 import { getAccessToken } from '../StorageUtils'
 
-export const networkCallWithApisauceWithoutAccessToken = async (
+export const networkCallWithApisauceWithAccessToken = async (
    api,
    url,
    requestObject,

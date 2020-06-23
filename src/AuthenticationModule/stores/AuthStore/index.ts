@@ -3,16 +3,28 @@ import { observable, action } from 'mobx'
 import { API_INITIAL } from '@ib/api-constants'
 import { bindPromiseWithOnSuccess } from '@ib/mobx-promise'
 
-import { setAccessToken, clearUserSession, getAccessToken } from '../../../utils/StorageUtils'
+import AuthAPI from '../../services/AuthService/index.api.js'
+import {
+   setAccessToken,
+   clearUserSession,
+   getAccessToken
+} from '../../../utils/StorageUtils'
 
+type userSignInRequestProps = {
+   username: string
+   password: string
+}
+
+interface APIResponseProps {
+   access_token: string
+}
 
 class AuthStore {
    authAPIService
-   @observable getUserSignInAPIStatus
-   @observable getUserSignInAPIError
-   
+   @observable getUserSignInAPIStatus!: number
+   @observable getUserSignInAPIError!: string | null
 
-   constructor(authAPIService) {
+   constructor(authAPIService: AuthAPI) {
       this.authAPIService = authAPIService
       this.init()
    }
@@ -24,26 +36,29 @@ class AuthStore {
    }
 
    @action.bound
-   setUserSignInAPIStatus(status) {
+   setUserSignInAPIStatus(status: number) {
       this.getUserSignInAPIStatus = status
    }
 
    @action.bound
-   setUserSignInAPIError(error) {
+   setUserSignInAPIError(error: string) {
       this.getUserSignInAPIError = error
    }
    @action.bound
-   setUserSignInAPIResponse(response) {
-      console.log(response)
+   setUserSignInAPIResponse(response: any) {
       setAccessToken(response.access_token.length > 0 && response.access_token)
    }
 
    @action.bound
-   userSignIn(request, onSuccess, onFailure) {
+   userSignIn(
+      request: userSignInRequestProps,
+      onSuccess: () => void,
+      onFailure: () => void
+   ) {
       const userSignInAPIPromise = this.authAPIService.signInAPI(request)
       return bindPromiseWithOnSuccess(userSignInAPIPromise)
          .to(this.setUserSignInAPIStatus, response => {
-            this.setUserSignInAPIResponse(response);
+            this.setUserSignInAPIResponse(response)
             onSuccess()
          })
          .catch(error => {
@@ -57,14 +72,14 @@ class AuthStore {
       clearUserSession()
       this.init()
    }
-   
-   
+
    @action.bound
-   isLoggedIn(){
+   isLoggedIn() {
       const access_token = getAccessToken()
-      return access_token !== undefined || access_token !== undefined ? true : false
+      return access_token !== undefined || access_token !== undefined
+         ? true
+         : false
    }
-   
 }
 
 export default AuthStore

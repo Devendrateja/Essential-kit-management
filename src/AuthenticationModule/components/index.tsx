@@ -5,8 +5,20 @@ import { API_FETCHING, API_SUCCESS, API_FAILED } from '@ib/api-constants'
 
 import SignInForm from './SignInForm/index'
 
+type SignInPageProps = {
+   apiStatus: number
+   username: string
+   password: string
+   errorMessageUsernameField: string
+   errorMessagePasswordField: string
+   responseError: string | number
+   onClickButton: (event: { preventDefault: () => void }) => void
+   onChangeUsername: (event: { target: { value: string } }) => void
+   onChangePassword: (event: { target: { value: string } }) => void
+}
+
 @observer
-class SignInPage extends React.Component {
+class SignInPage extends React.Component<SignInPageProps> {
    render() {
       const {
          onClickButton,
