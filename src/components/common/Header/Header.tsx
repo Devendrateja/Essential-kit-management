@@ -20,11 +20,23 @@ import {
    SignOutButton
 } from './styledComponents'
 
+type HeaderProps = {
+   signOut: () => void
+   goToPayRequestPage: () => void
+   goToHomePage: () => void
+   goToWalletPage: () => void
+}
+
 @observer
-class Header extends React.Component {
+class Header extends React.Component<HeaderProps> {
    render() {
       const { HOME, PAYREQUEST, MYWALLET } = dataStrings.UserModule.Header
-      const { signOut, goToPayRequestPage , goToHomePage, goToWalletPage} = this.props
+      const {
+         signOut,
+         goToPayRequestPage,
+         goToHomePage,
+         goToWalletPage
+      } = this.props
 
       return (
          <HeaderContainer>

@@ -3,15 +3,20 @@ import { apiMethods } from '../../../constants/APIConstants'
 import { networkCallWithApisauceWithAccessToken } from '../../../utils/AuthUtils/AuthUtils'
 import { BaseURL } from '../../../utils/BaseURLUtils/URLUtils.js'
 
+type userSignInRequestProps = {
+   username: string
+   password: string
+}
+
 class AuthAPI {
-   api
+   api!: object
    constructor() {
       this.api = create({
          baseURL: `${BaseURL}`
       })
    }
 
-   signInAPI(request) {
+   signInAPI(request: userSignInRequestProps) {
       return networkCallWithApisauceWithAccessToken(
          this.api,
          'Loginform/v1/',

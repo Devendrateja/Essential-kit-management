@@ -4,7 +4,7 @@ import { action } from '@storybook/addon-actions'
 import { withKnobs, text } from '@storybook/addon-knobs'
 import { RiLoader4Line } from 'react-icons/ri'
 
-import Button from './'
+import Button from '.'
 
 import { Colors } from '../../../themes/Colors'
 

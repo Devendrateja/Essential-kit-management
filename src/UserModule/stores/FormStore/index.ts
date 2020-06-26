@@ -2,56 +2,47 @@ import React from 'react'
 import { observable, action, computed } from 'mobx'
 import {
    API_INITIAL,
+   APIStatus,
    API_FETCHING,
    API_SUCCESS,
    API_FAILED
-}
-from '@ib/api-constants'
+} from '@ib/api-constants'
 import { bindPromiseWithOnSuccess } from '@ib/mobx-promise'
-import { Redirect } from 'react-router-dom'
 
-import PaginationStore from "../../../stores/paginationStore"
-
-import getUserResponse from '../../fixtures/getUserResponse.json'
+import PaginationStore from '../../../stores/paginationStore'
 
 import Form from '../models/FormModel'
-import TransactionModel from "../models/TransactionModel"
+import TransactionModel from '../models/TransactionModel'
 
-import { setAccessToken, clearUserSession } from '../../../utils/StorageUtils'
+import FormFixturesService from '../../services/FormServices/index.fixtures'
+
+import { TransactionsResponse, TransactionUPIResponse } from '../type'
+
+interface PaginationStoreObject {
+   paginationStatus: APIStatus
+   paginationError: Error | null
+   paginationResponse: []
+}
 
 class FormStore {
-   @observable paginationStore
-   
-   formsAPIService
-   
-   @observable getFormsAPIStatus
-   @observable getFormsAPIError
-   @observable listOfForms
-   @observable totalNoOfForms
+   @observable paginationStore!: PaginationStoreObject | PaginationStore
 
+   formsAPIService: FormFixturesService
 
+   @observable upiStatus!: APIStatus
+   @observable upiError!: Error | null
+   @observable upi!: string
 
-   @observable upiStatus
-   @observable upiError
-   @observable upi
-   
-   @observable userPaymentDetailsAPIStatus
-   @observable userPaymentDetailsAPIError
+   @observable userPaymentDetailsAPIStatus!: APIStatus
+   @observable userPaymentDetailsAPIError!: Error | null
    @observable userPaymentDetailsAPIResponse
-   
-   
-   
-   
-   
-   @observable listOfTransactions
-   @observable totalAmount
-   @observable totalTransactions
-   @observable transactionListAPIstatus
-   @observable transactionListAPIError
-   
-   
-   
-   
+
+   @observable listOfTransactions!: Array<TransactionModel>
+   @observable totalAmount!: number
+   @observable totalTransactions!: number
+   @observable transactionListAPIstatus!: APIStatus
+   @observable transactionListAPIError!: Error | null
+
    constructor(formAPI) {
       this.formsAPIService = formAPI
       this.init()
@@ -60,43 +51,25 @@ class FormStore {
    @action.bound
    init() {
       this.paginationStore = {
-         paginationStatus : API_INITIAL,
-         paginationError : null,
-         paginationResponse : []
+         paginationStatus: API_INITIAL,
+         paginationError: null,
+         paginationResponse: []
       }
-      
-      this.getFormsAPIStatus = API_INITIAL
-      this.getFormsAPIError = null
-      this.listOfForms = []
-      
-      
+
       this.upiStatus = API_INITIAL
       this.upiError = null
       this.upi = ''
-      
-      
+
       this.userPaymentDetailsAPIStatus = API_INITIAL
       this.userPaymentDetailsAPIError = null
       this.userPaymentDetailsAPIResponse = {}
-      
-      
-      
-      
+
       this.totalAmount = 0
       this.totalTransactions = 0
       this.listOfTransactions = []
       this.transactionListAPIstatus = API_INITIAL
       this.transactionListAPIError = null
    }
-
-
-
-
-
-
-
-
-
 
    @action.bound
    setUPIStatus(status) {
@@ -109,11 +82,9 @@ class FormStore {
    }
 
    @action.bound
-   setUPIResponse(response) {
+   setUPIResponse(response: TransactionUPIResponse | any) {
       this.upi = response.upi_id
    }
-
-
 
    @action.bound
    getPayRequestUPI() {
@@ -123,30 +94,20 @@ class FormStore {
          .catch(this.setUPIError)
    }
 
-
-
-
-
-
-
-
    @action.bound
    setPaymentStatus(status) {
       this.userPaymentDetailsAPIStatus = status
    }
-
 
    @action.bound
    setPaymentResponse(response) {
       this.userPaymentDetailsAPIResponse = response
    }
 
-
    @action.bound
    setPaymentError(error) {
       this.userPaymentDetailsAPIError = error
    }
-
 
    @action.bound
    sendPaymentData(data) {
@@ -157,70 +118,46 @@ class FormStore {
          .catch(this.setPaymentError)
    }
 
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
    @action.bound
-   setTransactionsListAPIStatus(status){
+   setTransactionsListAPIStatus(status) {
       this.transactionListAPIstatus = status
    }
-   
-   
+
    @action.bound
-   setTransactionsListAPIError(error){
+   setTransactionsListAPIError(error) {
       this.transactionListAPIError = error
    }
-   
-   
-   
-   
+
    @action.bound
-   setTransactionsListAPIResponse(response){
+   setTransactionsListAPIResponse(response: TransactionsResponse | any) {
       this.totalTransactions = response.total_transaction
       this.totalAmount = response.total_amount
       response.transactions.forEach(eachTransaction => {
          const newTransaction = new TransactionModel(eachTransaction)
-         this.listOfTransactions.push(newTransaction)  
+         this.listOfTransactions.push(newTransaction)
       })
-      
    }
-   
-   
-
-   
 
    @action.bound
-   getUserTransactions(){
+   getUserTransactions() {
       const promise = this.formsAPIService.getUserTransactionList()
       return bindPromiseWithOnSuccess(promise)
-         .to(this.setTransactionsListAPIStatus, this.setTransactionsListAPIResponse)
+         .to(
+            this.setTransactionsListAPIStatus,
+            this.setTransactionsListAPIResponse
+         )
          .catch(this.setTransactionsListAPIError)
    }
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
+
    @action.bound
-   initialisePaginationStore(limit, offset){
-            this.paginationStore = new PaginationStore(this.formsAPIService, limit, offset, Form )
+   initialisePaginationStore(limit: number, offset: number) {
+      this.paginationStore = new PaginationStore(
+         this.formsAPIService,
+         limit,
+         offset,
+         Form
+      )
    }
-
-
 }
 
 export default FormStore

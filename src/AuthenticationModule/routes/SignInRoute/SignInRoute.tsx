@@ -2,16 +2,16 @@ import React from 'react'
 import { observable, action } from 'mobx'
 import { observer, inject } from 'mobx-react'
 import { API_FETCHING, API_SUCCESS, API_FAILED } from '@ib/api-constants'
-import { withRouter, Redirect } from 'react-router-dom'
+import { withRouter, Redirect, RouteComponentProps } from 'react-router-dom'
 import { History } from 'history'
 import SignInPage from '../../components'
 import DataStrings from '../../../i18n/strings.json'
 import { USER_HOME_PATH } from '../../../UserModule/constants/RouteConstants'
-import { getAccessToken, setAccessToken } from '../../../utils/StorageUtils.js'
-import { getUserDisplayableErrorMessage } from '../../../utils/APIUtils.js'
+import { getAccessToken, setAccessToken } from '../../../utils/StorageUtils'
+import { getUserDisplayableErrorMessage } from '../../../utils/APIUtils'
 import AuthStore from '../../stores/AuthStore'
 
-type SignInRouteProps = {
+interface SignInRouteProps {
    history: History
    authStore: AuthStore
 }

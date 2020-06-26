@@ -1,13 +1,15 @@
 import { observable, action } from 'mobx'
 
-class ClosedFormModel {
-   itemId
-   @observable itemName
-   @observable itemsAdded
-   @observable itemsRecieved
-   @observable costIncurred
+import { ClosedFormItemDetails } from '../../type'
 
-   constructor(closedForm) {
+class ClosedFormModel {
+   itemId: number
+   @observable itemName: string
+   @observable itemsAdded: number
+   @observable itemsRecieved: number
+   @observable costIncurred: number
+
+   constructor(closedForm: ClosedFormItemDetails) {
       this.itemId = closedForm.item_id
       this.itemName = closedForm.item_name
       this.itemsAdded = closedForm.items_added

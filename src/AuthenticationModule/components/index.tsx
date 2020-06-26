@@ -11,7 +11,7 @@ type SignInPageProps = {
    password: string
    errorMessageUsernameField: string
    errorMessagePasswordField: string
-   responseError: string | number
+   responseError: string
    onClickButton: (event: { preventDefault: () => void }) => void
    onChangeUsername: (event: { target: { value: string } }) => void
    onChangePassword: (event: { target: { value: string } }) => void

@@ -15,8 +15,8 @@ export const networkCallWithApisauceWithAccessToken = async (
    requestObject,
    type = apiMethods.post
 ) => {
-   let response = null
-   
+   let response: any = null
+
    api.setHeader('Content-Type', 'application/json; charset=UTF-8')
    try {
       response = await getData(api, url, requestObject, type)

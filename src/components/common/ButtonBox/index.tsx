@@ -7,11 +7,17 @@ import {
    API_FAILED
 } from '@ib/api-constants'
 
+import './ButtonBox.css'
 
-import "./ButtonBox.css"
+type ButtonProps = {
+   onClickButton: (event: { preventDefault: () => void }) => void
+   buttonValue: string | React.ReactElement<HTMLButtonElement>
+   apiStatus: number
+   className: string
+}
 
 @observer
-class Button extends React.Component {
+class Button extends React.Component<ButtonProps> {
    render() {
       const { onClickButton, buttonValue, apiStatus, className } = this.props
 

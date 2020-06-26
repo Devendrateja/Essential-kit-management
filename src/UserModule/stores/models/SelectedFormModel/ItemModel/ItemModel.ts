@@ -2,16 +2,18 @@ import React from 'react'
 import { observable, action, computed } from 'mobx'
 import BrandModel from '../BrandModel'
 
-class ItemModel {
-   id
-   @observable description
-   @observable name
-   @observable brands
-   @observable selectedBrandId
-   @observable totalPriceOfAnItem = 0
-   @observable selectedQuantityPerItem = 0
+import { SelectedFormItemDetails } from '../../../type'
 
-   constructor(item) {
+class ItemModel {
+   id: number
+   @observable name: string
+   @observable description: string
+   @observable brands: Array<BrandModel>
+   @observable selectedBrandId!: number
+   @observable totalPriceOfAnItem: number = 0
+   @observable selectedQuantityPerItem: number = 0
+
+   constructor(item: SelectedFormItemDetails) {
       this.id = item.item_id
       this.name = item.Item_name
       this.description = item.description
@@ -22,7 +24,11 @@ class ItemModel {
    }
 
    @action.bound
-   setUserSelectedBrandWithQuantity(brandId, qty, totalPrice) {
+   setUserSelectedBrandWithQuantity(
+      brandId: number,
+      qty: number,
+      totalPrice: number
+   ) {
       this.brands.forEach(eachBrand => {
          eachBrand.id === brandId
             ? (eachBrand.count = qty)

@@ -15,7 +15,7 @@ import {
 } from '@ib/api-constants'
 import SignInRoute from '../../../AuthenticationModule/routes/SignInRoute'
 import Colors from '../../../themes/Colors'
-import Button from './'
+import Button from '.'
 
 const LocationDisplay = withRouter(({ location }) => (
    <div data-testid='location-display'>{location.pathname}</div>

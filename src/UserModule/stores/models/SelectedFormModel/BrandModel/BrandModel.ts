@@ -1,14 +1,16 @@
 import React from 'react'
 import { observable, action } from 'mobx'
 
-class BrandModel {
-   id
-   @observable brandName
-   @observable maxQuantity
-   @observable pricePerItem
-   @observable count
+import { SelectedFormBrandDetails } from '../../../type'
 
-   constructor(brand) {
+class BrandModel {
+   id: number
+   @observable brandName: string
+   @observable maxQuantity: number
+   @observable pricePerItem: number
+   @observable count: number
+
+   constructor(brand: SelectedFormBrandDetails) {
       this.id = brand.brand_id
       this.brandName = brand.brand
       this.maxQuantity = brand.max_min_quantity

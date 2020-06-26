@@ -7,10 +7,27 @@ import {
    API_FAILED
 } from '@ib/api-constants'
 
-import { InputEl } from './styledComponents.js'
+import { InputEl } from './styledComponents'
+
+type StyleProps = {
+   background: string
+   width: string
+   height: string
+   borderRadius: string
+   border: string
+}
+
+type InputElementProps = {
+   onChangeElement: (event: { target: { value: string } }) => void
+   inputType: string
+   placeholderText: string
+   apiStatus: number
+   inputValue: string
+   styles: StyleProps
+}
 
 @observer
-class InputElement extends React.Component {
+class InputElement extends React.Component<InputElementProps> {
    render() {
       const {
          onChangeElement,
@@ -34,4 +51,3 @@ class InputElement extends React.Component {
 }
 
 export default InputElement
-//defaultValue={inputValue} styles={styles}

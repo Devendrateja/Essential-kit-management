@@ -1,45 +1,45 @@
-import { observable, action,computed } from 'mobx'
+import { observable, action, computed } from 'mobx'
 
 import {
    API_INITIAL,
+   APIStatus,
    API_FETCHING,
    API_SUCCESS,
    API_FAILED
 } from '@ib/api-constants'
 import { bindPromiseWithOnSuccess } from '@ib/mobx-promise'
-import SelectedFormModel from "../SelectedFormModel"
-import ClosedFormModel from "../ClosedFormModel"
 
+import { FormObject } from '../../type'
+
+import FormFixturesService from '../../../services/FormServices/index.fixtures'
+
+import SelectedFormModel from '../SelectedFormModel'
+import ClosedFormModel from '../ClosedFormModel'
 
 class Form {
-   formsAPI
-   formId
-   @observable formName
-   @observable formStatus
-   @observable CloseDate
-   @observable expectedDeliveryDate
-   @observable itemsCount
-   @observable estimatedCount
-   @observable itemsPendingCount
-   @observable costIncurredForDeliveredItems
-   
-   @observable getSelectedFormAPIStatus
-   @observable getSelectedFormAPIError
-   @observable selectedFormData
-   
-   @observable getUserSavedDataAPIStatus
-   @observable getUserSavedDataAPIError
-   
-   
-   closedFormAPIService
-   @observable closedFormList
-   @observable getClosedFormAPIStaus
-   @observable getClosedFormAPIError
+   formsAPI: FormFixturesService
+   formId: number
+   @observable formName: string
+   @observable formStatus: string
+   @observable ClosingDate: string
+   @observable expectedDeliveryDate: string
+   @observable totalItems: number
+   @observable totalEstimatedCost: number
+   @observable itemsPending: number
+   @observable costIncurredForDeliveredItems: number
 
+   @observable getSelectedFormAPIStatus: APIStatus
+   @observable getSelectedFormAPIError: Error | null
+   @observable selectedFormData!: SelectedFormModel
 
+   @observable getUserSavedDataAPIStatus: APIStatus
+   @observable getUserSavedDataAPIError: Error | null
 
+   @observable closedFormList: Array<ClosedFormModel>
+   @observable getClosedFormAPIStaus: APIStatus
+   @observable getClosedFormAPIError: Error | null
 
-   constructor(formsAPIService,form) {
+   constructor(formsAPIService: FormFixturesService, form: FormObject) {
       this.formsAPI = formsAPIService
       this.formId = form.form_id
       this.formName = form.form_name
@@ -49,27 +49,19 @@ class Form {
       this.totalItems = form.items_count
       this.totalEstimatedCost = form.estimated_cost
       this.itemsPending = form.items_pending_count
-      this.costIncurredForDeliveredItems = form.cost_incurred_for_delivered_items
-      
-      
+      this.costIncurredForDeliveredItems =
+         form.cost_incurred_for_delivered_items
+
       this.getSelectedFormAPIStatus = API_INITIAL
       this.getSelectedFormAPIError = null
       this.getUserSavedDataAPIError = null
       this.getUserSavedDataAPIStatus = API_INITIAL
-      
-      
+
       this.getClosedFormAPIStaus = API_INITIAL
       this.getClosedFormAPIError = null
       this.closedFormList = []
-      
    }
-   
-   
-   
-   
-   
-   
-   
+
    @action.bound
    setGetSelectedFormAPIStatus(status) {
       this.getSelectedFormAPIStatus = status
@@ -97,20 +89,19 @@ class Form {
    @action.bound
    setUserSavedDataAPIStatus(status) {
       this.getUserSavedDataAPIStatus = status
-      console.log("get user saved status", status)
+      console.log('get user saved status', status)
    }
 
    @action.bound
    setUserSavedDataAPIError(error) {
       this.getUserSavedDataAPIError = error
-      console.log("get user saved error", error)
-   }
-   
-   @action.bound
-   setUserSavedDataResponse(response){
-      console.log("userSaved Data ", response)
+      console.log('get user saved error', error)
    }
 
+   @action.bound
+   setUserSavedDataResponse(response) {
+      console.log('userSaved Data ', response)
+   }
 
    @action.bound
    updateUserSelectedFormData(id, data) {
@@ -119,17 +110,7 @@ class Form {
          .to(this.setUserSavedDataAPIStatus, this.setUserSavedDataResponse)
          .catch(this.setUserSavedDataAPIError)
    }
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
+
    @action.bound
    setGetClosedFormAPIStatus(status) {
       this.getClosedFormAPIStaus = status
@@ -171,9 +152,6 @@ class Form {
       })
       return totalData
    }
-   
-   
-   
 }
 
 export default Form

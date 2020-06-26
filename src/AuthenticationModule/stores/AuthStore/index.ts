@@ -3,7 +3,8 @@ import { observable, action } from 'mobx'
 import { API_INITIAL } from '@ib/api-constants'
 import { bindPromiseWithOnSuccess } from '@ib/mobx-promise'
 
-import AuthAPI from '../../services/AuthService/index.api.js'
+import AuthFixturesService from '../../services/FixturesService/index.fixtures'
+
 import {
    setAccessToken,
    clearUserSession,
@@ -20,11 +21,11 @@ interface APIResponseProps {
 }
 
 class AuthStore {
-   authAPIService
+   authAPIService: AuthFixturesService
    @observable getUserSignInAPIStatus!: number
    @observable getUserSignInAPIError!: string | null
 
-   constructor(authAPIService: AuthAPI) {
+   constructor(authAPIService: AuthFixturesService) {
       this.authAPIService = authAPIService
       this.init()
    }

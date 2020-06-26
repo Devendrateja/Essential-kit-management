@@ -3,8 +3,10 @@ import { apiMethods } from '../../../constants/APIConstants'
 import { networkCallWithApisauce } from '../../../utils/APIUtils'
 import { BaseURL } from '../../../utils/BaseURLUtils/URLUtils.js'
 
-class FormAPI {
-   api
+import FormService from './index'
+
+class FormAPI implements FormService {
+   api: Record<any, any>
 
    constructor() {
       this.api = create({
@@ -20,9 +22,7 @@ class FormAPI {
          apiMethods.get
       )
    }
-   
-   
-   
+
    getSelectedFormAPI(id) {
       return networkCallWithApisauce(
          this.api,
@@ -33,7 +33,6 @@ class FormAPI {
    }
 
    setSelectedFormAPI(id, data) {
-      console.log(data,id)
       return networkCallWithApisauce(
          this.api,
          `form/${id}/v1/`,
@@ -41,9 +40,7 @@ class FormAPI {
          apiMethods.post
       )
    }
-   
-   
-   
+
    getClosedFormAPI(id) {
       return networkCallWithApisauce(
          this.api,
@@ -52,25 +49,33 @@ class FormAPI {
          apiMethods.get
       )
    }
-   
-   
-   
 
    getTransactionUPI() {
-      return networkCallWithApisauce(this.api, 'getbankdetails/v1/', {}, apiMethods.get)
+      return networkCallWithApisauce(
+         this.api,
+         'getbankdetails/v1/',
+         {},
+         apiMethods.get
+      )
    }
-   
-   sendTransactionDetails(data){
-      return networkCallWithApisauce(this.api, 'payrequest/v1/', data, apiMethods.post)
+
+   sendTransactionDetails(data) {
+      return networkCallWithApisauce(
+         this.api,
+         'payrequest/v1/',
+         data,
+         apiMethods.post
+      )
    }
-   
-   
-   getUserTransactionList(){
-      return networkCallWithApisauce(this.api, 'transactions/v1/', {}, apiMethods.get)
+
+   getUserTransactionList() {
+      return networkCallWithApisauce(
+         this.api,
+         'transactions/v1/',
+         {},
+         apiMethods.get
+      )
    }
-   
-   
-   
 }
 
 export default FormAPI

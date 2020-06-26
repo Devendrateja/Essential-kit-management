@@ -1,11 +1,15 @@
 import getUserSignInResponse from '../../fixtures/getUserSignInResponse.json'
 
+type userSignInRequestProps = {
+   username: string
+   password: string
+}
+
 class AuthFixturesService {
-   signInAPI() {
+   signInAPI(request: userSignInRequestProps) {
       const promise = new Promise(function(resolve, reject) {
          resolve(getUserSignInResponse)
       })
-
       return promise
    }
 }
