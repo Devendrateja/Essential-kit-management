@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { action } from '@storybook/addon-actions'
-import { withKnobs, text } from '@storybook/addon-knobs'
+import { withKnobs, text, object } from '@storybook/addon-knobs'
 import { RiLoader4Line } from 'react-icons/ri'
 
 import Button from '.'
@@ -20,11 +20,10 @@ export const defaultView = () => {
       height: '40px',
       borderRadius: '4px'
    }
-   const buttonCSS = text('styles', styles)
 
    return (
       <Button
-         buttonCSS={buttonCSS}
+         buttonCSS={object('styles', styles)}
          onClickButton={action('button-clicked')}
          buttonValue={'Login'}
          apiStatus={0}
@@ -39,11 +38,11 @@ export const buttonWhileLoading = () => {
       height: '40px',
       borderRadius: '4px'
    }
-   const buttonCSS = text('styles', styles)
+   const buttonCSS = text('styles', ...styles)
 
    return (
       <Button
-         buttonCSS={buttonCSS}
+         buttonCSS={object('styles', styles)}
          onClickButton={action('button-clicked')}
          buttonValue={<RiLoader4Line />}
          apiStatus={100}

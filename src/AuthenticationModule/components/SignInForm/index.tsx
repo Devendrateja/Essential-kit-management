@@ -4,6 +4,7 @@ import { observable } from 'mobx'
 import { API_FETCHING, API_SUCCESS, API_FAILED } from '@ib/api-constants'
 import { RiLoader4Line } from 'react-icons/ri'
 
+import IbhubsLogo from '../../../components/common/Icons/IbhubsLogo/'
 import Button from '../../../components/common/Button/index'
 import DisplayErrorMessage from '../../../components/common/DisplayErrorMessage/index'
 import InputElement from '../../../components/common/InputElement/index'
@@ -13,7 +14,7 @@ import {
    Typo12SteelHKGroteskSemiBold
 } from '../../../styleGuide/Typos'
 import DataStrings from '../../../i18n/strings.json'
-import { ibhubsLogo } from '../../../styleGuide/images'
+//import { ibhubsLogo } from '../../../styleGuide/images'
 
 import { SigninContainer, Form } from './styledComponents'
 
@@ -70,7 +71,7 @@ class SignInForm extends React.Component<SignInFormProps> {
          <SigninContainer>
             <Form onSubmit={onClickButton}>
                <div>
-                  <img src={ibhubsLogo.src} alt={ibhubsLogo.alt} />
+                  <IbhubsLogo />
                </div>
                <div>
                   <Typo32DarkBlueGreyRubikRegular className='text-center'>
