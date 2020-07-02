@@ -11,8 +11,9 @@ import { getAccessToken, setAccessToken } from '../../../utils/StorageUtils'
 import { getUserDisplayableErrorMessage } from '../../../utils/APIUtils'
 import AuthStore from '../../stores/AuthStore'
 
-interface SignInRouteProps {
-   history: History
+interface SignInRouteProps extends RouteComponentProps {}
+
+interface InjectedProps extends SignInRouteProps {
    authStore: AuthStore
 }
 
@@ -25,6 +26,8 @@ class SignInRoute extends React.Component<SignInRouteProps> {
    @observable errorMessagePasswordField = ''
    @observable responseError = ''
 
+   getInjectedProps = (): InjectedProps => this.props as InjectedProps
+
    onChangeUsername = (event: { target: { value: string } }) => {
       this.username = event.target.value
       this.errorMessageUsernameField = ''
@@ -36,12 +39,14 @@ class SignInRoute extends React.Component<SignInRouteProps> {
    }
 
    onSignInSuccess = () => {
-      const { history } = this.props
-      history.push(USER_HOME_PATH)
+      // const { history } = this.getInjectedProps()
+      // history.push(USER_HOME_PATH)
    }
 
    onSignInFailure = () => {
-      const { getUserSignInAPIError: apiError } = this.props.authStore
+      const {
+         getUserSignInAPIError: apiError
+      } = this.getInjectedProps().authStore
       if (apiError !== null && apiError !== undefined) {
          let signinError = getUserDisplayableErrorMessage(apiError)
 
@@ -53,7 +58,7 @@ class SignInRoute extends React.Component<SignInRouteProps> {
       event.preventDefault()
 
       const { usernameFieldError, passwordFieldError } = DataStrings
-      const { userSignIn } = this.props.authStore
+      const { userSignIn } = this.getInjectedProps().authStore
 
       if (this.username === '' && this.password === '') {
          this.errorMessageUsernameField = DataStrings.usernameFieldError
@@ -80,12 +85,12 @@ class SignInRoute extends React.Component<SignInRouteProps> {
    }
 
    renderUserHome = () => {
-      const { history } = this.props
+      const { history } = this.getInjectedProps()
       return <Redirect to={{ pathname: USER_HOME_PATH }} />
    }
 
    render() {
-      const { getUserSignInAPIStatus } = this.props.authStore
+      const { getUserSignInAPIStatus } = this.getInjectedProps().authStore
       const AccessToken = getAccessToken()
       if (AccessToken) {
          return this.renderUserHome()

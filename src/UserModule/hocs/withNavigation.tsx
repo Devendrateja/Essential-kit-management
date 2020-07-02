@@ -1,5 +1,5 @@
 import React from 'react'
-import { Redirect, withRouter } from 'react-router-dom'
+import { Redirect, withRouter, RouteComponentProps } from 'react-router-dom'
 import { History } from 'history'
 import {
    PAY_REQUEST_PATH,
@@ -8,26 +8,33 @@ import {
 } from '../constants/RouteConstants'
 import { SIGN_IN_PATH } from '../../AuthenticationModule/constants/RouteConstants'
 
-const withNavigation = WrappedComponent => {
-   class HeaderProps extends React.Component {
+interface HistoryProps extends RouteComponentProps {}
+
+function withNavigation<T>(WrappedComponent: React.ComponentType<T>) {
+   class HeaderProps extends React.Component<T & HistoryProps> {
+      propsType = () => {
+         return this.props as HistoryProps
+      }
+
+      goTo = path => {
+         const { history } = this.propsType()
+         history.push(path)
+      }
+
       goToPayRequestPage = () => {
-         const { history } = this.props
-         return history.push(PAY_REQUEST_PATH)
+         this.goTo(PAY_REQUEST_PATH)
       }
 
       goToWalletPage = () => {
-         const { history } = this.props
-         return history.push(MY_WALLET_PATH)
+         this.goTo(MY_WALLET_PATH)
       }
 
       goToHomePage = () => {
-         const { history } = this.props
-         history.push(USER_HOME_PATH)
+         this.goTo(USER_HOME_PATH)
       }
 
       goToSignInPage = () => {
-         const { history } = this.props
-         return history.replace(SIGN_IN_PATH)
+         this.goTo(SIGN_IN_PATH)
       }
 
       render() {
@@ -43,7 +50,7 @@ const withNavigation = WrappedComponent => {
       }
    }
 
-   return withRouter(HeaderProps)
+   return HeaderProps
 }
 
 export default withNavigation

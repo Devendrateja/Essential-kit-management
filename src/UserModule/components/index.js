@@ -18,13 +18,10 @@ import {
    LoadingWrapperContainer
 } from './styledComponents'
 
-import { getLoadingStatus } from "@ib/api-utils"
+import { getLoadingStatus } from '@ib/api-utils'
 
 @observer
 class UserDashBoard extends React.Component {
-   
-   
-   
    render() {
       const {
          redirectToSignInPage,
@@ -38,15 +35,13 @@ class UserDashBoard extends React.Component {
          goToPreviousPage,
          offset,
          limitedNoOfFormsPerPage,
-         initialisePaginationStore,
          goToPayRequestPage,
          goToWalletPage,
          currentPageAndTotalPages
       } = this.props
-      
+
       const newAPIStatus = getLoadingStatus(apiStatus)
-      console.log("api statuses", newAPIStatus,apiStatus)
-      
+      console.log('api status in dashboarsd', apiStatus)
       return (
          <Container>
             <Header
@@ -70,7 +65,6 @@ class UserDashBoard extends React.Component {
                   goToNextPage={goToNextPage}
                   goToPreviousPage={goToPreviousPage}
                   currentPageAndTotalPages={currentPageAndTotalPages}
-                  initialisePaginationStore={initialisePaginationStore}
                />
             </MiniContainer>
          </Container>

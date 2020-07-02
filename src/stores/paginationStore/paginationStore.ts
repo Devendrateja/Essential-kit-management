@@ -28,13 +28,13 @@ class PaginationStore {
    constructor(
       APIService: FormFixturesService,
       limit: number,
-      offset: number,
+
       EntitiesModel: typeof Form
    ) {
       this.EntitiesModel = EntitiesModel
       this.paginationAPIService = APIService
       this.limit = limit
-      this.offset = offset
+      this.offset = 0
       this.initialiseThePaginationsEntities()
       this.init()
    }
@@ -68,6 +68,7 @@ class PaginationStore {
 
    @action.bound
    setPaginationStatus(status) {
+      console.log('api status in pagination store', status)
       this.paginationStatus = status
    }
 

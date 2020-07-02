@@ -1,36 +1,23 @@
 import React from 'react'
-import { observer , inject} from 'mobx-react'
+import { observer, inject } from 'mobx-react'
 import { observable } from 'mobx'
 import { FcNext, FcPrevious } from 'react-icons/fc'
 
 import { Container, Span, Button, Input } from './styledComponents'
 
-
-
-
 @observer
 class Pagination extends React.Component {
-   limit = 4
    @observable currentPage = 0
-   @observable offset = 0
 
-   componentDidMount() {
-      const {  initialisePaginationStore} = this.props
-      initialisePaginationStore(this.limit, this.offset)
-   }
-   
-   
    goToPreviousPage = () => {
       const { goToPreviousPage } = this.props
       goToPreviousPage()
    }
-   
-   
+
    goToNextPage = () => {
       const { goToNextPage } = this.props
       goToNextPage()
    }
-   
 
    render() {
       const {
@@ -39,9 +26,7 @@ class Pagination extends React.Component {
          currentPageAndTotalPages
       } = this.props
 
-      
-
-      if( currentPageAndTotalPages !== undefined){
+      if (currentPageAndTotalPages !== undefined) {
          const currentPageNo = currentPageAndTotalPages.currentPage
          const totalNoOfPages = currentPageAndTotalPages.totalPages
          return (
@@ -61,12 +46,13 @@ class Pagination extends React.Component {
                   </span>
                )}
                {
-                  
-                     <Span border={currentPageNo === totalNoOfPages ? true : false}>
-                     {totalNoOfPages}
-                     </Span>
+                  <Span
+                     border={currentPageNo === totalNoOfPages ? true : false}
+                  >
+                     {isNaN(totalNoOfPages) ? '' : totalNoOfPages}
+                  </Span>
                }
-               
+
                <Button
                   onClick={this.goToNextPage}
                   disabled={currentPageNo >= totalNoOfPages ? true : false}
@@ -76,7 +62,7 @@ class Pagination extends React.Component {
             </Container>
          )
       }
-      
+
       return <div></div>
    }
 }

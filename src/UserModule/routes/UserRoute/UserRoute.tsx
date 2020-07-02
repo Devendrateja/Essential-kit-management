@@ -3,7 +3,7 @@ import { observable, action } from 'mobx'
 import { observer, inject } from 'mobx-react'
 import { API_FETCHING, API_SUCCESS, API_FAILED } from '@ib/api-constants'
 import { Redirect } from 'react-router-dom'
-import { withRouter } from 'react-router-dom'
+import { withRouter, RouteComponentProps } from 'react-router-dom'
 
 import UserDashBoard from '../../components'
 import { clearUserSession } from '../../../utils/StorageUtils.js'
@@ -16,7 +16,7 @@ import {
 } from '../../constants/RouteConstants'
 
 import ListOfForms from '../../components/ListOfForms'
-import Pagination from "../../components/Pagination"
+import Pagination from '../../components/Pagination'
 
 import {
    OnlineIcon,
@@ -25,30 +25,43 @@ import {
    NavDown
 } from '../../../styleGuide/images'
 
-import  withNavigation  from "../../hocs/withNavigation.js"
-import { goToPayRequestPage } from "../../utils/NavigationUtils/NavigationUtils.js"
+import FormStore from '../../stores/FormStore'
 
+import withNavigation from '../../hocs/withNavigation'
+import { goToPayRequestPage } from '../../utils/NavigationUtils/NavigationUtils'
+
+interface UserRouteProps extends RouteComponentProps {
+   goToSignInPage: () => void
+   goToPayRequestPage: () => void
+   goToWalletPage: () => void
+}
+
+interface InjectedProps extends UserRouteProps {
+   formStore: FormStore
+}
 
 @inject('formStore')
 @observer
-class UserRoute extends React.Component {
-   
-
+class UserRoute extends React.Component<UserRouteProps> {
    onSelectForm = (formId, formStatus) => {
-      console.log('selected', formId, formStatus)
       const { history } = this.props
 
-      const renderForm =
+      const renderForm: any =
          formStatus === 'Live'
             ? history.push(`${SELECTED_FORM_PATH}/${formId}/v1`)
             : history.push(`${CLOSED_FORM_PATH}/${formId}/v1`)
+
       return <div>{renderForm}</div>
    }
 
+   getInjectedProps = (): InjectedProps => this.props as InjectedProps
+
    onRetryClick = () => {
-      const { getPageEntities } = this.props.formStore.paginationStore
-     
-      getPageEntities(this.limit, this.offset)
+      console.log('on retry clicked')
+      const {
+         getPageEntities
+      } = this.getInjectedProps().formStore.paginationStore
+      getPageEntities()
    }
 
    getStatusOfForm(newForm) {
@@ -79,23 +92,18 @@ class UserRoute extends React.Component {
    }
 
    renderSuccessUI = observer(() => {
-      
-     
-      const {currentPageAndTotalPages, listOfForms} = this.props.formStore.paginationStore
-      
-      
-      
+      const { listOfForms } = this.getInjectedProps().formStore.paginationStore
+
       if (listOfForms.length <= 0) {
          return <NoDataView />
       }
-      
+
       return (
          <ListOfForms
             onSelectForm={this.onSelectForm}
             getStatusOfForm={this.getStatusOfForm}
             listOfForms={listOfForms}
          />
-         
       )
    })
 
@@ -105,43 +113,33 @@ class UserRoute extends React.Component {
       goToSignInPage()
    }
 
-   
-   
-
    render() {
-      const {goToPayRequestPage,goToWalletPage} = this.props
-        const { paginationStatus,listOfForms, paginationError ,currentPageAndTotalPages,
-           goToNextPage,goToPreviousPage
-        } = this.props.formStore.paginationStore
-        const { initialisePaginationStore } = this.props.formStore
-      
-      console.log("userRoute", paginationStatus)
-      
-      
+      const { goToPayRequestPage, goToWalletPage } = this.props
+      const {
+         paginationStatus,
+         paginationError,
+         currentPageAndTotalPages,
+         goToNextPage,
+         goToPreviousPage
+      } = this.getInjectedProps().formStore.paginationStore
+      console.log('api status in route', paginationStatus)
       return (
          <UserDashBoard
-            redirectToSignInPage={this.redirectToSignInPage}
+            redirectToSignInPage={this.signOut}
             renderSuccessUI={this.renderSuccessUI}
-            initialisePaginationStore={initialisePaginationStore}
             apiStatus={paginationStatus}
             apiError={paginationError}
             currentPageAndTotalPages={currentPageAndTotalPages}
             onRetryClick={this.onRetryClick}
             getStatusOfForm={this.getStatusOfForm}
-            offset={this.offset}
-            limitedNoOfFormsPerPage={this.limit}
-         
             goToNextPage={goToNextPage}
             goToPreviousPage={goToPreviousPage}
-            
-            
             signOut={this.signOut}
-            goToPayRequestPage={this.props.goToPayRequestPage}
-            goToWalletPage={this.props.goToWalletPage}
-            
+            goToPayRequestPage={goToPayRequestPage}
+            goToWalletPage={goToWalletPage}
          />
       )
    }
 }
 
-export default withNavigation(UserRoute)
+export default withRouter(withNavigation(UserRoute))

@@ -31,7 +31,7 @@ class SelectedForm extends React.Component {
          selectedFormData,
          apiStatus,
          getSelectedFormAPIError,
-         
+
          onClickRetry,
          signOut,
          updateUserSelectedFormData,
@@ -43,10 +43,11 @@ class SelectedForm extends React.Component {
       } = this.props
       return (
          <Container>
-            <Header signOut={signOut}
-                     goToPayRequestPage={goToPayRequestPage} 
-                     goToHomePage={goToHomePage} 
-                     goToWalletPage = {goToWalletPage}
+            <Header
+               signOut={signOut}
+               goToPayRequestPage={goToPayRequestPage}
+               goToHomePage={goToHomePage}
+               goToWalletPage={goToWalletPage}
             />
             <Body>
                <SelectedFormTitleBar selectedFormData={selectedFormData} />

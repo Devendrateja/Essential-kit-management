@@ -77,9 +77,7 @@ class AuthStore {
    @action.bound
    isLoggedIn() {
       const access_token = getAccessToken()
-      return access_token !== undefined || access_token !== undefined
-         ? true
-         : false
+      return access_token !== undefined ? true : false
    }
 }
 

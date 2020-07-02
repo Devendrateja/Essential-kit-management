@@ -25,7 +25,8 @@ interface PaginationStoreObject {
 }
 
 class FormStore {
-   @observable paginationStore!: PaginationStoreObject | PaginationStore
+   @observable limit: number = 5
+   @observable paginationStore!: PaginationStore
 
    formsAPIService: FormFixturesService
 
@@ -50,11 +51,7 @@ class FormStore {
 
    @action.bound
    init() {
-      this.paginationStore = {
-         paginationStatus: API_INITIAL,
-         paginationError: null,
-         paginationResponse: []
-      }
+      this.initialisePaginationStore()
 
       this.upiStatus = API_INITIAL
       this.upiError = null
@@ -150,11 +147,10 @@ class FormStore {
    }
 
    @action.bound
-   initialisePaginationStore(limit: number, offset: number) {
+   initialisePaginationStore() {
       this.paginationStore = new PaginationStore(
          this.formsAPIService,
-         limit,
-         offset,
+         this.limit,
          Form
       )
    }

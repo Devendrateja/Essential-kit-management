@@ -8,15 +8,15 @@ import { withRouter } from 'react-router-dom'
 import { clearUserSession } from '../../../utils/StorageUtils.js'
 import NoDataView from '../../../components/common/NoDataView'
 
-import {PAY_REQUEST_PATH, USER_HOME_PATH} from "../../constants/RouteConstants"
-
-
+import {
+   PAY_REQUEST_PATH,
+   USER_HOME_PATH
+} from '../../constants/RouteConstants'
 
 import SelectedForm from '../../components/SelectedForm'
 import SelectedFormSectionBar from '../../components/SelectedForm/SelectedFormSectionBar'
 
-import withNavigation from "../../hocs/withNavigation"
-
+import withNavigation from '../../hocs/withNavigation'
 
 import {
    Typo18DarkBlueGreyHKGroteskBold,
@@ -38,23 +38,20 @@ import {
 @observer
 class SelectedFormRoute extends React.Component {
    @observable liveForm = {}
-   
-   
+
    componentDidMount() {
       const liveFormId = this.props.match.params.id
-      
+
       const { listOfForms } = this.props.formStore.paginationStore
-      
+      console.log('list of forms afetr reloading', listOfForms)
       listOfForms.forEach(eachForm => {
-         
-         if(eachForm.formId.toString() === liveFormId){
+         if (eachForm.formId.toString() === liveFormId) {
             this.liveForm = eachForm
             this.liveForm.getSelectedFormData(liveFormId)
-            console.log("live form tracking",this.liveForm, eachForm)
+            console.log('live form tracking', this.liveForm, eachForm)
          }
       })
    }
-
 
    setIstructions = instructions => {
       return instructions
@@ -101,16 +98,14 @@ class SelectedFormRoute extends React.Component {
    signOut = () => {
       const { goToSignInPage } = this.props
       clearUserSession()
-      goToSignInPage();
+      goToSignInPage()
    }
-
 
    render() {
       let selectedFormId = this.props.match.params.id
-      
-      const { goToPayRequestPage, goToHomePage,goToWalletPage } = this.props
-      
-      
+
+      const { goToPayRequestPage, goToHomePage, goToWalletPage } = this.props
+
       const {
          selectedFormData,
          getSelectedFormAPIStatus,

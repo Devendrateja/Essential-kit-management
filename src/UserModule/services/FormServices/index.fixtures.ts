@@ -12,7 +12,6 @@ class FormFixturesService implements FormService {
       const promise = await resolveWithTimeout(getUserResponse)
 
       const formsData = promise.list_of_forms.slice(offset, limit + offset)
-
       const response = {
          list_of_forms: formsData,
          total_forms: promise.total_forms
