@@ -43,6 +43,13 @@ interface InjectedProps extends UserRouteProps {
 @inject('formStore')
 @observer
 class UserRoute extends React.Component<UserRouteProps> {
+   componentDidMount() {
+      const {
+         initialiseThePaginationsEntities
+      } = this.getInjectedProps().formStore.paginationStore
+      initialiseThePaginationsEntities()
+   }
+
    onSelectForm = (formId, formStatus) => {
       const { history } = this.props
 
@@ -123,6 +130,7 @@ class UserRoute extends React.Component<UserRouteProps> {
          goToPreviousPage
       } = this.getInjectedProps().formStore.paginationStore
       console.log('api status in route', paginationStatus)
+
       return (
          <UserDashBoard
             redirectToSignInPage={this.signOut}

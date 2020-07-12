@@ -28,14 +28,13 @@ class PaginationStore {
    constructor(
       APIService: FormFixturesService,
       limit: number,
-
       EntitiesModel: typeof Form
    ) {
       this.EntitiesModel = EntitiesModel
       this.paginationAPIService = APIService
       this.limit = limit
       this.offset = 0
-      this.initialiseThePaginationsEntities()
+
       this.init()
    }
 

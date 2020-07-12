@@ -1,6 +1,6 @@
 import React from 'react'
 import { observer } from 'mobx-react'
-import { observable } from 'mobx'
+import { observable, computed } from 'mobx'
 import { Redirect } from 'react-router-dom'
 import { withRouter } from 'react-router-dom'
 
@@ -40,7 +40,12 @@ class UserDashBoard extends React.Component {
          currentPageAndTotalPages
       } = this.props
 
-      const newAPIStatus = getLoadingStatus(apiStatus)
+      //   @computed
+      //   get newAPIStatus(){
+      //     return getLoadingStatus(apiStatus)
+
+      //   }
+
       console.log('api status in dashboarsd', apiStatus)
       return (
          <Container>
@@ -56,7 +61,7 @@ class UserDashBoard extends React.Component {
                <LoadingWrapperContainer>
                   <LoadingWrapperWithFailure
                      renderSuccessUI={renderSuccessUI}
-                     apiStatus={newAPIStatus}
+                     apiStatus={apiStatus}
                      apiError={apiError}
                      onRetryClick={onRetryClick}
                   />
