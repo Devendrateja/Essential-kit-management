@@ -10,9 +10,9 @@ import {
 } from '@ib/api-constants'
 
 import getUserResponse from '../../fixtures/getUserResponse.json'
-import getTransactionUPI from "../../fixtures/getTransactionUPI.json"
-import getTransactions from "../../fixtures/getTransactions.json"
-import FormAPI from '../../services/FormServices/index.api.js'
+import getTransactionUPI from '../../fixtures/getTransactionUPI.json'
+import getTransactions from '../../fixtures/getTransactions.json'
+import FormAPI from '../../services/FormServices/index.api'
 
 import FormStore from '.'
 
@@ -42,21 +42,18 @@ describe('Form store tests', () => {
    })
 
    it('should test the initialising of the FormStore', () => {
-      expect(formStore.getFormsAPIStatus).toBe(API_INITIAL)
-      expect(formStore.getFormsAPIError).toBe(null)
-      expect(formStore.listOfForms).toEqual([])
-      
+      // expect(formStore.getFormsAPIStatus).toBe(API_INITIAL)
+      // expect(formStore.getFormsAPIError).toBe(null)
+      // expect(formStore.listOfForms).toEqual([])
+
       expect(formStore.upiStatus).toBe(API_INITIAL)
       expect(formStore.upiError).toBe(null)
       expect(formStore.upi).toBe('')
-      
-      
+
       expect(formStore.userPaymentDetailsAPIStatus).toBe(API_INITIAL)
       expect(formStore.userPaymentDetailsAPIError).toBe(null)
       expect(formStore.userPaymentDetailsAPIResponse).toEqual({})
-      
-      
-      
+
       expect(formStore.listOfTransactions).toEqual([])
       expect(formStore.totalAmount).toBe(0)
       expect(formStore.totalTransactions).toBe(0)
@@ -64,194 +61,180 @@ describe('Form store tests', () => {
       expect(formStore.transactionListAPIError).toBe(null)
    })
 
-   it('should test the FormStore forms API status to be in fetching state', () => {
+   // it('should test the FormStore forms API status to be in fetching state', () => {
+   //    const mockLoadingPromise = new Promise(function(resolve, reject) {})
+   //    const mockFormAPI = jest.fn()
+   //    mockFormAPI.mockReturnValue(mockLoadingPromise)
+   //    formAPI.getFormsAPI = mockFormAPI
+
+   //    formStore.getFormsList()
+   //    expect(formStore.getFormsAPIStatus).toBe(API_FETCHING)
+   // })
+
+   // it('should test the FormStore forms API status to be in success state', async () => {
+   //    const mockSuccessPromise = new Promise(function(resolve, reject) {
+   //       resolve(getUserResponse)
+   //    })
+
+   //    const mockFormAPI = jest.fn()
+   //    mockFormAPI.mockReturnValue(mockSuccessPromise)
+   //    formAPI.getFormsAPI = mockFormAPI
+
+   //    await formStore.getFormsList()
+   //    expect(formStore.getFormsAPIStatus).toBe(API_SUCCESS)
+   //    expect(formStore.listOfForms.length).toBe(10)
+   // })
+
+   // it('should test the FormStore forms API status to be in  failure state', async () => {
+   //    const mockFailurePromise = new Promise(function(resolve, reject) {
+   //       reject(new Error('error'))
+   //    })
+
+   //    const mockFormAPI = jest.fn()
+   //    mockFormAPI.mockReturnValue(mockFailurePromise)
+   //    formAPI.getFormsAPI = mockFormAPI
+
+   //    await formStore.getFormsList()
+   //    expect(formStore.getFormsAPIStatus).toBe(API_FAILED)
+   //    expect(formStore.getFormsAPIError).toBe('error')
+   // })
+
+   it('should test the form store upi status to be in fetching state', () => {
       const mockLoadingPromise = new Promise(function(resolve, reject) {})
+
       const mockFormAPI = jest.fn()
       mockFormAPI.mockReturnValue(mockLoadingPromise)
-      formAPI.getFormsAPI = mockFormAPI
+      formAPI.getTransactionUPI = mockFormAPI
 
-      formStore.getFormsList()
-      expect(formStore.getFormsAPIStatus).toBe(API_FETCHING)
+      formStore.getPayRequestUPI()
+      expect(formStore.upiStatus).toBe(API_FETCHING)
    })
 
-   it('should test the FormStore forms API status to be in success state', async () => {
+   it('should test the formStore upiStatus to be in successState', async () => {
       const mockSuccessPromise = new Promise(function(resolve, reject) {
-         resolve(getUserResponse)
+         resolve(getTransactionUPI)
       })
 
       const mockFormAPI = jest.fn()
       mockFormAPI.mockReturnValue(mockSuccessPromise)
-      formAPI.getFormsAPI = mockFormAPI
+      formAPI.getTransactionUPI = mockFormAPI
 
-      await formStore.getFormsList()
-      expect(formStore.getFormsAPIStatus).toBe(API_SUCCESS)
-      expect(formStore.listOfForms.length).toBe(10)
+      await formStore.getPayRequestUPI()
+      expect(formStore.upiStatus).toBe(API_SUCCESS)
+      expect(formStore.upi).toBe('8978433593@sbi')
    })
 
-   it('should test the FormStore forms API status to be in  failure state', async () => {
+   it('should test the formStore upiStatus to be in failure state', async () => {
       const mockFailurePromise = new Promise(function(resolve, reject) {
          reject(new Error('error'))
       })
 
       const mockFormAPI = jest.fn()
       mockFormAPI.mockReturnValue(mockFailurePromise)
-      formAPI.getFormsAPI = mockFormAPI
+      formAPI.getTransactionUPI = mockFormAPI
 
-      await formStore.getFormsList()
-      expect(formStore.getFormsAPIStatus).toBe(API_FAILED)
-      expect(formStore.getFormsAPIError).toBe('error')
-   })
-   
-   
-   it("should test the form store upi status to be in fetching state", () => {
-      const mockLoadingPromise = new Promise(function(resolve, reject){})
-      
-      const mockFormAPI = jest.fn()
-      mockFormAPI.mockReturnValue(mockLoadingPromise)
-      formAPI.getTransactionUPI = mockFormAPI
-      
-      formStore.getPayRequestUPI()
-      expect(formStore.upiStatus).toBe(API_FETCHING)
-   })
-   
-   
-   it("should test the formStore upiStatus to be in successState", async () => {
-      const mockSuccessPromise = new Promise(function(resolve, reject){
-         resolve(getTransactionUPI)
-      })
-      
-      const mockFormAPI = jest.fn()
-      mockFormAPI.mockReturnValue(mockSuccessPromise)
-      formAPI.getTransactionUPI = mockFormAPI
-      
-      
-      await formStore.getPayRequestUPI()
-      expect(formStore.upiStatus).toBe(API_SUCCESS)
-      expect(formStore.upi).toBe("8978433593@sbi")
-   })
-   
-   it("should test the formStore upiStatus to be in failure state", async() => {
-      const mockFailurePromise = new Promise (function(resolve, reject){
-         reject(new Error("error"))
-      })
-      
-      const mockFormAPI = jest.fn()
-      mockFormAPI.mockReturnValue(mockFailurePromise)
-      formAPI.getTransactionUPI = mockFormAPI
-      
       await formStore.getPayRequestUPI()
       expect(formStore.upiStatus).toBe(API_FAILED)
-      expect(formStore.upiError).toBe("error")
+      expect(formStore.upiError).toBe('error')
    })
-   
-   
-   it("should test that user Payment details API status to be in fetching state", () =>  {
-      const mockLoadingPromise = new Promise(function(resolve, reject){})
-      
+
+   it('should test that user Payment details API status to be in fetching state', () => {
+      const mockLoadingPromise = new Promise(function(resolve, reject) {})
+
       const data = {
-            "amount": 0,
-            "transaction_id": 8978433593,
-            "transaction_type": "phone pe",
-            "screenshot_url": "sampleUrl@jsdj"
-        }
-      
-      
+         amount: 0,
+         transaction_id: 8978433593,
+         transaction_type: 'phone pe',
+         screenshot_url: 'sampleUrl@jsdj'
+      }
+
       const mockFormAPI = jest.fn()
       mockFormAPI.mockReturnValue(mockLoadingPromise)
       formAPI.sendTransactionDetails = mockFormAPI
-      
+
       formStore.sendPaymentData(data)
       expect(formStore.userPaymentDetailsAPIStatus).toBe(API_FETCHING)
    })
-   
-   it("should test that user payment details API status to be in success state ", async() => {
-      const mockSuccessPromise = new Promise(function(resolve, reject){
-         resolve (null)
+
+   it('should test that user payment details API status to be in success state ', async () => {
+      const mockSuccessPromise = new Promise(function(resolve, reject) {
+         resolve(null)
       })
-      
+
       const data = {
-            "amount": 0,
-            "transaction_id": 8978433593,
-            "transaction_type": "phone pe",
-            "screenshot_url": "sampleUrl@jsdj"
+         amount: 0,
+         transaction_id: 8978433593,
+         transaction_type: 'phone pe',
+         screenshot_url: 'sampleUrl@jsdj'
       }
-      
+
       const mockFormAPI = jest.fn()
       mockFormAPI.mockReturnValue(mockSuccessPromise)
       formAPI.sendTransactionDetails = mockFormAPI
-      
+
       await formStore.sendPaymentData(data)
       expect(formStore.userPaymentDetailsAPIStatus).toBe(API_SUCCESS)
       expect(formStore.userPaymentDetailsAPIResponse).toBe(null)
    })
-   
-   it("should test that user payment details API status to be in failure state ", async () => {
-      const mockFailurePromise = new Promise(function(resolve, reject){
-         reject(new Error("error"))
+
+   it('should test that user payment details API status to be in failure state ', async () => {
+      const mockFailurePromise = new Promise(function(resolve, reject) {
+         reject(new Error('error'))
       })
-      
+
       const data = {
-            "amount": 0,
-            "transaction_id": 8978433593,
-            "transaction_type": "phone pe",
-            "screenshot_url": "sampleUrl@jsdj"
+         amount: 0,
+         transaction_id: 8978433593,
+         transaction_type: 'phone pe',
+         screenshot_url: 'sampleUrl@jsdj'
       }
-      
+
       const mockFormAPI = jest.fn()
       mockFormAPI.mockReturnValue(mockFailurePromise)
-      
+
       formAPI.sendTransactionDetails = mockFormAPI
-      
+
       await formStore.sendPaymentData(data)
-      
+
       expect(formStore.userPaymentDetailsAPIStatus).toBe(API_FAILED)
       expect(formStore.userPaymentDetailsAPIError).toBe('error')
-      
    })
-   
-   
-   
-   it("should test the transactionsList API status is in fetching state", () => {
-      const mockLoadingPromise = new Promise(function(resolve, reject){})
-      
+
+   it('should test the transactionsList API status is in fetching state', () => {
+      const mockLoadingPromise = new Promise(function(resolve, reject) {})
+
       const mockFormAPI = jest.fn()
       mockFormAPI.mockReturnValue(mockLoadingPromise)
       formAPI.getUserTransactionList = mockFormAPI
-      
+
       formStore.getUserTransactions()
       expect(formStore.transactionListAPIstatus).toBe(API_FETCHING)
-      
    })
-   
-   it("should test the transactionsList Api status to be in successState", async () => {
-      const mockSuccessPromise = new Promise(function(resolve, reject){
+
+   it('should test the transactionsList Api status to be in successState', async () => {
+      const mockSuccessPromise = new Promise(function(resolve, reject) {
          resolve(getTransactions)
       })
-      
+
       const mockFormAPI = jest.fn()
       mockFormAPI.mockReturnValue(mockSuccessPromise)
       formAPI.getUserTransactionList = mockFormAPI
-      
+
       await formStore.getUserTransactions()
       expect(formStore.transactionListAPIstatus).toBe(API_SUCCESS)
       expect(formStore.listOfTransactions.length).toBe(5)
    })
-   
-   it("should test the transactionListAPIstatus to be in failure state", async () => {
-      const mockFailurePromise = new Promise(function(resolve, reject){
-         reject(new Error("error"))
+
+   it('should test the transactionListAPIstatus to be in failure state', async () => {
+      const mockFailurePromise = new Promise(function(resolve, reject) {
+         reject(new Error('error'))
       })
       const mockFormAPI = jest.fn()
       mockFormAPI.mockReturnValue(mockFailurePromise)
       formAPI.getUserTransactionList = mockFormAPI
-      
+
       await formStore.getUserTransactions()
       expect(formStore.transactionListAPIstatus).toBe(API_FAILED)
-      expect(formStore.transactionListAPIError).toBe("error")
+      expect(formStore.transactionListAPIError).toBe('error')
    })
-   
-   
-     
-   
-   
 })
