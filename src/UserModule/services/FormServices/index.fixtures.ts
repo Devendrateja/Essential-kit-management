@@ -10,7 +10,6 @@ import FormService from './index'
 class FormFixturesService implements FormService {
    async getFormsAPI(limit, offset) {
       const promise = await resolveWithTimeout(getUserResponse)
-
       const formsData = promise.list_of_forms.slice(offset, limit + offset)
       const response = {
          list_of_forms: formsData,

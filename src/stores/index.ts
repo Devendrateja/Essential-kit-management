@@ -7,9 +7,13 @@ import AuthFixturesService from '../AuthenticationModule/services/FixturesServic
 import AuthMSTFixturesService from '../AuthenticationModule/services/FixturesService/index.fixture.mst'
 import AuthStoreWithMST from '../AuthenticationModule/stores/AuthStoreWithMST'
 
+import PaginationStoreWithMST from './PaginationStoreWithMST'
 import FormFixturesService from '../UserModule/services/FormServices/index.fixtures'
 import FormAPI from '../UserModule/services/FormServices/index.api'
 import FormStore from '../UserModule/stores/FormStore'
+import FormFixturesServiceWithMST from '../UserModule/services/FormServices/index.fixtures.mst'
+import FormStoreWithMST from '../UserModule/stores/FormStoreWithMST'
+import { API_INITIAL } from '@ib/api-constants'
 
 let isFixtures = true
 
@@ -22,6 +26,25 @@ const authStore = new AuthStore(authAPI)
 
 const formAPI = isFixtures ? new FormFixturesService() : new FormAPI()
 const formStore = new FormStore(formAPI)
+
+const formStoreWithMST = FormStoreWithMST.create({
+   limit: 5,
+   paginationStore: PaginationStoreWithMST,
+   formsAPIService: FormFixturesServiceWithMST,
+   upiStatus: API_INITIAL,
+   upiError: null,
+   upi: '',
+   userPaymentDetailsAPIStatus: API_INITIAL,
+   userPaymentDetailsAPIError: null,
+   userPaymentDetailsAPIResponse: null,
+   listOfTransactions: null,
+   totalAmount: types.number,
+   totalTransactions: types.number,
+   transactionListAPIstatus: types.number,
+   transactionListAPIError: types.maybeNull(types.string)
+})
+
+//formStoreWithMST.initialisePaginationStore()
 
 const AuthStoreWithService = types
    .compose(AuthStoreWithMST, AuthMSTFixturesService)
@@ -51,5 +74,6 @@ export default {
    counterStore,
    authStore,
    formStore,
-   authStoreWithMST
+   authStoreWithMST,
+   formStoreWithMST
 }
